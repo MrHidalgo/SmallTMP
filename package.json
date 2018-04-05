@@ -1,0 +1,14 @@
+{
+  "name": "smalltmp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "require-dir": "^1.0.0"
+  }
+}

@@ -9,6 +9,7 @@
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "pug": "^2.0.3",
     "require-dir": "^1.0.0"
   }
 }

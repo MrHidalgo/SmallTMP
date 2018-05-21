@@ -33,7 +33,7 @@ const srcArr = {
 };
 
 
-const renderPug = () => {
+const renderPug = (e) => {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(pugOption.plum.err))

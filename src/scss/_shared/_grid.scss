@@ -1,0 +1,25 @@
+/// ADDITIONALLY
+%container {
+	position: relative;
+	height: 100%;
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	padding: {
+		left: 15px;
+		right: 15px;
+	}
+}
+
+// MAIN
+.container {
+	@extend %container;
+	min-width: 300px;
+
+	&-fluid {
+		@extend %container;
+		max-width: 100%;
+	}
+}
+

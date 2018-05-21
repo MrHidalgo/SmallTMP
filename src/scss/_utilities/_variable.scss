@@ -1,0 +1,45 @@
+@import "function";
+
+////
+/// @group  Variable
+////
+
+///
+/// @name   object
+///
+
+$object: (
+  colors : (
+    white : #fff,
+    black : #000,
+    primary : #4285F4,
+    success : #00C851,
+    info : #33B5E5,
+    warning : #FF8800,
+    danger : #CC0000,
+  ),
+  fontsFamily : (),
+  dimension : (
+    all : 100%,
+    fhd : 1920,
+    hd : 1440,
+    wide : 1200,
+    desktop : 992,
+    tablet : 768,
+    mobile : 767,
+    mobile-xs : 576,
+  ),
+);
+
+$w-all: return-value(dimension, all);
+
+$c-white: return-value(colors, white);
+$c-black: return-value(colors, black);
+
+$c-primary: return-value(colors, primary);
+$c-default: return-value(colors, default);
+$c-secondary: return-value(colors, secondary);
+$c-success: return-value(colors, success);
+$c-info: return-value(colors, info);
+$c-warning: return-value(colors, warning);
+$c-danger: return-value(colors, danger);

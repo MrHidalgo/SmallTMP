@@ -7,8 +7,8 @@ html(lang="en")
     include _head
 
   body(
-    class!= bodyClass
-    data-file!= pageName
+    class!= bodyClassName
+    data-file!= dataPageName
   )
     block header
       include ../components/_header

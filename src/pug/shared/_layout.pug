@@ -1,0 +1,22 @@
+include ../mixin/_mixin
+
+doctype html
+html(lang="en")
+
+  head
+    include _head
+
+  body(
+    class!= bodyClass
+    data-file!= pageName
+  )
+    block header
+      include ../components/_header
+
+      block content
+
+      block footer
+        include ../components/_footer
+
+    block script
+      include _script

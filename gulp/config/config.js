@@ -11,7 +11,9 @@ const config = {
   dest: {
     root: 'dist',
     html: 'dist'
-  }
+  },
+
+  errorHandler: require('../util/error')
 };
 
 

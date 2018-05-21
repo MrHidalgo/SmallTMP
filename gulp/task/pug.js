@@ -1,12 +1,10 @@
 const gulp        = require('gulp'),
   pug             = require('gulp-pug'),
   plumber         = require('gulp-plumber'),
-  plumberNotifier = require('gulp-plumber-notifier'),
   frontMatter     = require('gulp-front-matter'),
   changedInPlace  = require('gulp-changed-in-place');
 
 const config      = require('../config/config');
-
 
 const pugOption = {
   pug : {
@@ -16,16 +14,29 @@ const pugOption = {
     property: 'data'
   },
   changed: {
-    firstPass : true
+    firstPass : true,
+    howToDetermineDifference: "modification-time"
+  },
+  plum: {
+    err: config.errorHandler
   }
+};
+
+const srcArr = {
+  0: [
+    config.src.templates + '/*.pug'
+  ],
+  1: [
+    config.src.templates + '/**/*.pug',
+    config.src.templates + '/**/**/**'
+  ]
 };
 
 
 const renderPug = () => {
   return gulp
-    .src(config.src.templates + '/*')
-      .pipe(plumber({}))
-      // .pipe(plumberNotifier({}))
+    .src(srcArr[0])
+      .pipe(plumber(pugOption.plum.err))
       .pipe(changedInPlace(pugOption.changed))
       .pipe(frontMatter(pugOption.frontMatter))
       .pipe(pug(pugOption.pug))
@@ -33,6 +44,10 @@ const renderPug = () => {
 };
 
 
-gulp.task('pug', () => {
-  return renderPug();
+gulp.task('pug', function() {
+  renderPug();
+});
+
+gulp.task('pug:watch', function() {
+  gulp.watch(srcArr[1], ['pug']);
 });

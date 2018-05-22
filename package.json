@@ -9,9 +9,12 @@
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
     "gulp-changed-in-place": "^2.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",

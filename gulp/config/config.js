@@ -12,7 +12,8 @@ const config = {
     vendorStyle   : srcPath + '/vendorStyle',
     js            : srcPath + '/js',
     vendorScript  : srcPath + '/vendorScript',
-    image         : srcPath + '/img'
+    image         : srcPath + '/img',
+    fonts         : srcPath + '/fonts'
   },
 
   // DEST
@@ -21,7 +22,8 @@ const config = {
     html  : destPath + '',
     css   : destPath + '/css',
     js    : destPath + '/js',
-    img   : destPath + '/img'
+    img   : destPath + '/img',
+    fonts : destPath + '/fonts'
   },
 
   errorHandler: require('../util/error')

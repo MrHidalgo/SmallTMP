@@ -53,7 +53,9 @@ gulp.task('spritePNG', function(e) {
   let imgStream = spriteData
     .img
     .pipe(buffer())
-    .pipe(imageMinify())
+    .pipe(imageMinify({
+      interlaced: true
+    }))
     .pipe(gulp.dest(destImg));
 
   let cssStream = spriteData

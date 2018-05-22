@@ -13,6 +13,7 @@ const config = {
     js            : srcPath + '/js',
     vendorScript  : srcPath + '/vendorScript',
     image         : srcPath + '/img',
+    icon          : srcPath + '/icon',
     fonts         : srcPath + '/fonts'
   },
 
@@ -23,6 +24,7 @@ const config = {
     css   : destPath + '/css',
     js    : destPath + '/js',
     img   : destPath + '/img',
+    icon  : destPath + '/icon',
     fonts : destPath + '/fonts'
   },
 

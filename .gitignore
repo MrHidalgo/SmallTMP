@@ -1,6 +1,28 @@
+# FOLDER
+# ==========
 .idea/*
 .gulp/*
-.git/*
+.cache/*
+.sass-cache/*
+.tmp/*
+_tmp/*
 node_modules/*
 vendor/*
-dist/*
+dest/*
+
+# FILES
+# ==========
+
+
+# EXTENSIONS
+# ==========
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~

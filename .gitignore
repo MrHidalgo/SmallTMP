@@ -12,6 +12,7 @@ dest/*
 
 # FILES
 # ==========
+package-lock.json
 
 
 # EXTENSIONS

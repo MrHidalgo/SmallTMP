@@ -59,16 +59,15 @@ const scssOption = {
 
 const srcArr = {
   0: [
-    config.src.scss + '/*.{scss,sass}'
+    config.src.scss + '/*.scss'
   ],
   1: [
-    config.src.scss + '/**/*.{scss,sass}',
-    config.src.scss + '/**/**/**',
+    config.src.scss + '/**'
   ]
 };
 
 
-const renderScss = (e) => {
+gulp.task('scss', function(e) {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(scssOption.plum.err))
@@ -82,12 +81,7 @@ const renderScss = (e) => {
       .pipe(gulpIgnore.exclude("*.map"))
       .pipe(cssmin(scssOption.cssMinOption))
       .pipe(rename(scssOption.renameOption))
-      .pipe(gulp.dest(config.dest.css))
-};
-
-
-gulp.task('scss', function(e) {
-  renderScss();
+      .pipe(gulp.dest(config.dest.css));
 });
 
 

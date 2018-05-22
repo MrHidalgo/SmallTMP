@@ -30,16 +30,3 @@ $object: (
     mobile-xs : 576,
   ),
 );
-
-$w-all: return-value(dimension, all);
-
-$c-white: return-value(colors, white);
-$c-black: return-value(colors, black);
-
-$c-primary: return-value(colors, primary);
-$c-default: return-value(colors, default);
-$c-secondary: return-value(colors, secondary);
-$c-success: return-value(colors, success);
-$c-info: return-value(colors, info);
-$c-warning: return-value(colors, warning);
-$c-danger: return-value(colors, danger);

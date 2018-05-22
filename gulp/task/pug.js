@@ -27,13 +27,11 @@ const srcArr = {
     config.src.templates + '/*.pug'
   ],
   1: [
-    config.src.templates + '/**/*.pug',
-    config.src.templates + '/**/**/**'
+    config.src.templates + '/**'
   ]
 };
 
-
-const renderPug = (e) => {
+gulp.task('pug', function() {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(pugOption.plum.err))
@@ -41,11 +39,6 @@ const renderPug = (e) => {
       .pipe(frontMatter(pugOption.frontMatter))
       .pipe(pug(pugOption.pug))
       .pipe(gulp.dest(config.dest.html))
-};
-
-
-gulp.task('pug', function() {
-  renderPug();
 });
 
 gulp.task('pug:watch', function() {

@@ -61,7 +61,6 @@
     from{
       opacity   : map-get($configuration, opacityStart);
       transform : map-get($configuration, transformStart);
-      transform : map-get($configuration, transformDouble);
     }
     to{
       opacity   : map-get($configuration, opacityEnd);

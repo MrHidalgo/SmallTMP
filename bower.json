@@ -1,0 +1,21 @@
+{
+  "name": "smalltmp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Andrii Kovalenko <hkovalenko9@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MrHidalgo/SmallTMP",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "normalize-css": "^8.0.0"
+  }
+}

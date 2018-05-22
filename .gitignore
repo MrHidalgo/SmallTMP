@@ -1,4 +1,6 @@
 .idea/*
+.gulp/*
+.git/*
 node_modules/*
 vendor/*
 dist/*

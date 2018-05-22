@@ -1,22 +1,27 @@
+const srcPath = 'src',
+  destPath = 'dest';
+
 const config = {
 
   // SRC
   src: {
-    root          : 'src',
-    templates     : 'src/pug',
-    templatesData : 'src/pug/data',
-    scss          : 'src/scss',
-    vendorStyle   : 'src/vendorStyle',
-    js            : 'src/js',
-    vendorScript  : 'src/vendorScript'
+    root          : srcPath + '',
+    templates     : srcPath + '/pug',
+    templatesData : srcPath + '/pug/data',
+    scss          : srcPath + '/scss',
+    vendorStyle   : srcPath + '/vendorStyle',
+    js            : srcPath + '/js',
+    vendorScript  : srcPath + '/vendorScript',
+    image         : srcPath + '/img'
   },
 
   // DEST
   dest: {
-    root  : 'dist',
-    html  : 'dist',
-    css   : 'dist/css',
-    js    : 'dist/js'
+    root  : destPath + '',
+    html  : destPath + '',
+    css   : destPath + '/css',
+    js    : destPath + '/js',
+    img   : destPath + '/img'
   },
 
   errorHandler: require('../util/error')

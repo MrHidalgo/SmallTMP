@@ -21,7 +21,7 @@ let files = mainBowerFiles('**/**.js');
 files.push(config.src.vendorScript + "/*.js");
 files.push(config.src.vendorScript + "/**");
 
-gulp.task('vendorScript', function(e) {
+gulp.task('vendorScript', function() {
   return gulp
     .src(files)
       .pipe(plumber(vendorScriptOption.plum.err))
@@ -32,6 +32,6 @@ gulp.task('vendorScript', function(e) {
       .pipe(gulp.dest(config.dest.js))
 });
 
-gulp.task('vendorScript:watch', function(e) {
+gulp.task('vendorScript:watch', function() {
   gulp.watch(config.src.vendorScript + '/**', ['vendorScript']);
 });

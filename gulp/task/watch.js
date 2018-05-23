@@ -1,8 +1,7 @@
-const gulp  = require('gulp'),
-  runSequence = require('run-sequence');
+const gulp = require('gulp');
 
-gulp.task("watch", function(e) {
-  runSequence(
+gulp.task('watch',
+  [
     'scss:watch',
     'pug:watch',
     'js:watch',
@@ -12,6 +11,5 @@ gulp.task("watch", function(e) {
     'spriteSVG:watch',
     'vendorScript:watch',
     'vendorStyle:watch',
-    e
-  );
-});
+  ]
+);

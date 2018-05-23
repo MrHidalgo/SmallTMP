@@ -29,7 +29,7 @@ let files = mainBowerFiles('**/**.css');
 files.push(config.src.vendorStyle + "/*.css");
 files.push(config.src.vendorStyle + "/**");
 
-gulp.task('vendorStyle', function(e) {
+gulp.task('vendorStyle', function() {
   return gulp
     .src(files)
       .pipe(plumber(vendorStyleOption.plum.err))
@@ -46,6 +46,6 @@ gulp.task('vendorStyle', function(e) {
       .pipe(gulp.dest(config.dest.css))
 });
 
-gulp.task('vendorStyle:watch', function(e) {
+gulp.task('vendorStyle:watch', function() {
   gulp.watch(config.src.vendorStyle + '/**', ['vendorStyle']);
 });

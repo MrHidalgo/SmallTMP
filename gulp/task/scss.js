@@ -6,7 +6,7 @@ const gulp            =   require('gulp')
   , sourcemaps        =   require('gulp-sourcemaps')
   , cssmin            =   require('gulp-cssmin')
   , rename            =   require('gulp-rename')
-  , gulpIgnore        = require('gulp-ignore')
+  , gulpIgnore        =   require('gulp-ignore')
   , changedInPlace    =   require('gulp-changed-in-place');
 
 const config      = require('../config/config');
@@ -47,8 +47,7 @@ const scssOption = {
     suffix : '.min'
   },
   changed: {
-    firstPass : true,
-    howToDetermineDifference: "modification-time"
+    firstPass : true
   },
   source: {
     includeContent: true,
@@ -67,7 +66,7 @@ const srcArr = {
 };
 
 
-gulp.task('scss', function(e) {
+gulp.task('scss', function() {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(scssOption.plum.err))
@@ -85,6 +84,6 @@ gulp.task('scss', function(e) {
 });
 
 
-gulp.task('scss:watch', function(e) {
+gulp.task('scss:watch', function() {
   gulp.watch(srcArr[1], ['scss']);
 });

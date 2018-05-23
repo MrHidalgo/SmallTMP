@@ -55,3 +55,7 @@ gulp.task('spriteSVG', function () {
       }))
       .pipe(gulp.dest(config.dest.img));
 });
+
+gulp.task('spriteSVG:watch', function() {
+  gulp.watch(srcArr[0], ['spriteSVG']);
+});

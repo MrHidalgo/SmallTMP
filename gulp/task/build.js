@@ -1,7 +1,7 @@
 const gulp  = require('gulp'),
   runSequence = require('run-sequence');
 
-gulp.task("build", function(e) {
+gulp.task("build", function(callback) {
   runSequence(
     'clean',
     'scss',
@@ -13,6 +13,6 @@ gulp.task("build", function(e) {
     'spriteSVG',
     'vendorScript',
     'vendorStyle',
-    e
+    callback
   );
 });

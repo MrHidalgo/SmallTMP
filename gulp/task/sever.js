@@ -3,7 +3,7 @@ const gulp  = require('gulp'),
 
 const config      = require('../config/config');
 
-gulp.task('server', function() {
+gulp.task('server', function(e) {
   server.init({
     server: {
       baseDir: config.dest.root,

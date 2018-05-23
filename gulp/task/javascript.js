@@ -18,8 +18,7 @@ const jsOption = {
     suffix : '.min'
   },
   changed: {
-    firstPass : true,
-    howToDetermineDifference: "modification-time"
+    firstPass : true
   }
 };
 
@@ -32,7 +31,7 @@ const jsArr = {
   ]
 };
 
-gulp.task('js', function(e) {
+gulp.task('js', function() {
   return gulp
     .src(jsArr[0])
       .pipe(plumber(jsOption.plum.err))
@@ -44,6 +43,6 @@ gulp.task('js', function(e) {
       .pipe(gulp.dest(config.dest.js));
 });
 
-gulp.task('js:watch', function(e) {
+gulp.task('js:watch', function() {
   gulp.watch(jsArr[1], ['js']);
 });

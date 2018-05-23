@@ -22,7 +22,7 @@ const srcArr = {
   ]
 };
 
-gulp.task('spritePNG', function(e) {
+gulp.task('spritePNG', function() {
 
   const spImgPath       = '../img/sprite.png'
     , retinaspImgPath   = '../img/sprite@2x.png'
@@ -65,7 +65,6 @@ gulp.task('spritePNG', function(e) {
   return merge(imgStream, cssStream)
 });
 
-
-gulp.task('spritePNG:watch', function(e) {
+gulp.task('spritePNG:watch', function() {
   gulp.watch(srcArr[1], ['spritePNG']);
 });

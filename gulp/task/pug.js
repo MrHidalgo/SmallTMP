@@ -14,8 +14,7 @@ const pugOption = {
     property: 'data'
   },
   changed: {
-    firstPass : true,
-    howToDetermineDifference: "modification-time"
+    firstPass : true
   },
   plum: {
     err: config.errorHandler
@@ -35,9 +34,9 @@ gulp.task('pug', function() {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(pugOption.plum.err))
-      .pipe(changedInPlace(pugOption.changed))
       .pipe(frontMatter(pugOption.frontMatter))
       .pipe(pug(pugOption.pug))
+      .pipe(changedInPlace(pugOption.changed))
       .pipe(gulp.dest(config.dest.html))
 });
 

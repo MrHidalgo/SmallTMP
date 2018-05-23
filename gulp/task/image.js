@@ -8,8 +8,7 @@ const config      = require('../config/config');
 const imageOption = {
   tinyPngAPI : "w2hECd9nCvKWfBj49LZrOPa6Ws7ws8uE",
   changed: {
-    firstPass : true,
-    howToDetermineDifference: "modification-time"
+    firstPass : true
   },
   plum: {
     err: config.errorHandler
@@ -25,7 +24,7 @@ const srcArr = {
   ]
 };
 
-gulp.task("img", function(e) {
+gulp.task("img", function() {
   return gulp
     .src(srcArr[0])
       .pipe(plumber(imageOption.plum))
@@ -34,6 +33,6 @@ gulp.task("img", function(e) {
       .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('img:watch', function(e) {
+gulp.task('img:watch', function() {
   gulp.watch(srcArr[1], ['img']);
 });

@@ -3,6 +3,7 @@ const gulp  = require('gulp'),
 
 gulp.task("build", function(e) {
   runSequence(
+    'clean',
     'scss',
     'pug',
     'js',

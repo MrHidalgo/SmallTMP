@@ -3,49 +3,50 @@ const gulp        = require('gulp'),
   mainBowerFiles  = require('main-bower-files'),
   concat          = require('gulp-concat'),
   order           = require("gulp-order"),
-  cssmin          = require('gulp-cssmin'),
+  cssMinify       = require('gulp-cssmin'),
   rename          = require('gulp-rename');
 
-const config      = require('../config/config');
 
-const vendorStyleOption = {
-  plum: {
-    err: config.errorHandler
-  },
-  cssMinOption: {
-    showLog : true,
-    compatibility : 'ie7',
-    specialComments : 1,
-    format: 'beautify',
-    level: 2
-  },
-  renameOption: {
-    suffix : '.min'
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
+
 
 let files = mainBowerFiles('**/**.css');
+files.push(
+  pathFolder.src.vendorStyle + "/*.css",
+  pathFolder.src.vendorStyle + "/**"
+);
 
-files.push(config.src.vendorStyle + "/*.css");
-files.push(config.src.vendorStyle + "/**");
 
+/**
+ * @description Gulp vendor style - concatenation of additional libraries.
+ */
 gulp.task('vendorStyle', function() {
   return gulp
     .src(files)
-      .pipe(plumber(vendorStyleOption.plum.err))
-      .pipe(order(
-        [
+      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(order([
           'normalize.css',
           '*'
-        ]
-      ))
+      ]))
       .pipe(concat('vendor.css'))
-      .pipe(gulp.dest(config.dest.css))
-      .pipe(cssmin(vendorStyleOption.cssMinOption))
-      .pipe(rename(vendorStyleOption.renameOption))
-      .pipe(gulp.dest(config.dest.css))
+      .pipe(gulp.dest(pathFolder.dest.css))
+      .pipe(cssMinify(opt.cssMinOption))
+      .pipe(rename(opt.renameOption))
+      .pipe(gulp.dest(pathFolder.dest.css))
 });
 
+
+/**
+ * @description Gulp vendor style watch - keeps track of changes in files.
+ */
 gulp.task('vendorStyle:watch', function() {
-  gulp.watch(config.src.vendorStyle + '/**', ['vendorStyle']);
+  gulp.watch(
+    pathFolder.src.vendorStyle + '/**',
+    ['vendorStyle']
+  );
 });

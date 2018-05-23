@@ -4,42 +4,49 @@ const gulp        = require('gulp'),
   frontMatter     = require('gulp-front-matter'),
   changedInPlace  = require('gulp-changed-in-place');
 
-const config      = require('../config/config');
 
-const pugOption = {
-  pug : {
-    pretty : true
-  },
-  frontMatter: {
-    property: 'data'
-  },
-  changed: {
-    firstPass : true
-  },
-  plum: {
-    err: config.errorHandler
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
 
-const srcArr = {
+
+/**
+ *
+ * @type {{"0": *[], "1": *[]}}
+ */
+const srcPath = {
   0: [
-    config.src.templates + '/*.pug'
+    pathFolder.src.templates + '/*.pug'
   ],
   1: [
-    config.src.templates + '/**'
+    pathFolder.src.templates + '/**'
   ]
 };
 
+
+/**
+ * @description Gulp PUG/JADE - preprocessor for creating html files.
+ */
 gulp.task('pug', function() {
   return gulp
-    .src(srcArr[0])
-      .pipe(plumber(pugOption.plum.err))
-      .pipe(frontMatter(pugOption.frontMatter))
-      .pipe(pug(pugOption.pug))
-      .pipe(changedInPlace(pugOption.changed))
-      .pipe(gulp.dest(config.dest.html))
+    .src(srcPath[0])
+      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(frontMatter(opt.frontMatter))
+      .pipe(pug(opt.pug))
+      .pipe(changedInPlace(opt.changed))
+      .pipe(gulp.dest(pathFolder.dest.html))
 });
 
+
+/**
+ * @description Gulp PUG/JADE watch - keeps track of changes in files.
+ */
 gulp.task('pug:watch', function() {
-  gulp.watch(srcArr[1], ['pug']);
+  gulp.watch(
+    srcPath[1],
+    ['pug']
+  );
 });

@@ -1,7 +1,8 @@
 const srcPath = 'src',
   destPath = 'dest';
 
-const config = {
+
+const pathFolder = {
 
   // SRC
   src: {
@@ -32,4 +33,4 @@ const config = {
 };
 
 
-module.exports = config;
+module.exports = pathFolder;

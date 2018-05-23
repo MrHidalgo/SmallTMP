@@ -1,37 +1,55 @@
-const gulp          =   require('gulp'),
-  plumber           =   require('gulp-plumber'),
-  spriteSmith       =   require('gulp.spritesmith'),
-  imageMinify       =   require('gulp-imagemin'),
-  buffer            =   require('vinyl-buffer'),
-  merge             =   require('merge-stream');
+const gulp        =   require('gulp'),
+  plumber         =   require('gulp-plumber'),
+  spriteSmith     =   require('gulp.spritesmith'),
+  imageMinify     =   require('gulp-imagemin'),
+  buffer          =   require('vinyl-buffer'),
+  merge           =   require('merge-stream');
 
-const config      = require('../config/config');
 
-const spritePNGOption = {
-  plum: {
-    err: config.errorHandler
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
 
-const srcArr = {
+
+/**
+ *
+ * @type {{"0": *[], "1": *[]}}
+ */
+const srcPath = {
   0: [
-    config.src.icon + '/*.png'
+    pathFolder.src.icon + '/*.png'
   ],
   1: [
-    config.src.icon + '/**'
+    pathFolder.src.icon + '/**'
   ]
 };
 
+
+/**
+ * @description Gulp sprite SVG - generated PNG sprite.
+ */
 gulp.task('spritePNG', function() {
 
-  const spImgPath       = '../img/sprite.png'
-    , retinaspImgPath   = '../img/sprite@2x.png'
-    , destImg           = './dest/img/'
-    , destCss           = './src/scss/_generated/';
+  /**
+   *
+   * @type {string}
+   */
+  const spImgPath     = '../img/sprite.png',
+    retinaspImgPath   = '../img/sprite@2x.png',
+    destImg           = './dest/img/',
+    destCss           = './src/scss/_generated/';
 
+
+  /**
+   *
+   * @type {NodeJS.WritableStream | *}
+   */
   let spriteData = gulp
-    .src(srcArr[0])
-      .pipe(plumber(spritePNGOption.plum.err))
+    .src(srcPath[0])
+      .pipe(plumber(opt.pipeBreaking.err))
       .pipe(spriteSmith(
         {
           imgName         : 'sprite.png',
@@ -50,21 +68,37 @@ gulp.task('spritePNG', function() {
         }
       ));
 
+
+  /**
+   *
+   * @type {NodeJS.ReadWriteStream | *}
+   */
   let imgStream = spriteData
     .img
     .pipe(buffer())
-    .pipe(imageMinify({
-      interlaced: true
-    }))
+    .pipe(imageMinify(opt.imageMin))
     .pipe(gulp.dest(destImg));
 
+
+  /**
+   *
+   * @type {NodeJS.ReadWriteStream | *}
+   */
   let cssStream = spriteData
     .css
     .pipe(gulp.dest(destCss));
 
+
   return merge(imgStream, cssStream)
 });
 
+
+/**
+ * @description Gulp sprite PNG watch - keeps track of changes in files.
+ */
 gulp.task('spritePNG:watch', function() {
-  gulp.watch(srcArr[1], ['spritePNG']);
+  gulp.watch(
+    srcPath[1],
+    ['spritePNG']
+  );
 });

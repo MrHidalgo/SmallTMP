@@ -1,22 +1,31 @@
-const gulp  = require('gulp'),
-  server    = require('browser-sync').create();
+const gulp        = require('gulp'),
+  server          = require('browser-sync').create();
 
-const config      = require('../config/config');
 
-gulp.task('server', function(e) {
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath');
+
+
+/**
+ * @description Gulp server - create and init Browser-sync.
+ */
+gulp.task('server', function() {
   server.init({
     server: {
-      baseDir: config.dest.root,
+      baseDir: pathFolder.dest.root,
       directory: false,
       serveStaticOptions: {
         extensions: ['html']
       }
     },
     files: [
-      config.dest.html + '/*.html',
-      config.dest.css + '/*.css',
-      config.dest.js + '/*.js',
-      config.dest.img + '/**/*'
+      pathFolder.dest.html + '/*.html',
+      pathFolder.dest.css + '/*.css',
+      pathFolder.dest.js + '/*.js',
+      pathFolder.dest.img + '/**/*'
     ],
     port: 3000,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'

@@ -3,36 +3,48 @@ const gulp        = require('gulp'),
   changedInPlace  = require('gulp-changed-in-place'),
   imageMin        = require('gulp-tinypng');
 
-const config      = require('../config/config');
 
-const imageOption = {
-  tinyPngAPI : "w2hECd9nCvKWfBj49LZrOPa6Ws7ws8uE",
-  changed: {
-    firstPass : true
-  },
-  plum: {
-    err: config.errorHandler
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
 
-const srcArr = {
+
+/**
+ *
+ * @type {{"0": *[], "1": *[]}}
+ */
+const srcPath = {
   0: [
-    config.src.image + '/*.{png,jpg,jpeg}'
+    pathFolder.src.image + '/*.{png,jpg,jpeg}'
   ],
   1: [
-    config.src.image + '/**'
+    pathFolder.src.image + '/**'
   ]
 };
 
+
+/**
+ * @description Gulp image - JPEG and PNG images optimized.
+ */
 gulp.task("img", function() {
   return gulp
-    .src(srcArr[0])
-      .pipe(plumber(imageOption.plum))
-      .pipe(changedInPlace(imageOption.changed))
-      .pipe(imageMin(imageOption.tinyPngAPI))
-      .pipe(gulp.dest(config.dest.img));
+    .src(srcPath[0])
+      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(changedInPlace(opt.changed))
+      .pipe(imageMin(opt.tinyPngAPI))
+      .pipe(gulp.dest(pathFolder.dest.img));
 });
 
+
+/**
+ * @description Gulp image watch - keeps track of changes in files.
+ */
 gulp.task('img:watch', function() {
-  gulp.watch(srcArr[1], ['img']);
+  gulp.watch(
+    srcPath[1],
+    ['img']
+  );
 });

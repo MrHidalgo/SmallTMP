@@ -1,33 +1,41 @@
-const gulp =   require('gulp'),
-  plumber =   require('gulp-plumber'),
-  svgSprite = require('gulp-svg-sprite'),
-  svgMinify = require('gulp-svgmin'),
-  cheerio = require('gulp-cheerio'),
-  replace = require('gulp-replace');
+const gulp        = require('gulp'),
+  plumber         = require('gulp-plumber'),
+  svgSprite       = require('gulp-svg-sprite'),
+  svgMinify       = require('gulp-svgmin'),
+  cheerio         = require('gulp-cheerio'),
+  replace         = require('gulp-replace');
 
-const config      = require('../config/config');
 
-const spriteSVGOption = {
-  plum: {
-    err: config.errorHandler
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
 
-const srcArr = {
+
+/**
+ *
+ * @type {{"0": *[], sprite: string, destSpriteSCSS: string, templateSCSS: string}}
+ */
+const srcPath = {
   0: [
-    config.src.icon + '/*.svg'
-  ]
+    pathFolder.src.icon + '/*.svg'
+  ],
+  "sprite" : "../sprite.svg",
+  "destSpriteSCSS" : "../../../src/scss/_generated/_spriteSVG.scss",
+  "templateSCSS" : "./src/scss/_generated/_spriteSVG_template.scss"
 };
 
+
+/**
+ * @description Gulp sprite SVG - generated SVG sprite.
+ */
 gulp.task('spriteSVG', function () {
   return gulp
-    .src(srcArr[0])
-      .pipe(plumber(spriteSVGOption.plum.err))
-      .pipe(svgMinify({
-        js2svg: {
-          pretty: true
-        }
-      }))
+    .src(srcPath[0])
+      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(svgMinify(opt.svgMin))
       .pipe(cheerio({
         run: function ($) {
           $('[fill]').removeAttr('fill');
@@ -42,20 +50,27 @@ gulp.task('spriteSVG', function () {
       .pipe(svgSprite({
         mode: {
           symbol: {
-            sprite: "../sprite.svg",
+            sprite: srcPath["sprite"],
             render: {
               scss: {
-                dest:'../../../src/scss/_generated/_spriteSVG.scss',
-                template: "./src/scss/_generated/_spriteSVG_template.scss"
+                dest: srcPath["destSpriteSCSS"],
+                template: srcPath["templateSCSS"]
               }
             },
             example: false
           }
         }
       }))
-      .pipe(gulp.dest(config.dest.img));
+      .pipe(gulp.dest(pathFolder.dest.img));
 });
 
+
+/**
+ * @description Gulp sprite SVG watch - keeps track of changes in files.
+ */
 gulp.task('spriteSVG:watch', function() {
-  gulp.watch(srcArr[0], ['spriteSVG']);
+  gulp.watch(
+    srcPath[0],
+    ['spriteSVG']
+  );
 });

@@ -5,33 +5,43 @@ const gulp        = require('gulp'),
   uglify          = require('gulp-uglify'),
   rename          = require('gulp-rename');
 
-const config      = require('../config/config');
 
-const vendorScriptOption = {
-  plum: {
-    err: config.errorHandler
-  },
-  renameOption: {
-    suffix : '.min'
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
+
 
 let files = mainBowerFiles('**/**.js');
+files.push(
+  pathFolder.src.vendorScript + "/*.js",
+  pathFolder.src.vendorScript + "/**"
+);
 
-files.push(config.src.vendorScript + "/*.js");
-files.push(config.src.vendorScript + "/**");
 
+/**
+ * @description Gulp vendor script - concatenation of additional libraries.
+ */
 gulp.task('vendorScript', function() {
   return gulp
     .src(files)
-      .pipe(plumber(vendorScriptOption.plum.err))
+      .pipe(plumber(opt.pipeBreaking.err))
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest(config.dest.js))
+      .pipe(gulp.dest(pathFolder.dest.js))
       .pipe(uglify())
-      .pipe(rename(vendorScriptOption.renameOption))
-      .pipe(gulp.dest(config.dest.js))
+      .pipe(rename(opt.renameOption))
+      .pipe(gulp.dest(pathFolder.dest.js))
 });
 
+
+/**
+ * @description Gulp vendor script watch - keeps track of changes in files.
+ */
 gulp.task('vendorScript:watch', function() {
-  gulp.watch(config.src.vendorScript + '/**', ['vendorScript']);
+  gulp.watch(
+    pathFolder.src.vendorScript + '/**',
+    ['vendorScript']
+  );
 });

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
+    "clean": "gulp clean",
     "surge": "gulp build && surge --project ./dest --domain domainName.surge.sh"
   },
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",

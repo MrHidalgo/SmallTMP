@@ -1,14 +1,23 @@
-const gulp  = require('gulp'),
-  del = require('del');
+const gulp        = require('gulp'),
+  del             = require('del');
 
-const config = require('../config/config');
 
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath');
+
+
+/**
+ * @description Gulp clean - clean dest folder before build project.
+ */
 gulp.task('clean', function() {
   return del.sync([
-    config.dest.root + '/**/*',
-    config.src.root + '/img/**',
-    '!' + config.dest.root + '/img',
-    '!' + config.dest.root + '/img/**/*',
-    '!' + config.src.root + '/img'
+    pathFolder.dest.root + '/**/*',
+    pathFolder.src.root + '/img/**',
+    '!' + pathFolder.dest.root + '/img',
+    '!' + pathFolder.dest.root + '/img/**/*',
+    '!' + pathFolder.src.root + '/img'
   ]);
 });

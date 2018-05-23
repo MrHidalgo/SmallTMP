@@ -1,5 +1,9 @@
 const gulp = require('gulp');
 
+
+/**
+ * @description Gulp main watch - keeps track of changes in files.
+ */
 gulp.task('watch',
   [
     'scss:watch',

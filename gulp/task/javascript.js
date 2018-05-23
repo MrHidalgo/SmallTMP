@@ -1,48 +1,55 @@
-const gulp          =   require('gulp'),
-  plumber           =   require('gulp-plumber'),
-  rename            =   require('gulp-rename'),
-  uglify            =   require('gulp-uglify'),
-  babel             =   require('gulp-babel'),
-  changedInPlace    =   require('gulp-changed-in-place');
+const gulp        = require('gulp'),
+  plumber         = require('gulp-plumber'),
+  rename          = require('gulp-rename'),
+  uglify          = require('gulp-uglify'),
+  babel           = require('gulp-babel'),
+  changedInPlace  = require('gulp-changed-in-place');
 
-const config      = require('../config/config');
 
-const jsOption = {
-  plum: {
-    err: config.errorHandler
-  },
-  es6: {
-    "presets": ["env"]
-  },
-  renameOption: {
-    suffix : '.min'
-  },
-  changed: {
-    firstPass : true
-  }
-};
+/**
+ *
+ * @type {{src, dest, errorHandler}}
+ */
+const pathFolder  = require('../config/configPath'),
+  opt             = require('../config/configOption');
 
-const jsArr = {
+
+/**
+ *
+ * @type {{"0": *[], "1": *[]}}
+ */
+const srcPath = {
   0: [
-    config.src.js + '/*.js'
+    pathFolder.src.js + '/*.js'
   ],
   1: [
-    config.src.js + '/**'
+    pathFolder.src.js + '/**'
   ]
 };
 
+
+/**
+ * @description Gulp Javascript - converting files to current standards.
+ */
 gulp.task('js', function() {
   return gulp
-    .src(jsArr[0])
-      .pipe(plumber(jsOption.plum.err))
-      .pipe(babel(jsOption.es6))
-      .pipe(changedInPlace(jsOption.changed))
-      .pipe(gulp.dest(config.dest.js))
+    .src(srcPath[0])
+      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(babel(opt.es6))
+      .pipe(changedInPlace(opt.changed))
+      .pipe(gulp.dest(pathFolder.dest.js))
       .pipe(uglify())
-      .pipe(rename(jsOption.renameOption))
-      .pipe(gulp.dest(config.dest.js));
+      .pipe(rename(opt.renameOption))
+      .pipe(gulp.dest(pathFolder.dest.js));
 });
 
+
+/**
+ * @description Gulp Javascript watch - keeps track of changes in files.
+ */
 gulp.task('js:watch', function() {
-  gulp.watch(jsArr[1], ['js']);
+  gulp.watch(
+    srcPath[1],
+    ['js']
+  );
 });

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "build": "gulp build",
+    "surge": "gulp build && surge --project ./dest --domain domainName.surge.sh"
   },
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",

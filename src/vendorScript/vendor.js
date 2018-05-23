@@ -1,1 +1,5 @@
-/*! Lib name... */
+/*!
+* 1. jQuery
+* 2. svg4everybody
+* ===============
+* */

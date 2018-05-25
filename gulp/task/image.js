@@ -14,16 +14,12 @@ const pathFolder  = require('../config/configPath'),
 
 /**
  *
- * @type {{"0": *[], "1": *[]}}
+ * @type {*[]}
  */
-const srcPath = {
-  0: [
-    pathFolder.src.image + '/*.{png,jpg,jpeg}'
-  ],
-  1: [
-    pathFolder.src.image + '/**'
-  ]
-};
+const srcPath = [
+  pathFolder.src.image + '/*.{png,jpg,jpeg}',
+  pathFolder.src.image + '/**'
+];
 
 
 /**
@@ -31,7 +27,7 @@ const srcPath = {
  */
 gulp.task("img", function() {
   return gulp
-    .src(srcPath[0])
+    .src(srcPath)
       .pipe(plumber(opt.pipeBreaking.err))
       .pipe(changedInPlace(opt.changed))
       .pipe(imageMin(opt.tinyPngAPI))
@@ -44,7 +40,7 @@ gulp.task("img", function() {
  */
 gulp.task('img:watch', function() {
   gulp.watch(
-    srcPath[1],
+    srcPath,
     ['img']
   );
 });

@@ -15,16 +15,12 @@ const pathFolder  = require('../config/configPath'),
 
 /**
  *
- * @type {{"0": *[], "1": *[]}}
+ * @type {*[]}
  */
-const srcPath = {
-  0: [
-    pathFolder.src.templates + '/*.pug'
-  ],
-  1: [
-    pathFolder.src.templates + '/**'
-  ]
-};
+const srcPath = [
+  pathFolder.src.templates + '/*.pug',
+  pathFolder.src.templates + '/**'
+];
 
 
 /**
@@ -32,7 +28,7 @@ const srcPath = {
  */
 gulp.task('pug', function() {
   return gulp
-    .src(srcPath[0])
+    .src(srcPath)
       .pipe(plumber(opt.pipeBreaking.err))
       .pipe(frontMatter(opt.frontMatter))
       .pipe(pug(opt.pug))
@@ -46,7 +42,7 @@ gulp.task('pug', function() {
  */
 gulp.task('pug:watch', function() {
   gulp.watch(
-    srcPath[1],
+    srcPath,
     ['pug']
   );
 });

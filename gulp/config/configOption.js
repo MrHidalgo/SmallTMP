@@ -1,7 +1,7 @@
 const pathFolder = require('../config/configPath');
 
 
-const configOption = {
+const opt = {
   pipeBreaking: {
     err: pathFolder.errorHandler
   },
@@ -76,4 +76,4 @@ const configOption = {
 };
 
 
-module.exports = configOption;
+module.exports = opt;

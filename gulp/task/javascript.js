@@ -2,6 +2,8 @@ const gulp        = require('gulp'),
   plumber         = require('gulp-plumber'),
   rename          = require('gulp-rename'),
   uglify          = require('gulp-uglify'),
+  concat          = require('gulp-concat'),
+  order           = require("gulp-order"),
   babel           = require('gulp-babel'),
   changedInPlace  = require('gulp-changed-in-place');
 
@@ -16,16 +18,13 @@ const pathFolder  = require('../config/configPath'),
 
 /**
  *
- * @type {{"0": *[], "1": *[]}}
+ * @type {*[]}
  */
-const srcPath = {
-  0: [
-    pathFolder.src.js + '/*.js'
-  ],
-  1: [
-    pathFolder.src.js + '/**'
-  ]
-};
+const srcPath = [
+  pathFolder.src.js + '/*.js',
+  pathFolder.src.js + '/**',
+  '!' + pathFolder.src.js + '/**/_**.js',
+];
 
 
 /**
@@ -33,8 +32,17 @@ const srcPath = {
  */
 gulp.task('js', function() {
   return gulp
-    .src(srcPath[0])
+    .src(srcPath)
       .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(order(
+        [
+          "_lib/**",
+          "_window/**",
+          "_document/**",
+          "*",
+        ]
+      ))
+      .pipe(concat('app.js'))
       .pipe(babel(opt.es6))
       .pipe(changedInPlace(opt.changed))
       .pipe(gulp.dest(pathFolder.dest.js))
@@ -49,7 +57,7 @@ gulp.task('js', function() {
  */
 gulp.task('js:watch', function() {
   gulp.watch(
-    srcPath[1],
+    srcPath,
     ['js']
   );
 });

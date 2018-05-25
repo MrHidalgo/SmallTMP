@@ -1,5 +1,4 @@
 # Small Gulp.JS template
-A small template for working and creating websites.
 
 ## How to start
 * `npm i` - install npm dependencies
@@ -10,18 +9,18 @@ A small template for working and creating websites.
 ## Tasks
 Task name        | Description                                                      
 :----------------|:----------------------------------
-`build`          |
-`clean`          |
-`default`        |
-`fonts`          |
-`img`            |
+`build`          | build production-ready project
+`clean`          | remove `./dest` folder
+`default`        | will start all tasks required by project in dev mode
+`fonts`          | copy fonts files `*.{ttf,eot,woff,woff2,svg}` to `./dest` path
+`img`            | optimize, compress and clone images
 `js`             |
 `pug`            | 
 `scss`           | 
-`spritePNG`      |
-`spriteSVG`      |
-`vendorScript`   |
-`vendorStyle`    |
+`spritePNG`      | create `*.svg` sprites
+`spriteSVG`      | create `*.png` sprites
+`vendorScript`   | `*.js` generation of additional libraries used in one file
+`vendorStyle`    | `*.css` generation of additional libraries used in one file
 
 ## NPM script
 * `npm run start` - run dev-server, same as `gulp`

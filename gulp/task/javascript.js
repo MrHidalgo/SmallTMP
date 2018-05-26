@@ -22,7 +22,7 @@ const pathFolder  = require('../config/configPath'),
  */
 const srcPath = [
   pathFolder.src.js + '/*.js',
-  pathFolder.src.js + '/**',
+  pathFolder.src.js + '/**/*.js',
   '!' + pathFolder.src.js + '/**/_**.js',
 ];
 
@@ -57,7 +57,7 @@ gulp.task('js', function() {
  */
 gulp.task('js:watch', function() {
   gulp.watch(
-    srcPath,
+    pathFolder.src.js + '/**',
     ['js']
   );
 });

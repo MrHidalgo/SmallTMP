@@ -14,9 +14,9 @@ Task name        | Description
 `default`        | will start all tasks required by project in dev mode
 `fonts`          | copy fonts files `*.{ttf,eot,woff,woff2,svg}` to `./dest` path
 `img`            | optimize, compress and clone images
-`js`             |
-`pug`            | 
-`scss`           | 
+`js`             | creating and combining logic files info one files => `app.js`
+`pug`            | interpreted or compiled into `*.html`
+`scss`           | interpreted or compiled into `*.css`
 `spritePNG`      | create `*.svg` sprites
 `spriteSVG`      | create `*.png` sprites
 `vendorScript`   | `*.js` generation of additional libraries used in one file

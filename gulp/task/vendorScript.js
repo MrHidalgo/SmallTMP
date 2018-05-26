@@ -17,7 +17,7 @@ const pathFolder  = require('../config/configPath'),
 let files = mainBowerFiles('**/**.js');
 files.push(
   pathFolder.src.vendorScript + "/*.js",
-  pathFolder.src.vendorScript + "/**"
+  pathFolder.src.vendorScript + "/**/*.js"
 );
 
 

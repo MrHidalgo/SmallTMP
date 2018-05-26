@@ -18,7 +18,7 @@ const pathFolder  = require('../config/configPath'),
 let files = mainBowerFiles('**/**.css');
 files.push(
   pathFolder.src.vendorStyle + "/*.css",
-  pathFolder.src.vendorStyle + "/**"
+  pathFolder.src.vendorStyle + "/**/*.css"
 );
 
 

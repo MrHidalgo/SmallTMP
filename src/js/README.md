@@ -20,3 +20,4 @@
   * `data-animation-name` - default `slideInUp`
   * `data-animation-duration` - default `1s`
   * `data-animation-delay` - default `0s`
+* `initPopups()`

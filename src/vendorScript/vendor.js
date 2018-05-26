@@ -1,7 +1,5 @@
 /*!
 *
 * Include... :
-* - jquery
-* - viewport checker
 *
 * */

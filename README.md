@@ -4,11 +4,10 @@
 * `npm i` - install npm dependencies
 * `bower install` - install bower packages
 * `gulp` - run dev-server
-* `gulp build` - build project from sources
 
 ## Tasks
-Task name        | Description                                                      
-:----------------|:----------------------------------
+Task name | Description                                                      
+:---|:---
 `build` | build production-ready project
 `clean` | remove `./dest` folder
 `default` | will start all tasks required by project in dev mode
@@ -47,4 +46,5 @@ Name | Install | Description
 Name | Install | Description
 :---|:---|:---
 [Font-Awesome](https://fontawesome.com/) | `bower i --save Font-Awesome` | Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.
+[Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) | `bower i --save magnific-popup` | Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.
 [Bootstrap](http://getbootstrap.com/) | `bower i --save bootstrap` | Build responsive, mobile-first projects on the web with the world's most popular front-end component library.

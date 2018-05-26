@@ -58,7 +58,7 @@ gulp.task('scss', function() {
  */
 gulp.task('scss:watch', function() {
   gulp.watch(
-    srcPath[1],
+    pathFolder.src.scss + '/**',
     ['scss']
   );
 });

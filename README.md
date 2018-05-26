@@ -42,7 +42,7 @@ Name | Install | Description
 [svg4everybody](https://jonathantneal.github.io/svg4everybody/) | `bower i --save svg4everybody` | SVG for Everybody adds external spritemaps support to otherwise SVG-capable browsers.
 [barba.js](http://barbajs.org/) | `bower i --save luruke/barba.js` | Create badass, fluid and smooth transition between your website's pages.
 
-## Bower package library
+## Bower package {lib, framework, toolkit}
 Name | Install | Description
 :---|:---|:---
 [Font-Awesome](https://fontawesome.com/) | `bower i --save Font-Awesome` | Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.

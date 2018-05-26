@@ -18,8 +18,7 @@ const pathFolder  = require('../config/configPath'),
  * @type {*[]}
  */
 const srcPath = [
-  pathFolder.src.templates + '/*.pug',
-  pathFolder.src.templates + '/**'
+  pathFolder.src.templates + '/*.pug'
 ];
 
 
@@ -42,7 +41,7 @@ gulp.task('pug', function() {
  */
 gulp.task('pug:watch', function() {
   gulp.watch(
-    srcPath,
+    pathFolder.src.templates + '/**',
     ['pug']
   );
 });

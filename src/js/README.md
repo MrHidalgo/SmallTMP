@@ -10,7 +10,7 @@
 1. Ignore files which start `[_]*.js`
 2. In the folders of the `_document` and the `_window` there are two files:
   - `_indexJquery.js` & `_indexNative.js` (depending on what you use for the project, you need to uncomment it);
- 
+  - The default is `_indexNative.js`
 
 ### Present methods
 * `svg4everybody()`

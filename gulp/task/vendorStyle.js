@@ -15,7 +15,7 @@ const pathFolder  = require('../config/configPath'),
   opt             = require('../config/configOption');
 
 
-let files = mainBowerFiles('**/**.css');
+let files = mainBowerFiles('**/*.css');
 files.push(
   pathFolder.src.vendorStyle + "/*.css",
   pathFolder.src.vendorStyle + "/**/*.css"
@@ -47,6 +47,6 @@ gulp.task('vendorStyle', function() {
 gulp.task('vendorStyle:watch', function() {
   gulp.watch(
     pathFolder.src.vendorStyle + '/**',
-    ['vendorStyle']
+    ['vendorStyle', 'vendorFont']
   );
 });

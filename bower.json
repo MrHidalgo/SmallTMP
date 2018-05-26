@@ -14,11 +14,21 @@
     "test",
     "tests"
   ],
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/js/bootstrap.js"
+      ]
+    },
+    "Font-Awesome": {
+      "main": [
+        "./web-fonts-with-css/css/fontawesome-all.css",
+        "./web-fonts-with-css/webfonts/*"
+      ]
+    }
+  },
   "dependencies": {
-    "jquery": "^3.3.1",
-    "normalize-css": "^8.0.0",
-    "animate.css": "^3.5.2",
-    "svg4everybody": "^2.1.9",
-    "barba.js": "luruke/barba.js#^1.0.0"
+    "normalize-css": "^8.0.0"
   }
 }

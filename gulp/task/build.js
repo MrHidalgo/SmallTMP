@@ -17,6 +17,7 @@ gulp.task("build", function(callback) {
     'spriteSVG',
     'vendorScript',
     'vendorStyle',
+    'vendorFont',
     callback
   );
 });

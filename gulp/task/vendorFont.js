@@ -11,17 +11,18 @@ const pathFolder  = require('../config/configPath'),
   opt             = require('../config/configOption');
 
 
-let files = mainBowerFiles('**/**.{eot,svg,ttf,woff,woff2}');
-files.push(
-  pathFolder.src.vendorScript + "/*.{eot,svg,ttf,woff,woff2}",
-  pathFolder.src.vendorScript + "/**/*.{eot,svg,ttf,woff,woff2}"
-);
-
-
 /**
  * @description Gulp vendor script - concatenation of additional libraries.
  */
 gulp.task('vendorFont', function() {
+
+  let files = mainBowerFiles('**/**.{eot,svg,ttf,woff,woff2}');
+
+  files.push(
+    pathFolder.src.vendorScript + "/*.{eot,svg,ttf,woff,woff2}",
+    pathFolder.src.vendorScript + "/**/*.{eot,svg,ttf,woff,woff2}"
+  );
+
   return gulp
     .src(files)
       .pipe(plumber(opt.pipeBreaking.err))

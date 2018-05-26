@@ -1,5 +1,7 @@
 /*!
 *
-* Include lib:
+* Include... :
+* - jquery
+* - viewport checker
 *
 * */

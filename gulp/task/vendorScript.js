@@ -14,17 +14,18 @@ const pathFolder  = require('../config/configPath'),
   opt             = require('../config/configOption');
 
 
-let files = mainBowerFiles('**/*.js');
-files.push(
-  pathFolder.src.vendorScript + "/*.js",
-  pathFolder.src.vendorScript + "/**/*.js"
-);
-
-
 /**
  * @description Gulp vendor script - concatenation of additional libraries.
  */
 gulp.task('vendorScript', function() {
+
+  let files = mainBowerFiles('**/*.js');
+
+  files.push(
+    pathFolder.src.vendorScript + "/*.js",
+    pathFolder.src.vendorScript + "/**/*.js"
+  );
+
   return gulp
     .src(files)
       .pipe(plumber(opt.pipeBreaking.err))

@@ -1,14 +1,28 @@
+///
+/// UTILITIES
+/// ===============
 @import "_utilities/function";
 @import "_utilities/mixin";
 @import "_utilities/variable";
 ///
-/// GENERATED FILES
+/// VENDOR
+/// ===============
 ///
+/// GENERATED
+/// ===============
 //@import "_generated/spritePNG";
 //@import "_generated/spriteSVG";
 ///
-/// MAIN FILES
-///
+/// SHARED
+/// ===============
 @import "_shared/fonts";
 @import "_shared/main";
 @import "_shared/grid";
+///@import "_shared/viewPortChecker";
+///
+/// MACROS
+/// ===============
+///
+/// COMPONENTS
+/// ===============
+

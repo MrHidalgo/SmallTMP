@@ -15,17 +15,19 @@ const pathFolder  = require('../config/configPath'),
   opt             = require('../config/configOption');
 
 
-let files = mainBowerFiles('**/*.css');
-files.push(
-  pathFolder.src.vendorStyle + "/*.css",
-  pathFolder.src.vendorStyle + "/**/*.css"
-);
-
-
 /**
  * @description Gulp vendor style - concatenation of additional libraries.
  */
 gulp.task('vendorStyle', function() {
+
+  let files = mainBowerFiles('**/*.css');
+
+  files.push(
+    pathFolder.src.vendorStyle + "/*.css",
+    pathFolder.src.vendorStyle + "/**/*.css"
+  );
+
+
   return gulp
     .src(files)
       .pipe(plumber(opt.pipeBreaking.err))

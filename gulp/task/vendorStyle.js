@@ -24,7 +24,8 @@ gulp.task('vendorStyle', function() {
 
   files.push(
     pathFolder.src.vendorStyle + "/*.css",
-    pathFolder.src.vendorStyle + "/**/*.css"
+    pathFolder.src.vendorStyle + "/**/*.css",
+    "!" + pathFolder.src.vendorStyle + "/**/_**.css"
   );
 
 

@@ -42,6 +42,7 @@ Name | Install | Description
 [svg4everybody](https://jonathantneal.github.io/svg4everybody/) | `bower i --save svg4everybody` | SVG for Everybody adds external spritemaps support to otherwise SVG-capable browsers.
 [barba.js](http://barbajs.org/) | `bower i --save luruke/barba.js` | Create badass, fluid and smooth transition between your website's pages.
 [jQuery-viewport-checker](https://github.com/dirkgroenen/jQuery-viewport-checker) | `bower i --save jQuery-viewport-checker` | Little script that detects if an element is in the viewport and adds a class to it.
+[object-fit-images](https://github.com/bfred-it/object-fit-images) | Remove from ignore in the folder => `src/vendorScript/_shared` | Polyfill object-fit/object-position on `<img>`.
 
 ## Bower package {lib, framework, toolkit}
 Name | Install | Description

@@ -33,6 +33,7 @@ Name | Install | Description
 :---|:---|:---
 [Normalize-css](https://necolas.github.io/normalize.css/) | `bower i --save normalize-css` | A modern, HTML5-ready alternative to CSS resets.
 [Animate.css](https://daneden.github.io/animate.css/) | `bower i --save animate.css` | A cross-browser library of CSS animations.
+[Flexbox Grid](http://flexboxgrid.com/) | `bower i --save flexboxgrid` | A grid system based on the flex display property.
 
 ## Bower package script
 Name | Install | Description

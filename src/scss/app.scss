@@ -17,6 +17,7 @@
 /// ===============
 @import "_shared/fonts";
 @import "_shared/main";
+@import "_shared/common";
 @import "_shared/grid";
 //@import "_shared/viewPortChecker";
 //@import "_shared/magnificPopup";
@@ -25,7 +26,11 @@
 ///
 /// MACROS
 /// ===============
+//@import "_macros/logotype";
+//@import "_macros/nav";
 ///
 /// COMPONENTS
 /// ===============
+//@import "_components/header";
+//@import "_components/footer";
 

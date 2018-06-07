@@ -18,9 +18,9 @@
 ///     @include mixinDimensions(100%, 50%);
 ///   }
 ///
-@mixin mixinDimensions($width, $height:$width) {
-  width : $width;
-  height: $height;
+@mixin dimensions($width, $height:$width) {
+	width: $width;
+	height: $height;
 }
 
 
@@ -54,36 +54,61 @@
 ///     );
 ///   }
 ///
-@mixin mixinKeyframes($keyName, $options: ()) {
-  $configuration: map-merge((), $options);
+@mixin keyframes($keyName, $options: ()) {
+	$configuration: map-merge((), $options);
 
-  @keyframes #{$keyName} {
-    from{
-      opacity   : map-get($configuration, opacityStart);
-      transform : map-get($configuration, transformStart);
-    }
-    to{
-      opacity   : map-get($configuration, opacityEnd);
-      transform : map-get($configuration, transformEnd);
-    }
-  }
+	@keyframes #{$keyName} {
+		from {
+			opacity: map-get($configuration, opacityStart);
+			transform: map-get($configuration, transformStart);
+		}
+		to {
+			opacity: map-get($configuration, opacityEnd);
+			transform: map-get($configuration, transformEnd);
+		}
+	}
 }
 
 
 ///
 /// Mixin centered elements
 ///
-@mixin mixinCentered() {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+/// @name			centered
+///
+/// @param  {String}  $pos - The position property specifies the type of positioning method used for an element
+/// @param  {String}  $side-1 - CSS Positioning Properties
+/// @param  {String}  $side-2 - CSS Positioning Properties
+///
+/// @see      $object
+///
+/// @example
+///   <selector> {
+///     @include centered([absolute | relative | fixed], [left | right], [top | bottom]);
+///   }
+///
+@mixin centered($pos, $side-1, $side-2) {
+	position: $pos;
+	$side-1: 50%;
+	$side-2: 50%;
 	transform: translate(-50%, -50%);
 }
+
 
 ///
 /// Mixin box-shadow
 ///
-$boxShadowObj : (
+/// @name			boxShadow
+///
+/// @param  {Number | String}  $name - The box-shadow property attaches one or more shadows to an element.
+///
+/// @see      $object
+///
+/// @example
+///   <selector> {
+///     @include boxShadow([1 | 2 | 3 | 4 | 5]);
+///   }
+///
+$boxShadowObj: (
 	"1" : "0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)",
 	"2" : "0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3)",
 	"3" : "0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3)",
@@ -91,19 +116,44 @@ $boxShadowObj : (
 	"5" : "0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3)",
 ) !default;
 
-@mixin mixinBoxShadow($name) {
+@mixin boxShadow($name) {
 	@if map-has-key($boxShadowObj, $name) {
 		box-shadow: #{inspect(map_get($boxShadowObj, $name))};
 	} @else {
 		@warn "Unfortunately, no value could be retrieved from `#{$boxShadowObj}`. Please make sure it is defined in `$boxShadowObj` map.";
 	}
-
 }
+
+
+///
+/// Mixin transition
+///
+/// @name			transition
+///
+/// @param  {String}  $rest... - CSS properties that are to be animated.
+///
+/// @see      $object
+///
+/// @example
+///   <selector> {
+///     @include transition([color | opacity | border | etc]);
+///   }
+///
+@mixin transition($rest...) {
+	$list: null;
+
+	@each $prop in ($rest) {
+		$list: append($list, $prop 0.3s ease-in-out, comma);
+	}
+
+	transition: $list;
+}
+
 
 ///
 /// Mixin media queries.
 ///
-/// @name     respond-to
+/// @name     respond
 ///
 /// @param    {String}  $media [$text-mobile | $text-tablet | $text-small | $text-medium | $text-large] - Value that identifies one of the options and breakpoint.
 ///
@@ -111,36 +161,23 @@ $boxShadowObj : (
 ///
 /// @example
 ///   <selector> {
-///     @include mixinRespond($text-mobile) { @content };
+///     @include respond($text-mobile) { @content };
 ///   }
 ///   <selector> {
-///     @include mixinRespond($text-medium) { @content };
+///     @include respond($text-medium) { @content };
 ///   }
 ///
 $breakpointsMedia: (
-	"mobile-max"        : "(max-width: 767px)",
-	"mobile-min"        : "(min-width: 290px)",
-	"mobile"            : "(min-width: 290px) and (max-width: 767px)",
-
-	"small-mobile"      : "(max-width: 575px)",
-	"large-mobile"      : "(min-width: 576px) and (max-width: 767px)",
-
-	"tablet-max"        : "(max-width: 991px)",
-	"tablet-min"        : "(max-width: 768px)",
-	"tablet"            : "(min-width: 768px) and (max-width: 991px)",
-
-	"small-desktop-max" : "(max-width: 1199px)",
-	"small-desktop-min" : "(min-width: 992px)",
-	"small-desktop"     : "(min-width: 992px) and (max-width: 1199px)",
-
-	"medium-desktop-max": "(max-width: 1366px)",
-	"medium-desktop-min": "(min-width: 1200px)",
-	"medium-desktop"    : "(min-width: 1200px) and (max-width: 1366px)",
-
-	"large-desktop"     : "(min-width: 1367px)"
+	"es"        : "(min-width: 320px)",
+	"s"         : "(min-width: 576px)",
+	"m"         : "(min-width: 768px)",
+	"l"         : "(min-width: 992px)",
+	"el"        : "(min-width: 1200px)",
+	"w"         : "(min-width: 1600px)",
+	"hd"        : "(min-width: 1920)"
 ) !default;
 
-@mixin mixinRespondTo($name) {
+@mixin respond($name) {
 	@if map-has-key($breakpointsMedia, $name) {
 		@media screen and #{inspect(map-get($breakpointsMedia, $name))} {
 			@content;

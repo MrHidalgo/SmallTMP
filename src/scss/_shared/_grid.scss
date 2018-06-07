@@ -1,25 +1,34 @@
 /// ADDITIONALLY
 %container {
-	position: relative;
-	height: 100%;
-	margin: {
-		left: auto;
-		right: auto;
-	}
-	padding: {
-		left: 15px;
-		right: 15px;
-	}
+	width: $d-all;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 // MAIN
 .container {
 	@extend %container;
-	min-width: 300px;
+	width: $d-all;
+	@include respond(s) {
+		max-width: 540px;
+	}
+	@include respond(m) {
+		max-width: 720px;
+	}
+	@include respond(l) {
+		max-width: 960px;
+	}
+	@include respond(el) {
+		max-width: 1140px;
+	}
+	@include respond(w) {
+		max-width: 1400px;
+	}
 
 	&-fluid {
 		@extend %container;
-		max-width: 100%;
+		width: $d-all;
 	}
 }
-

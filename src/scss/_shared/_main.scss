@@ -6,11 +6,8 @@ html {
 
 html,
 body {
-  //width: $w-all;
+  width: $d-all;
   min-height: 100vh;
-  @include mixinRespondTo(mobile-max) {
-    overflow-x: hidden;
-  }
 }
 
 html {
@@ -22,10 +19,10 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  background-color: $c-white;
   line-height: 1.42857143;
   font-size: 16px;
-  //font-family: $f-OS-semibold;
-  //background-color: red;
+  //font-family: ...;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -51,13 +48,6 @@ textarea {
 button,
 input {
   overflow: visible;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
 }
 
 button[disabled] {
@@ -97,17 +87,6 @@ ul {
 a {
   outline: none;
   text-decoration: none;
-  color: #222;
-
-  &:hover,
-  &:active,
-  &:focus {
-    outline: none;
-  }
-}
-
-input {
-  outline: none;
 }
 
 input[type="text"] {

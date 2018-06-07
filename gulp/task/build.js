@@ -12,6 +12,7 @@ gulp.task("build", function(callback) {
     'pug',
     'js',
     'img',
+    'imgCopy',
     'fonts',
     'spritePNG',
     'spriteSVG',

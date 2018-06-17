@@ -7,8 +7,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -19,12 +19,12 @@ gulp.task('vendorFont', function() {
   let files = mainBowerFiles('**/**.{eot,svg,ttf,woff,woff2}');
 
   files.push(
-    pathFolder.src.vendorScript + "/*.{eot,svg,ttf,woff,woff2}",
-    pathFolder.src.vendorScript + "/**/*.{eot,svg,ttf,woff,woff2}"
+    configPath.src.vendorScript + "/*.{eot,svg,ttf,woff,woff2}",
+    configPath.src.vendorScript + "/**/*.{eot,svg,ttf,woff,woff2}"
   );
 
   return gulp
     .src(files)
-      .pipe(plumber(opt.pipeBreaking.err))
-      .pipe(gulp.dest(pathFolder.dest.fonts + '/webfonts'))
+      .pipe(plumber(configOption.pipeBreaking.err))
+      .pipe(gulp.dest(configPath.dest.fonts + '/webfonts'))
 });

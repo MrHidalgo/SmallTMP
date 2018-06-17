@@ -10,8 +10,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -22,19 +22,19 @@ gulp.task('vendorScript', function() {
   let files = mainBowerFiles('**/*.js');
 
   files.push(
-    pathFolder.src.vendorScript + "/*.js",
-    pathFolder.src.vendorScript + "/**/*.js",
-    "!" + pathFolder.src.vendorScript + "/**/_**.js"
+    configPath.src.vendorScript + "/*.js",
+    configPath.src.vendorScript + "/**/*.js",
+    "!" + configPath.src.vendorScript + "/**/_**.js"
   );
 
   return gulp
     .src(files)
-      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest(pathFolder.dest.js))
+      .pipe(gulp.dest(configPath.dest.js))
       .pipe(uglify())
-      .pipe(rename(opt.renameOption))
-      .pipe(gulp.dest(pathFolder.dest.js))
+      .pipe(rename(configOption.renameOption))
+      .pipe(gulp.dest(configPath.dest.js))
 });
 
 
@@ -43,7 +43,7 @@ gulp.task('vendorScript', function() {
  */
 gulp.task('vendorScript:watch', function() {
   gulp.watch(
-    pathFolder.src.vendorScript + '/**',
+    configPath.src.vendorScript + '/**',
     ['vendorScript']
   );
 });

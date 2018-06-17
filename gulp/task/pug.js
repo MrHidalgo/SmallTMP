@@ -9,8 +9,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -18,7 +18,7 @@ const pathFolder  = require('../config/configPath'),
  * @type {*[]}
  */
 const srcPath = [
-  pathFolder.src.templates + '/*.pug'
+  configPath.src.templates + '/*.pug'
 ];
 
 
@@ -28,11 +28,11 @@ const srcPath = [
 gulp.task('pug', function() {
   return gulp
     .src(srcPath)
-      .pipe(plumber(opt.pipeBreaking.err))
-      .pipe(frontMatter(opt.frontMatter))
-      .pipe(pug(opt.pug))
-      .pipe(changedInPlace(opt.changed))
-      .pipe(gulp.dest(pathFolder.dest.html))
+      .pipe(plumber(configOption.pipeBreaking.err))
+      .pipe(frontMatter(configOption.frontMatter))
+      .pipe(pug(configOption.pug))
+      .pipe(changedInPlace(configOption.changed))
+      .pipe(gulp.dest(configPath.dest.html))
 });
 
 
@@ -41,7 +41,7 @@ gulp.task('pug', function() {
  */
 gulp.task('pug:watch', function() {
   gulp.watch(
-    pathFolder.src.templates + '/**',
+    configPath.src.templates + '/**',
     ['pug']
   );
 });

@@ -6,7 +6,7 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath');
+const configPath  = require('../config/configPath');
 
 
 /**
@@ -14,10 +14,10 @@ const pathFolder  = require('../config/configPath');
  */
 gulp.task('clean', function() {
   return del.sync([
-    pathFolder.dest.root + '/**/*',
-    pathFolder.src.root + '/img/**',
-    '!' + pathFolder.dest.root + '/img',
-    '!' + pathFolder.dest.root + '/img/**/*',
-    '!' + pathFolder.src.root + '/img'
+    configPath.dest.root + '/**/*',
+    configPath.src.root + '/img/**',
+    '!' + configPath.dest.root + '/img',
+    '!' + configPath.dest.root + '/img/**/*',
+    '!' + configPath.src.root + '/img'
   ]);
 });

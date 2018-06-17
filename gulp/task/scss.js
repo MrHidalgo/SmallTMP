@@ -14,8 +14,8 @@ const gulp          = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder    = require('../config/configPath'),
-  opt               = require('../config/configOption');
+const configPath    = require('../config/configPath'),
+  configOption      = require('../config/configOption');
 
 
 /**
@@ -24,10 +24,10 @@ const pathFolder    = require('../config/configPath'),
  */
 const srcPath = {
   0: [
-    pathFolder.src.scss + '/*.scss'
+    configPath.src.scss + '/*.scss'
   ],
   1: [
-    pathFolder.src.scss + '/**'
+    configPath.src.scss + '/**'
   ]
 };
 
@@ -38,18 +38,18 @@ const srcPath = {
 gulp.task('scss', function() {
   return gulp
     .src(srcPath[0])
-      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(sourcemaps.init())
-      .pipe(scss(opt.sassAPI).on('error', scss.logError))
-      .pipe(prefixer(opt.autoPrefixOptions))
+      .pipe(scss(configOption.sassAPI).on('error', scss.logError))
+      .pipe(prefixer(configOption.autoPrefixOptions))
       .pipe(stripCssComments())
-      .pipe(changedInPlace(opt.changed))
-      .pipe(sourcemaps.write('./maps', opt.sourceMapStyle))
-      .pipe(gulp.dest(pathFolder.dest.css))
+      .pipe(changedInPlace(configOption.changed))
+      .pipe(sourcemaps.write('./maps', configOption.sourceMapStyle))
+      .pipe(gulp.dest(configPath.dest.css))
       .pipe(gulpIgnore.exclude("*.map"))
-      .pipe(cssmin(opt.cssMinOption))
-      .pipe(rename(opt.renameOption))
-      .pipe(gulp.dest(pathFolder.dest.css));
+      .pipe(cssmin(configOption.cssMinOption))
+      .pipe(rename(configOption.renameOption))
+      .pipe(gulp.dest(configPath.dest.css));
 });
 
 
@@ -58,7 +58,7 @@ gulp.task('scss', function() {
  */
 gulp.task('scss:watch', function() {
   gulp.watch(
-    pathFolder.src.scss + '/**',
+    configPath.src.scss + '/**',
     ['scss']
   );
 });

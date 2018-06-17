@@ -5,7 +5,7 @@ const gulp        = require('gulp');
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath');
+const configPath  = require('../config/configPath');
 
 
 /**
@@ -13,7 +13,7 @@ const pathFolder  = require('../config/configPath');
  * @type {*[]}
  */
 const srcPath = [
-  pathFolder.src.fonts + '/*.{eot,svg,ttf,woff,woff2}'
+  configPath.src.fonts + '/*.{eot,svg,ttf,woff,woff2}'
 ];
 
 
@@ -24,7 +24,7 @@ const srcPath = [
 gulp.task('fonts', function() {
   return gulp
     .src(srcPath)
-      .pipe(gulp.dest(pathFolder.dest.fonts));
+      .pipe(gulp.dest(configPath.dest.fonts));
 });
 
 

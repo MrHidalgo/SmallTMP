@@ -10,8 +10,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -20,7 +20,7 @@ const pathFolder  = require('../config/configPath'),
  */
 const srcPath = {
   0: [
-    pathFolder.src.icon + '/*.svg'
+    configPath.src.icon + '/*.svg'
   ],
   "sprite" : "../sprite.svg",
   "destSpriteSCSS" : "../../../src/scss/_generated/_spriteSVG.scss",
@@ -34,8 +34,8 @@ const srcPath = {
 gulp.task('spriteSVG', function () {
   return gulp
     .src(srcPath[0])
-      .pipe(plumber(opt.pipeBreaking.err))
-      .pipe(svgMinify(opt.svgMin))
+      .pipe(plumber(configOption.pipeBreaking.err))
+      .pipe(svgMinify(configOption.svgMin))
       .pipe(cheerio({
         run: function ($) {
           $('[fill]').removeAttr('fill');
@@ -61,7 +61,7 @@ gulp.task('spriteSVG', function () {
           }
         }
       }))
-      .pipe(gulp.dest(pathFolder.dest.img));
+      .pipe(gulp.dest(configPath.dest.img));
 });
 
 

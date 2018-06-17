@@ -6,7 +6,7 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath');
+const configPath  = require('../config/configPath');
 
 
 /**
@@ -15,17 +15,17 @@ const pathFolder  = require('../config/configPath');
 gulp.task('server', function() {
   server.init({
     server: {
-      baseDir: pathFolder.dest.root,
+      baseDir: configPath.dest.root,
       directory: false,
       serveStaticOptions: {
         extensions: ['html']
       }
     },
     files: [
-      pathFolder.dest.html + '/*.html',
-      pathFolder.dest.css + '/*.css',
-      pathFolder.dest.js + '/*.js',
-      pathFolder.dest.img + '/**/*'
+      configPath.dest.html + '/*.html',
+      configPath.dest.css + '/*.css',
+      configPath.dest.js + '/*.js',
+      configPath.dest.img + '/**/*'
     ],
     port: 3000,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'

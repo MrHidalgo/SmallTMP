@@ -11,8 +11,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -23,24 +23,24 @@ gulp.task('vendorStyle', function() {
   let files = mainBowerFiles('**/*.css');
 
   files.push(
-    pathFolder.src.vendorStyle + "/*.css",
-    pathFolder.src.vendorStyle + "/**/*.css",
-    "!" + pathFolder.src.vendorStyle + "/**/_**.css"
+    configPath.src.vendorStyle + "/*.css",
+    configPath.src.vendorStyle + "/**/*.css",
+    "!" + configPath.src.vendorStyle + "/**/_**.css"
   );
 
 
   return gulp
     .src(files)
-      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(order([
           'normalize.css',
           '*'
       ]))
       .pipe(concat('vendor.css'))
-      .pipe(gulp.dest(pathFolder.dest.css))
-      .pipe(cssMinify(opt.cssMinOption))
-      .pipe(rename(opt.renameOption))
-      .pipe(gulp.dest(pathFolder.dest.css))
+      .pipe(gulp.dest(configPath.dest.css))
+      .pipe(cssMinify(configOption.cssMinOption))
+      .pipe(rename(configOption.renameOption))
+      .pipe(gulp.dest(configPath.dest.css))
 });
 
 
@@ -49,7 +49,7 @@ gulp.task('vendorStyle', function() {
  */
 gulp.task('vendorStyle:watch', function() {
   gulp.watch(
-    pathFolder.src.vendorStyle + '/**',
+    configPath.src.vendorStyle + '/**',
     ['vendorStyle', 'vendorFont']
   );
 });

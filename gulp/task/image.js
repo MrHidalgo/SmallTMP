@@ -8,8 +8,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -17,7 +17,7 @@ const pathFolder  = require('../config/configPath'),
  * @type {*[]}
  */
 const srcPath = [
-  pathFolder.src.image + '/*.{png,jpg,jpeg}'
+  configPath.src.image + '/*.+{png|jpg|jpeg}'
 ];
 
 
@@ -27,10 +27,10 @@ const srcPath = [
 gulp.task("img", function() {
   return gulp
     .src(srcPath)
-      .pipe(plumber(opt.pipeBreaking.err))
-      .pipe(changedInPlace(opt.changed))
-      .pipe(imageMin(opt.tinyPngAPI))
-      .pipe(gulp.dest(pathFolder.dest.img));
+      .pipe(plumber(configOption.pipeBreaking.err))
+      .pipe(changedInPlace(configOption.changed))
+      .pipe(imageMin(configOption.tinyPngAPI))
+      .pipe(gulp.dest(configPath.dest.img));
 });
 
 

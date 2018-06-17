@@ -10,8 +10,8 @@ const gulp        =   require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -20,10 +20,10 @@ const pathFolder  = require('../config/configPath'),
  */
 const srcPath = {
   0: [
-    pathFolder.src.icon + '/*.png'
+    configPath.src.icon + '/*.png'
   ],
   1: [
-    pathFolder.src.icon + '/**'
+    configPath.src.icon + '/**'
   ]
 };
 
@@ -49,7 +49,7 @@ gulp.task('spritePNG', function() {
    */
   let spriteData = gulp
     .src(srcPath[0])
-      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(spriteSmith(
         {
           imgName         : 'sprite.png',
@@ -76,7 +76,7 @@ gulp.task('spritePNG', function() {
   let imgStream = spriteData
     .img
     .pipe(buffer())
-    .pipe(imageMinify(opt.imageMin))
+    .pipe(imageMinify(configOption.imageMin))
     .pipe(gulp.dest(destImg));
 
 

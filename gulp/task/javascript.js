@@ -12,8 +12,8 @@ const gulp        = require('gulp'),
  *
  * @type {{src, dest, errorHandler}}
  */
-const pathFolder  = require('../config/configPath'),
-  opt             = require('../config/configOption');
+const configPath  = require('../config/configPath'),
+  configOption    = require('../config/configOption');
 
 
 /**
@@ -21,9 +21,9 @@ const pathFolder  = require('../config/configPath'),
  * @type {*[]}
  */
 const srcPath = [
-  pathFolder.src.js + '/*.js',
-  pathFolder.src.js + '/**/*.js',
-  '!' + pathFolder.src.js + '/**/_**.js',
+  configPath.src.js + '/*.js',
+  configPath.src.js + '/**/*.js',
+  '!' + configPath.src.js + '/**/_**.js',
 ];
 
 
@@ -33,7 +33,7 @@ const srcPath = [
 gulp.task('js', function() {
   return gulp
     .src(srcPath)
-      .pipe(plumber(opt.pipeBreaking.err))
+      .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(order(
         [
           "_lib/**",
@@ -43,12 +43,12 @@ gulp.task('js', function() {
         ]
       ))
       .pipe(concat('app.js'))
-      .pipe(babel(opt.es6))
-      .pipe(changedInPlace(opt.changed))
-      .pipe(gulp.dest(pathFolder.dest.js))
+      .pipe(babel(configOption.es6))
+      .pipe(changedInPlace(configOption.changed))
+      .pipe(gulp.dest(configPath.dest.js))
       .pipe(uglify())
-      .pipe(rename(opt.renameOption))
-      .pipe(gulp.dest(pathFolder.dest.js));
+      .pipe(rename(configOption.renameOption))
+      .pipe(gulp.dest(configPath.dest.js));
 });
 
 
@@ -57,7 +57,7 @@ gulp.task('js', function() {
  */
 gulp.task('js:watch', function() {
   gulp.watch(
-    pathFolder.src.js + '/**',
+    configPath.src.js + '/**',
     ['js']
   );
 });

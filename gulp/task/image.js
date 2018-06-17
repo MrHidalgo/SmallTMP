@@ -17,7 +17,7 @@ const configPath  = require('../config/configPath'),
  * @type {*[]}
  */
 const srcPath = [
-  configPath.src.image + '/*.+{png|jpg|jpeg}'
+  configPath.src.image + '/**'
 ];
 
 

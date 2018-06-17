@@ -1,34 +1,38 @@
+///
 /// ADDITIONALLY
-%container {
-	width: $d-all;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
+/// ===============
+%grid {
+  width: $d-all;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-// MAIN
-.container {
-	@extend %container;
-	width: $d-all;
-	@include respond(s) {
-		max-width: 540px;
-	}
-	@include respond(m) {
-		max-width: 720px;
-	}
-	@include respond(l) {
-		max-width: 960px;
-	}
-	@include respond(el) {
-		max-width: 1140px;
-	}
-	@include respond(w) {
-		max-width: 1400px;
-	}
+///
+/// MAIN
+/// ===============
+.c-grid {
+  @extend %grid;
+  width: $d-all;
+  @include respond(s) {
+    max-width: 540px;
+  }
+  @include respond(m) {
+    max-width: 720px;
+  }
+  @include respond(l) {
+    max-width: 960px;
+  }
+  @include respond(el) {
+    max-width: 1140px;
+  }
+  @include respond(w) {
+    max-width: 1400px;
+  }
 
-	&-fluid {
-		@extend %container;
-		width: $d-all;
-	}
+  &-fluid {
+    @extend %grid;
+    width: $d-all;
+  }
 }

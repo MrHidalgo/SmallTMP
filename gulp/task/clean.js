@@ -16,8 +16,12 @@ gulp.task('clean', function() {
   return del.sync([
     configPath.dest.root + '/**/*',
     configPath.src.root + '/img/**',
+    configPath.src.root + '/icon/**',
     '!' + configPath.dest.root + '/img',
     '!' + configPath.dest.root + '/img/**/*',
-    '!' + configPath.src.root + '/img'
+    '!' + configPath.dest.root + '/icon',
+    '!' + configPath.dest.root + '/icon/**/*',
+    '!' + configPath.src.root + '/img',
+    '!' + configPath.src.root + '/icon'
   ]);
 });

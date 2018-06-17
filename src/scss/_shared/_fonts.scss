@@ -1,6 +1,6 @@
 ///
 /// Mixin generate @font-face
-///
+/// ===============
 @mixin mixinFontFace($fontName, $fontPath, $fontExtension: eot woff2 woff ttf svg) {
 	$src: null;
 	$srcEot: null;
@@ -53,10 +53,10 @@
 }
 
 
-///
+/// ===============
 /// CALL MIXIN FOR BUILD @FONT-FACE
 ///
 /// Example:
 ///
 /// @include mixinFontFace("JournalRegular", "../fonts/", eot woff2 woff ttf svg);
-///
+/// ===============

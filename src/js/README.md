@@ -14,7 +14,6 @@
 
 ### Present methods
 * `svg4everybody()`
-* `svg4everybody()`
 * `barbaJSTransition()`
 * `viewPortChecker()` - it is better to use with `animate.css`:
   * `.viewport-hide-js` - add to elements which container check viewport

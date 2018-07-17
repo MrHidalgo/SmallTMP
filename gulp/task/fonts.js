@@ -13,7 +13,7 @@ const configPath  = require('../config/configPath');
  * @type {*[]}
  */
 const srcPath = [
-  configPath.src.fonts + '/*.{eot,svg,ttf,woff,woff2}'
+  configPath.src.fonts + '/*.{otf,eot,svg,ttf,woff,woff2}'
 ];
 
 

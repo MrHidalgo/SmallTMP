@@ -17,18 +17,7 @@ $object: (
     success               : #00c851,
     info                  : #33b5e5,
     warning               : #ff8800,
-    danger                : #cc0000,
-
-    grey                  : #808080,
-    lightGrey             : #d3d3d3,
-    darkGrey              : #a9a9a9,
-    dimGray               : #696969,
-    snow                  : #fffafa,
-    whiteSmooke           : #f5f5f5,
-    gainsboro             : #dcdcdc,
-    silver                : #c0c0c0,
-    yellow                : #ffff00,
-    aliceBlue             : #f0f8ff
+    danger                : #cc0000
   ),
   dimension : (
     all                   : 100%,
@@ -54,16 +43,6 @@ $c-success                : return-value(colors, success);
 $c-info                   : return-value(colors, info);
 $c-warning                : return-value(colors, warning);
 $c-danger                 : return-value(colors, danger);
-
-$c-grey                   : return-value(colors, grey);
-$c-lightGrey              : return-value(colors, lightGrey);
-$c-darkGrey               : return-value(colors, darkGrey);
-$c-snow                   : return-value(colors, snow);
-$c-whiteSmooke            : return-value(colors, whiteSmooke);
-$c-gainsboro              : return-value(colors, gainsboro);
-$c-silver                 : return-value(colors, silver);
-$c-yellow                 : return-value(colors, yellow);
-$c-aliceBlue              : return-value(colors, aliceBlue);
 
 $d-all                    : return-value(dimension, all);
 $d-fhd                    : return-value(dimension, fhd);

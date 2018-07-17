@@ -25,3 +25,6 @@
 * `initObjectFitImages()` - add image tag some attr `objectFit-js`;
 * `initHamburger()`
 * `initHeaderFixed()`
+* `initSmoothScroll()` - accepts two parameters:
+  - `btnName` - default `[anchor-js]`
+  - `animateSpeed` - default `1000`

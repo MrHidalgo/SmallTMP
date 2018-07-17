@@ -14,6 +14,17 @@
 
 
   /**
-   * @description Method call for execution
+   * @description Init all method
+   */
+  const initNative = () => {
+    // ...
+  };
+  initNative();
+
+
+  /**
+   * =============================================
+   * CALLBACK
+   * =============================================
    */
 })();

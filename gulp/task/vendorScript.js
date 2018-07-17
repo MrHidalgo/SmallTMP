@@ -3,7 +3,8 @@ const gulp        = require('gulp'),
   mainBowerFiles  = require('main-bower-files'),
   concat          = require('gulp-concat'),
   uglify          = require('gulp-uglify'),
-  rename          = require('gulp-rename');
+  rename          = require('gulp-rename'),
+  order           = require("gulp-order");
 
 
 /**
@@ -30,6 +31,10 @@ gulp.task('vendorScript', function() {
   return gulp
     .src(files)
       .pipe(plumber(configOption.pipeBreaking.err))
+      .pipe(order([
+        'jquery.js',
+        '*'
+      ]))
       .pipe(concat('vendor.js'))
       .pipe(gulp.dest(configPath.dest.js))
       .pipe(uglify())

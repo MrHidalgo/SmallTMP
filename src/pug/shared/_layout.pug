@@ -6,19 +6,18 @@ html(lang="en")
   head
     include _head
 
-  body(
-    class!= bodyClassName
-    data-file!= dataPageName
-  )
+  body(data-file!= dataPageName)
     block header
       include ../components/_header
 
-      #barba-wrapper
-        .barba-container
-          block content
 
-      block footer
-        include ../components/_footer
+    #barba-wrapper
+      .barba-container
+        block content
 
-  //block script
+
+    block footer
+      include ../components/_footer
+
+  block script
     include _script

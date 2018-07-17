@@ -29,7 +29,6 @@
     }
   },
   "dependencies": {
-    "normalize-css": "^8.0.0",
-    "css-hamburgers": "^0.9.3"
+    "normalize-css": "^8.0.0"
   }
 }

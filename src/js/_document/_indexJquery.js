@@ -16,6 +16,5 @@ $(document).ready((ev) => {
   /**
    * @description Method call for execution
    */
-  svg4everybody();
 });
 

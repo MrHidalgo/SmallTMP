@@ -22,6 +22,7 @@ gulp.task('clean', function() {
     '!' + configPath.dest.root + '/icon',
     '!' + configPath.dest.root + '/icon/**/*',
     '!' + configPath.src.root + '/img',
-    '!' + configPath.src.root + '/icon'
+    '!' + configPath.src.root + '/icon',
+    '!' + configPath.src.root + '/icon/**'
   ]);
 });

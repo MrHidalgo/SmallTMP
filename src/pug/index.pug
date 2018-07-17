@@ -2,7 +2,7 @@
 title: Home
 favicon: favicon
 
-bodyClassName: home
+contentClassName: home
 dataPageName: index
 
 additionalStyleFile: false
@@ -10,3 +10,4 @@ additionalStyleFile: false
 extends shared/_layout
 
 block content
+  div(class!= contentClassName)

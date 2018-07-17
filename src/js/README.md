@@ -29,3 +29,6 @@
   - `btnName` - default `[anchor-js]`
   - `animateSpeed` - default `1000`
 * `initPreventBehavior()`
+* `initGetBrowserNameVersion()` - return 2 val:
+  - `name`
+  - `version`

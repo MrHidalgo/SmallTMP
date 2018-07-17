@@ -2,8 +2,8 @@
 
 ### Concatenation rule
 1. Function Callback
-2. Window event listener - load, resize, scroll
-3. Document event listener - ready
+2. Window event listener - **load**, **resize**, **scroll**
+3. Document event listener - **ready**
 4. Other...
 
 ### Standard
@@ -14,8 +14,8 @@
 
 ### Present methods
 * `svg4everybody()`
-* `barbaJSTransition()`
-* `viewPortChecker()` - it is better to use with `animate.css`:
+* `initBarbaJSTransition()`
+* `initViewPortChecker()` - it is better to use with `animate.css`:
   * `.viewport-hide-js` - add to elements which container check viewport
   * `data-animation-name` - default `slideInUp`
   * `data-animation-duration` - default `1s`
@@ -23,3 +23,4 @@
 * `initPopups()`
 * `initSwiper()`
 * `initObjectFitImages()` - add image tag some attr `objectFit-js`;
+* `initHamburger()`

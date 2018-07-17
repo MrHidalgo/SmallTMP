@@ -1,10 +1,10 @@
 
 
 /**
- * @name barbaJSTransition
+ * @name initBarbaJSTransition
  * @description Barba.js - pjax transition pages.
  */
-function barbaJSTransition() {
+function initBarbaJSTransition() {
   const HideShowTransition = Barba.BaseTransition.extend({
     start: function() {
       /**

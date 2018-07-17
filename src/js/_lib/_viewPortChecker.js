@@ -1,10 +1,10 @@
 
 
 /**
- * @name viewPortChecker
+ * @name initViewPortChecker
  * @description Detects if an element is in the viewport and adds a class to it
  */
-function viewPortChecker() {
+function initViewPortChecker() {
   $(".viewport-hide-js").each(function(idx, el) {
 
     $(el).viewportChecker({

@@ -2,7 +2,7 @@
 // ==================================================
 .hamburger {
   padding: $hamburger-padding-y $hamburger-padding-x;
-  display: inline-block;
+  display: $hamburger-display;
   cursor: pointer;
 
   transition-property: opacity, filter;

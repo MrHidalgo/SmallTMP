@@ -28,3 +28,4 @@
 * `initSmoothScroll()` - accepts two parameters:
   - `btnName` - default `[anchor-js]`
   - `animateSpeed` - default `1000`
+* `initPreventBehavior()`

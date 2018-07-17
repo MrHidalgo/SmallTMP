@@ -24,3 +24,4 @@
 * `initSwiper()`
 * `initObjectFitImages()` - add image tag some attr `objectFit-js`;
 * `initHamburger()`
+* `initHeaderFixed()`

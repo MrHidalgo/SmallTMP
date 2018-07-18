@@ -141,9 +141,17 @@ $boxShadowObj: (
 ///
 @mixin transition($rest...) {
 	$list: null;
+	$duration: null;
+	$idx: null;
 
 	@each $prop in ($rest) {
-		$list: append($list, $prop 0.3s ease-in-out, comma);
+		$idx: str_index(inspect($prop), "0.");
+
+		@if($idx == null) {
+			$duration: 0.25s;
+		}
+
+		$list: append($list, $prop $duration ease-in-out, comma);
 	}
 
 	transition: $list;

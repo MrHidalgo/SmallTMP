@@ -15,20 +15,17 @@
 .c-grid {
   @extend %grid;
   width: $d-all;
-  @include respond(s) {
+  @include respond(small) {
     max-width: 540px;
   }
-  @include respond(m) {
+  @include respond(medium) {
     max-width: 720px;
   }
-  @include respond(l) {
+  @include respond(large) {
     max-width: 960px;
   }
-  @include respond(el) {
+  @include respond(extra-large) {
     max-width: 1140px;
-  }
-  @include respond(w) {
-    max-width: 1400px;
   }
 
   &-fluid {

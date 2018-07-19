@@ -71,61 +71,6 @@
 
 
 ///
-/// Mixin centered elements
-///
-/// @name			centered
-///
-/// @param  {String}  $pos - The position property specifies the type of positioning method used for an element
-/// @param  {String}  $side-1 - CSS Positioning Properties
-/// @param  {String}  $side-2 - CSS Positioning Properties
-///
-/// @see      $object
-///
-/// @example
-///   <selector> {
-///     @include centered([absolute | relative | fixed], [left | right], [top | bottom]);
-///   }
-///
-@mixin centered($pos, $side-1, $side-2) {
-	position: $pos;
-	$side-1: 50%;
-	$side-2: 50%;
-	transform: translate(-50%, -50%);
-}
-
-
-///
-/// Mixin box-shadow
-///
-/// @name			boxShadow
-///
-/// @param  {Number | String}  $name - The box-shadow property attaches one or more shadows to an element.
-///
-/// @see      $object
-///
-/// @example
-///   <selector> {
-///     @include boxShadow([1 | 2 | 3 | 4 | 5]);
-///   }
-///
-$boxShadowObj: (
-	"1" : "0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)",
-	"2" : "0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3)",
-	"3" : "0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3)",
-	"4" : "0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3)",
-	"5" : "0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3)",
-) !default;
-
-@mixin boxShadow($name) {
-	@if map-has-key($boxShadowObj, $name) {
-		box-shadow: #{inspect(map_get($boxShadowObj, $name))};
-	} @else {
-		@warn "Unfortunately, no value could be retrieved from `#{$boxShadowObj}`. Please make sure it is defined in `$boxShadowObj` map.";
-	}
-}
-
-
-///
 /// Mixin transition
 ///
 /// @name			transition
@@ -176,13 +121,22 @@ $boxShadowObj: (
 ///   }
 ///
 $breakpointsMedia: (
-	"es"        : "(min-width: 320px)",
-	"s"         : "(min-width: 576px)",
-	"m"         : "(min-width: 768px)",
-	"l"         : "(min-width: 992px)",
-	"el"        : "(min-width: 1200px)",
-	"w"         : "(min-width: 1600px)",
-	"hd"        : "(min-width: 1920)"
+	extra-small     : "(min-width: 320px)", 	/// extra-small
+	max-small     	: "(max-width: 575px)",
+	small         	: "(min-width: 576px)", 	/// small
+	max-medium     	: "(max-width: 767px)",
+	medium         	: "(min-width: 768px)", 	/// medium
+	max-large     	: "(max-width: 991px)",
+	large         	: "(min-width: 992px)", 	/// large
+	max-extra-large	: "(max-width: 1199px)",
+	extra-large     : "(min-width: 1200px)",	/// extra-large
+	max-wide-small  : "(max-width: 1365px)",
+	wide-small      : "(min-width: 1366px)",	/// wide-small
+	max-wide-medium : "(max-width: 1439px)",
+	wide-medium     : "(min-width: 1440px)",	/// wide-medium
+	max-wide-large  : "(max-width: 1599px)",
+	wide-large      : "(min-width: 1600px)",	/// wide-large
+	hd        			: "(min-width: 1920px)"
 ) !default;
 
 @mixin respond($name) {

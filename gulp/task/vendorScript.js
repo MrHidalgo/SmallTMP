@@ -24,6 +24,7 @@ gulp.task('vendorScript', function() {
 
   files.push(
     configPath.src.vendorScript + "/*.js",
+    "!" + configPath.src.vendorScript + "/*.js",
     configPath.src.vendorScript + "/**/*.js",
     "!" + configPath.src.vendorScript + "/**/_**.js"
   );

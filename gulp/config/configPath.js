@@ -20,13 +20,13 @@ const configPath = {
 
   // DEST
   dest: {
-    root  : destPath + '',
-    html  : destPath + '',
-    css   : destPath + '/css',
-    js    : destPath + '/js',
-    img   : destPath + '/img',
-    icon  : destPath + '/icon',
-    fonts : destPath + '/fonts'
+    root          : destPath + '',
+    html          : destPath + '',
+    css           : destPath + '/css',
+    js            : destPath + '/js',
+    img           : destPath + '/img',
+    icon          : destPath + '/icon',
+    fonts         : destPath + '/fonts'
   },
 
   errorHandler: require('../util/error')

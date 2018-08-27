@@ -8,22 +8,13 @@ const gulp        = require('gulp');
 const configPath  = require('../config/configPath');
 
 
-/**
- *
- * @type {*[]}
- */
-const srcPath = [
-  configPath.src.fonts + '/*.{otf,eot,svg,ttf,woff,woff2}'
-];
-
-
 
 /**
  * @description Gulp fonts - copy fonts to the dest folder.
  */
 gulp.task('fonts', function() {
   return gulp
-    .src(srcPath)
+    .src(configPath.src.fonts + '/**.*')
       .pipe(gulp.dest(configPath.dest.fonts));
 });
 
@@ -33,7 +24,7 @@ gulp.task('fonts', function() {
  */
 gulp.task('fonts:watch', function() {
   gulp.watch(
-    srcPath,
+    configPath.src.fonts + '/**',
     ['fonts']
   );
 });

@@ -1,35 +1,28 @@
 ///
 /// ADDITIONALLY
 /// ===============
+$maxWidth: 1024px;
+
 %grid {
-  width: $d-all;
-  padding-right: 15px;
-  padding-left: 15px;
+  width: 100%;
+  @if($maxWidth) {
+    max-width: $maxWidth;
+  }
   margin-right: auto;
   margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
+
 
 ///
 /// MAIN
 /// ===============
 .c-grid {
   @extend %grid;
-  width: $d-all;
-  @include respond(small) {
-    max-width: 540px;
-  }
-  @include respond(medium) {
-    max-width: 720px;
-  }
-  @include respond(large) {
-    max-width: 960px;
-  }
-  @include respond(extra-large) {
-    max-width: 1140px;
-  }
+
 
   &-fluid {
     @extend %grid;
-    width: $d-all;
   }
 }

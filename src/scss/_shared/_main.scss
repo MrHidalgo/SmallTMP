@@ -26,7 +26,8 @@ body {
   background-color: $c-white;
   line-height: 1.42857143;
   font-size: 16px;
-  //font-family: ...;
+  font-weight: normal;
+  //font-family: "", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -91,6 +92,11 @@ ul {
 a {
   outline: none;
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 input[type="text"] {

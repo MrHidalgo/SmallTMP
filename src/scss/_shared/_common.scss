@@ -1,3 +1,11 @@
 // COMMON :: START
 
+/* ICONS */
+.icon {
+  &:before {
+    content: "";
+    display: block;
+  }
+}
+
 // COMMON :: END

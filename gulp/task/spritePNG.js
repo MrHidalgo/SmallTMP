@@ -56,15 +56,13 @@ gulp.task('spritePNG', function() {
           imgPath         : spImgPath,
           retinaImgPath   : retinaspImgPath,
           cssName         : '_spritePNG.scss',
+          cssTemplate     : './src/scss/_generated/handlebarsStr.css.handlebars',
           retinaSrcFilter : [
             './src/icon/*@2x.png'
           ],
           retinaImgName   : 'sprite@2x.png',
           algorithm       : 'binary-tree',
-          padding         : 5,
-          cssVarMap       : function(sprite) {
-            sprite.name = 'sp-' + sprite.name;
-          }
+          padding         : 5
         }
       ));
 

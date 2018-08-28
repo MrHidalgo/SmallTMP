@@ -84,7 +84,7 @@
 ///
 ///
 ///
-@mixin input-placeholder {
+@mixin inputPlaceholder {
 	&.placeholder { @content; }
 	&:-moz-placeholder { @content; }
 	&::-moz-placeholder { @content; }
@@ -177,7 +177,7 @@
 		$idx: str_index(inspect($prop), "0.");
 
 		@if($idx == null) {
-			$duration: 0.25s;
+			$duration: 0.3s;
 		}
 
 		$list: append($list, $prop $duration ease-in-out, comma);
@@ -205,22 +205,22 @@
 ///   }
 ///
 $breakpointsMedia: (
-	extra-small     : "(min-width: 320px)", 	/// extra-small
-	max-small     	: "(max-width: 575px)",
-	small         	: "(min-width: 576px)", 	/// small
-	max-medium     	: "(max-width: 767px)",
-	medium         	: "(min-width: 768px)", 	/// medium
-	max-large     	: "(max-width: 991px)",
-	large         	: "(min-width: 992px)", 	/// large
-	max-extra-large	: "(max-width: 1199px)",
-	extra-large     : "(min-width: 1200px)",	/// extra-large
-	max-wide-small  : "(max-width: 1365px)",
-	wide-small      : "(min-width: 1366px)",	/// wide-small
-	max-wide-medium : "(max-width: 1439px)",
-	wide-medium     : "(min-width: 1440px)",	/// wide-medium
-	max-wide-large  : "(max-width: 1599px)",
-	wide-large      : "(min-width: 1600px)",	/// wide-large
-	hd        			: "(min-width: 1920px)"
+	extra-small     	: "(min-width: 320px)", 	/// extra-small
+	max-extra-small 	: "(max-width: 575px)",
+	small         		: "(min-width: 576px)", 	/// small
+	max-small     		: "(max-width: 767px)",
+	medium         		: "(min-width: 768px)", 	/// medium
+	max-medium     		: "(max-width: 991px)",
+	large         		: "(min-width: 992px)", 	/// large
+	max-large					: "(max-width: 1199px)",
+	extra-large     	: "(min-width: 1200px)",	/// extra-large
+	max-extra-large 	: "(max-width: 1365px)",
+	wide-small      	: "(min-width: 1366px)",	/// wide-small
+	max-wide-small 		: "(max-width: 1439px)",
+	wide-medium     	: "(min-width: 1440px)",	/// wide-medium
+	max-wide-medium 	: "(max-width: 1599px)",
+	wide-large      	: "(min-width: 1600px)",	/// wide-large
+	hd        				: "(min-width: 1920px)"
 ) !default;
 
 @mixin respond($name) {
@@ -230,5 +230,10 @@ $breakpointsMedia: (
 		}
 	} @else {
 		@warn "Unfortunately, no value could be retrieved from `#{$breakpointsMedia}`. Please make sure it is defined in `$breakpointsMedia` map.";
+	}
+}
+@mixin respondCustom($val) {
+	@media screen and #{$val} {
+		@content;
 	}
 }

@@ -28,6 +28,13 @@ Task name | Description
 * `npm run clean` - run task for delete destination folder, same as `gulp clean`
 * `npm run deploy` - deploy files => `domainName.surge.sh`
 
+## Libraries, methods used by default
+- Normalize-css;
+- css-hamburgers;
+- object-fit-images;
+- bower-webfontloader;
+
+
 ## Bower package style
 Name | Install | Description
 :---|:---|:---
@@ -39,18 +46,19 @@ Name | Install | Description
 ## Bower package script
 Name | Install | Description
 :---|:---|:---
-[jQuery](https://jquery.com/) | `bower i --save jquery` | jQuery is a fast, small, and feature-rich JavaScript library.
 [svg4everybody](https://jonathantneal.github.io/svg4everybody/) | `bower i --save svg4everybody` | SVG for Everybody adds external spritemaps support to otherwise SVG-capable browsers.
 [barba.js](http://barbajs.org/) | `bower i --save luruke/barba.js` | Create badass, fluid and smooth transition between your website's pages.
 [jQuery-viewport-checker](https://github.com/dirkgroenen/jQuery-viewport-checker) | `bower i --save jQuery-viewport-checker` | Little script that detects if an element is in the viewport and adds a class to it.
 [object-fit-images](https://github.com/bfred-it/object-fit-images) | Remove from ignore in the folder => `src/vendorScript/_shared` | Polyfill object-fit/object-position on `<img>`.
+[WebFontLoader](https://github.com/typekit/webfontloader) | `bower install --save bower-webfontloader` | Web Font Loader gives you added control when using linked fonts via @font-face. |
 
 ## Bower package {lib, framework, toolkit}
 Name | Install | Description
 :---|:---|:---
+[jQuery](https://jquery.com/) | `bower i --save jquery` | jQuery is a fast, small, and feature-rich JavaScript library.
 [Font-Awesome](https://fontawesome.com/) | `bower i --save Font-Awesome` | Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.
 [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) | `bower i --save magnific-popup` | Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.
 [Swiper](http://idangero.us/swiper/) | `bower i --save swiper` | Most Modern Mobile Touch Slider.
 [Bootstrap](http://getbootstrap.com/) | `bower i --save bootstrap` | Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
 
-##
+

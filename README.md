@@ -52,3 +52,5 @@ Name | Install | Description
 [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) | `bower i --save magnific-popup` | Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.
 [Swiper](http://idangero.us/swiper/) | `bower i --save swiper` | Most Modern Mobile Touch Slider.
 [Bootstrap](http://getbootstrap.com/) | `bower i --save bootstrap` | Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
+
+##

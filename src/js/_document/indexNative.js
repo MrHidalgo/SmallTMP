@@ -16,6 +16,9 @@
    * @description Init all method
    */
   const initNative = () => {
+    initWebFontLoader();
+    initPreventBehavior();
+    initObjectFitImages();
     // ...
   };
   initNative();

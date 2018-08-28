@@ -25,6 +25,9 @@ $(document).ready((ev) => {
    * @description Init all method
    */
   const initJquery = () => {
+    initWebFontLoader();
+    initPreventBehavior();
+    initObjectFitImages();
     // ...
   };
   initJquery();

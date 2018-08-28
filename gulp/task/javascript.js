@@ -36,10 +36,10 @@ gulp.task('js', function() {
       .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(order(
         [
+          "*",
           "_lib/**",
           "_window/**",
           "_document/**",
-          "*",
         ]
       ))
       .pipe(concat('app.js'))

@@ -4,8 +4,8 @@
  * @name initObjectFitImages
  * @description Polyfill object-fit/object-position on <img>
  */
-function initObjectFitImages() {
-  const objFitImages = $('[objectFit-js]') || document.querySelectorAll('[objectFit-js]');
+const initObjectFitImages = () => {
+  const objFitImages = document.querySelectorAll('[objFitImages-js]');
 
   objectFitImages(objFitImages);
-}
+};

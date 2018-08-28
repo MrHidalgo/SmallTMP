@@ -14,7 +14,7 @@ function initSwiper() {
     watchOverflow: true,
     normalizeSlideIndex: true,
     grabCursor: true,
-    freeMode: true,
+    freeMode: false,
     effect: 'slide', // "slide", "fade", "cube", "coverflow" or "flip"
     // autoplay: {
     //   delay: 5000,
@@ -25,6 +25,13 @@ function initSwiper() {
     // lazy: {
     //   loadPrevNext: true,
     // },
+    // off touch for destop
+    touchMoveStopPropagation:false,
+    simulateTouch : false,
+    allowSwipeToNext: true,
+    allowSwipeToPrev: true,
+    allowPageScroll: "auto ",
+
     slidesPerView: 1,
     spaceBetween: 0,
     breakpoints: {

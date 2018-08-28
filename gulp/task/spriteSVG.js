@@ -41,6 +41,7 @@ gulp.task('spriteSVG', function () {
           $('[fill]').removeAttr('fill');
           $('[stroke]').removeAttr('stroke');
           $('[style]').removeAttr('style');
+          $('[title]').removeAttr('title');
         },
         parserOptions: {
           xmlMode: true

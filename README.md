@@ -28,7 +28,7 @@ Task name | Description
 * `npm run clean` - run task for delete destination folder, same as `gulp clean`
 * `npm run deploy` - deploy files => `domainName.surge.sh`
 
-## Libraries, methods used by default
+## Libraries & packages used by default:
 - Normalize-css;
 - css-hamburgers;
 - object-fit-images;

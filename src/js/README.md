@@ -20,22 +20,27 @@
 * `svg4everybody()`;
 * `initBarbaJSTransition()`;
 * `initPopups()`;
+* `initStellar()`;
 * `initSwiper()`;
 * `initHamburger()`;
 * `initHeaderFixed()`;
 * `initPreventBehavior()`;
 * `initObjectFitImages()` - add image tag some className `.object-fit with .object-fit--coverCenter .object-fit--containCenter`;
+
 * `initWebFontLoader()` - need to register the fonts that will be used:
   * `from Google fonts`;
   * `custom fonts - use @font-fase`;
+  
 * `initViewPortChecker()` - it is better to use with `animate.css`:
   * `.viewport-hide-js` - add to elements which container check viewport
   * `data-animation-name` - default `slideInUp`
   * `data-animation-duration` - default `1s`
   * `data-animation-delay` - default `0s`
+  
 * `initGetBrowserNameVersion()` - return 2 val:
   - `name`
   - `version`
+  
 * `initSmoothScroll()` - accepts two parameters:
   - `btnName` - default `[anchor-js]`
   - `animateSpeed` - default `1000`

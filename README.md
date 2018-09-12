@@ -1,9 +1,9 @@
 # Small Gulp.JS template
 
+#### [domainName.surge.sh](http://domainName.surge.sh/)
+
 ## How to start
-* `npm i` - install npm dependencies
-* `bower install` - install bower packages
-* `gulp` - run dev-server
+* `yarn && bower i && gulp` - install npm dependencies, bower packages and run dev-server
 
 ## Tasks
 Task name | Description                                                      
@@ -31,7 +31,6 @@ Task name | Description
 ## Libraries & packages used by default:
 - Normalize-css;
 - css-hamburgers;
-- object-fit-images;
 - bower-webfontloader;
 
 
@@ -50,7 +49,7 @@ Name | Install | Description
 [barba.js](http://barbajs.org/) | `bower i --save luruke/barba.js` | Create badass, fluid and smooth transition between your website's pages.
 [jQuery-viewport-checker](https://github.com/dirkgroenen/jQuery-viewport-checker) | `bower i --save jQuery-viewport-checker` | Little script that detects if an element is in the viewport and adds a class to it.
 [object-fit-images](https://github.com/bfred-it/object-fit-images) | Remove from ignore in the folder => `src/vendorScript/_shared` | Polyfill object-fit/object-position on `<img>`.
-[WebFontLoader](https://github.com/typekit/webfontloader) | `bower install --save bower-webfontloader` | Web Font Loader gives you added control when using linked fonts via @font-face. |
+[stellar](http://markdalgleish.com/projects/stellar.js/) | `bower i --save stellar` | Parallax has never been easier.
 
 ## Bower package {lib, framework, toolkit}
 Name | Install | Description
@@ -59,6 +58,8 @@ Name | Install | Description
 [Font-Awesome](https://fontawesome.com/) | `bower i --save Font-Awesome` | Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.
 [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) | `bower i --save magnific-popup` | Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.
 [Swiper](http://idangero.us/swiper/) | `bower i --save swiper` | Most Modern Mobile Touch Slider.
+[jquery-selectric](http://selectric.js.org/) | `bower i --save jquery-selectric` | Fast, simple and light jQuery plugin to customize HTML selects. |
+[WebFontLoader](https://github.com/typekit/webfontloader) | `bower i --save bower-webfontloader` | Web Font Loader gives you added control when using linked fonts via @font-face. |
 [Bootstrap](http://getbootstrap.com/) | `bower i --save bootstrap` | Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
 
 

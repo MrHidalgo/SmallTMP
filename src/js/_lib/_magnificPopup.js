@@ -1,4 +1,9 @@
-function initPopups() {
+
+
+/**
+ *
+ */
+const initPopups = () => {
 
   $('[popup-js]').magnificPopup({
     type: 'inline',
@@ -18,4 +23,4 @@ function initPopups() {
     }
   });
 
-}
+};

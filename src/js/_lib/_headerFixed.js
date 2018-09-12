@@ -2,9 +2,9 @@
 
 /**
  * @name initHeaderFixed
- * @description
+ * @description Fixing the site header in the scrolling page.
  */
-function initHeaderFixed() {
+const initHeaderFixed = () => {
 
   let countScroll = $(window).scrollTop(),
     headerElement = $('.header');
@@ -15,4 +15,4 @@ function initHeaderFixed() {
     headerElement.removeClass("header--fixed");
   }
 
-}
+};

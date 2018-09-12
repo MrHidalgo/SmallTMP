@@ -14,7 +14,6 @@
   
 ### Callbacks used by default:
 - initWebFontLoader();
-- initObjectFitImages();
 - initPreventBehavior();
 
 ### Present methods:
@@ -25,7 +24,7 @@
 * `initHamburger()`;
 * `initHeaderFixed()`;
 * `initPreventBehavior()`;
-* `initObjectFitImages()` - add image tag some attr `objFitImages-js`;
+* `initObjectFitImages()` - add image tag some className `.object-fit with .object-fit--coverCenter .object-fit--containCenter`;
 * `initWebFontLoader()` - need to register the fonts that will be used:
   * `from Google fonts`;
   * `custom fonts - use @font-fase`;

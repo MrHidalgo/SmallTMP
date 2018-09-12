@@ -58,7 +58,12 @@ gulp.task('spriteSVG', function () {
                 template: srcPath["templateSCSS"]
               }
             },
-            example: false
+            example: true,
+          }
+        },
+        shape: {
+          spacing: {
+            padding: 10
           }
         }
       }))

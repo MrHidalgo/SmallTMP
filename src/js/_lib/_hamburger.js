@@ -4,17 +4,22 @@
  * @name initHamburger
  * @description Init hamburger logic with animated
  */
-function initHamburger() {
+const initHamburger = () => {
+
   const btn = document.querySelector("[hamburger-js]"),
-    hideScrollContainer = document.querySelectorAll("html, body");
+    hideScrollContainer = document.querySelectorAll("html, body"),
+    mobileContainer = document.querySelector("[mobile-block-js]");
 
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", (ev) => {
+    const elem = ev.currentTarget;
 
-    e.currentTarget.classList.toggle("is-active");
+    elem.classList.toggle("is-active");
+    mobileContainer.classList.toggle("is-open");
 
     hideScrollContainer.forEach((val, idx) => {
       val.classList.toggle("is-hideScroll");
     });
 
   });
-}
+
+};

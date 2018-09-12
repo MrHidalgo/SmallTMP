@@ -16,10 +16,11 @@
    * @description Init all method
    */
   const initNative = () => {
+    // default
     initWebFontLoader();
     initPreventBehavior();
-    initObjectFitImages();
-    // ...
+    // lib
+    // callback
   };
   initNative();
 })();

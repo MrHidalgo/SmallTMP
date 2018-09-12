@@ -26,5 +26,5 @@ gulp.task('vendorFont', function() {
   return gulp
     .src(files)
       .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(gulp.dest(configPath.dest.fonts + '/webfonts'))
+      .pipe(gulp.dest(configPath.dest.root + '/webfonts'))
 });

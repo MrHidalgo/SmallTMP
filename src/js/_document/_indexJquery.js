@@ -25,10 +25,11 @@ $(document).ready((ev) => {
    * @description Init all method
    */
   const initJquery = () => {
+    // default
     initWebFontLoader();
     initPreventBehavior();
-    initObjectFitImages();
-    // ...
+    // lib
+    // callback
   };
   initJquery();
 });

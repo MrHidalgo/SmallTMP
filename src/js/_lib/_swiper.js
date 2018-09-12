@@ -4,7 +4,7 @@
  * @name initSwiper
  * @description initialize Swiper
  */
-function initSwiper() {
+const initSwiper = () => {
   const mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     wrapperClass: "swiper-wrapper",
@@ -25,12 +25,13 @@ function initSwiper() {
     // lazy: {
     //   loadPrevNext: true,
     // },
+
     // off touch for destop
-    touchMoveStopPropagation:false,
-    simulateTouch : false,
-    allowSwipeToNext: true,
-    allowSwipeToPrev: true,
-    allowPageScroll: "auto ",
+    // touchMoveStopPropagation:false,
+    // simulateTouch : false,
+    // allowSwipeToNext: true,
+    // allowSwipeToPrev: true,
+    // allowPageScroll: "auto ",
 
     slidesPerView: 1,
     spaceBetween: 0,
@@ -82,4 +83,4 @@ function initSwiper() {
       },
     }
   });
-}
+};

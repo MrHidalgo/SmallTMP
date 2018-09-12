@@ -2,16 +2,15 @@
 /// ADDITIONALLY
 /// ===============
 $maxWidth: null;
+$paddingLeft: 15px;
+$paddingRight: $paddingLeft;
 
 %grid {
   width: 100%;
-  @if($maxWidth) {
-    max-width: $maxWidth;
-  }
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: $paddingRight;
+  padding-left: $paddingLeft;
 }
 
 
@@ -20,9 +19,13 @@ $maxWidth: null;
 /// ===============
 .c-grid {
   @extend %grid;
+  @if($maxWidth) {
+    max-width: $maxWidth;
+  }
 
 
   &-fluid {
     @extend %grid;
+    max-width: 100%;
   }
 }

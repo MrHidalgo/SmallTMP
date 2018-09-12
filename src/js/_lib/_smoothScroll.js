@@ -2,9 +2,9 @@
 
 /**
  * @name initSmoothScroll
- * @description
+ * @description Smooth transition to anchors to the block.
  */
-function initSmoothScroll(btnName = "[anchor-js]", animateSpeed = 1000) {
+const initSmoothScroll = (btnName = "[anchor-js]", animateSpeed = 1000) => {
 
   $(btnName).on("click", (e) => {
 
@@ -18,4 +18,4 @@ function initSmoothScroll(btnName = "[anchor-js]", animateSpeed = 1000) {
 
   });
 
-}
+};

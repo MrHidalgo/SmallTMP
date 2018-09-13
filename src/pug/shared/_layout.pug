@@ -1,4 +1,5 @@
 include ../utilities/_mixin
+include ../utilities/_data
 
 doctype html
 html(lang="en")
@@ -7,6 +8,7 @@ html(lang="en")
     include _head
 
   body(data-file!= dataPageName)
+
     block header
       include ../components/_header
 

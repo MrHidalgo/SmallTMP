@@ -6,8 +6,8 @@
 * Include lib:
 *
 * - webFontLoader.js;
-* - objectFitImages.js;
 * - preventBehavior.js;
+* - svg4everybody.js;
 *
 * ============================
 * ============================

@@ -1,8 +1,33 @@
 //- MIXIN :: START
 
+//- SVG icon
 mixin iconSVG(name, mod)
   - var mod = mod || ''
   svg(class="icon-svg icon-" + name + ' ' + mod)
     use(xlink:href="./img/sprite.svg#" + name)
+
+
+//- PICTURE TAG
+//-
+//- example: +pictureTag(false, "png", "img-home-video-poster")
+//-
+mixin pictureTag(ieSupport, imgType, imgName)
+  -
+    var imgStringPathWebp = './img/' + imgName + '.webp, ./img/' + imgName + '@2x.webp 2x',
+      imgStringPath = './img/' + imgName + '.' + imgType + ', ./img/' + imgName + '@2x.' + imgType + ' 2x';
+
+  picture
+    if(ieSupport)
+      <!--[if IE 9]>
+      video(style="display: none;")
+      <![endif]-->
+        source(srcset= imgStringPath)
+      <!--[if IE 9]>
+      <![endif]-->
+    else
+      source(srcset!= imgStringPathWebp type="image/webp")
+      source(srcset!= imgStringPath type!= "image/" + imgType)
+
+    img(srcset!= imgStringPath)
 
 //- MIXIN :: END

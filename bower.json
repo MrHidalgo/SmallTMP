@@ -30,6 +30,8 @@
   },
   "dependencies": {
     "normalize-css": "^8.0.0",
-    "bower-webfontloader": "^1.6.6"
+    "bower-webfontloader": "^1.6.6",
+    "svg4everybody": "^2.1.9",
+    "picturefill": "^3.0.3"
   }
 }

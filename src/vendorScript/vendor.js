@@ -3,6 +3,7 @@
 * Include... :
 *
 * - bower-webfontloader;
-* - object-fit-images;
+* - svg4everybody;
+* - picturefill;
 *
 * */

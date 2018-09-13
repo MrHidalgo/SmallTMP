@@ -15,6 +15,8 @@
 ### Callbacks used by default:
 - initWebFontLoader();
 - initPreventBehavior();
+- svg4everybody();
+- picturefill;
 
 ### Present methods:
 * `svg4everybody()`;

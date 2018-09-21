@@ -1,4 +1,4 @@
-const gulp  = require('gulp'),
+const gulp    = require('gulp'),
   runSequence = require('run-sequence');
 
 
@@ -17,6 +17,7 @@ gulp.task("build", function(callback) {
     'vendorScript',
     'vendorStyle',
     'vendorFont',
+    'list-pages',
     callback
   );
 });

@@ -15,5 +15,6 @@ gulp.task('watch',
     'spriteSVG:watch',
     'vendorScript:watch',
     'vendorStyle:watch',
+    'list-pages:watch'
   ]
 );

@@ -18,7 +18,9 @@ gulp.task('server', function() {
       baseDir: configPath.dest.root,
       directory: false,
       serveStaticOptions: {
-        extensions: ['html']
+        extensions: [
+          'html'
+        ]
       }
     },
     files: [
@@ -28,6 +30,7 @@ gulp.task('server', function() {
       configPath.dest.icon + '/**',
       configPath.dest.img + '/**'
     ],
+		startPath: "/listPages.html",
     port: 3000,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,

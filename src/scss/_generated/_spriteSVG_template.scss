@@ -1,6 +1,6 @@
 {{#shapes}}
 .icon-{{base}} {
-  font-size:({{height.inner}}/10)*1px;
-  width:({{width.inner}}/{{height.inner}})*1px;
+  width:({{width.inner}})*1px;
+  height:({{height.inner}})*1px;
 }
 {{/shapes}}

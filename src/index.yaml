@@ -1,0 +1,6 @@
+ProjectTitle: SmallTMPL
+
+PageList:
+- file: index.html
+  titleName: Home
+  ready: 0

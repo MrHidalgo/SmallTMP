@@ -33,7 +33,6 @@ Task name | Description
 - css-hamburgers;
 - bower-webfontloader;
 - svg4everybody;
-- picturefill;
 
 
 ## Bower package style

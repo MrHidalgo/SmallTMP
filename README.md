@@ -63,3 +63,6 @@ Name | Install | Description
 ## Package in vendor path
 Name | Install | Description
 :---|:---|:---
+[object-fit-images](https://github.com/bfred-it/object-fit-images) | `uncomments` | Polyfill object-fit/object-position on <img>: IE9, IE10, IE11, Edge, Safari, ...
+[jQuery Migrate](https://github.com/jquery/jquery-migrate) | `uncomments` | APIs and features removed from jQuery core
+[GreenSock - TweenMax](https://greensock.com/docs/TweenMax) | `uncomments` | TweenMax extends TweenLite, adding many useful (but non-essential) features like repeat(), repeatDelay(), yoyo(), and more.

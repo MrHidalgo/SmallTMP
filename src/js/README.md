@@ -21,7 +21,7 @@
 * `svg4everybody()`;
 * `initBarbaJSTransition()`;
 * `initPopups()`;
-* `initStellar()`;
+* `initStellar()` - correct work with `jquery-migrate` (uncomment in *vendorScript/_shared* path);
 * `initSwiper()`;
 * `initHamburger()`;
 * `initHeaderFixed()`;

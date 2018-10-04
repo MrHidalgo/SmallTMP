@@ -3,6 +3,12 @@
 /**
  * @name initStellar
  * @description Stellar.js is a jQuery plugin that provides parallax scrolling effects to any scrolling element.
+ *
+ * Parallax Elements
+ * - data-stellar-ratio="1"
+ *
+ * Parallax Backgrounds
+ * - data-stellar-background-ratio="1"
  */
 const initStellar = () => {
   if ($("[parallax-js]").length) {

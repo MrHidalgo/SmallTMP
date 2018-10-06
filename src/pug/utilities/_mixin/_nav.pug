@@ -1,0 +1,20 @@
+//- MODAL
+//- ========================
+
+    @param {String} classMod
+    @param {Object Array} arrData - value: [href, name]
+
+    @example
+      +nav('header', arr)
+
+//- ========================
+mixin nav(classMod, arrData)
+  nav.nav(class!= "nav--" + classMod)
+    ul.nav__list
+      each val, idx in arrData
+        li.nav__item(class!= "nav__item-" + idx)
+          a.nav__link(
+            href!= arrData[idx].href
+            title=""
+            class="nav__link-" + idx
+          )!= arrData[idx].name

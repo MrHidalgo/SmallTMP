@@ -1,0 +1,37 @@
+//- LOGOTYPE
+//- ========================
+
+    @param {String} classMod
+    @param {String} hrefVal - default homepage '/'
+    @param {String} imgName
+    @param {String} imgExt
+
+    @example
+      +logotype('header', '', 'imgName', 'png')
+      +logotypeSVG('header', '', 'svgIconName')
+
+//- ========================
+mixin logotype(classMod, hrefVal, imgName, imgExt)
+  -
+    var imgSrcSet = "./img/" + imgName + "." + imgExt + ", ./img/" + imgName + "@2x." + imgExt;
+
+  .logo(class!= "logo--" + classMod)
+    a(
+      href!= (hrefVal) ? hrefVal : "/"
+      title="" class="logo__link"
+    )
+      img(
+        srcset!= imgSrcSet
+        alt="" title=""
+       )
+
+mixin logotypeSVG(classMod, hrefVal, svgName)
+  -
+    var imgSrcSet = "./img/" + imgName + "." + imgExt + ", ./img/" + imgName + "@2x." + imgExt;
+
+  .logo(class!= "logo--" + classMod)
+    a(
+      href!= (hrefVal) ? hrefVal : "/"
+      title="" class="logo__link"
+    )
+      +iconSVG(svgName)

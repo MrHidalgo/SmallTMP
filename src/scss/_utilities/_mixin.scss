@@ -157,17 +157,6 @@
 ///
 /// Mixin transition
 ///
-/// @name			transition
-///
-/// @param  {String}  $rest... - CSS properties that are to be animated.
-///
-/// @see      $object
-///
-/// @example
-///   <selector> {
-///     @include transition([color | opacity | border | etc]);
-///   }
-///
 @mixin transition($rest...) {
 	$list: null;
 	$duration: null;
@@ -189,21 +178,6 @@
 
 ///
 /// Mixin media queries.
-///
-/// @name     respond
-///
-/// @param    {String}  $media [$text-mobile | $text-tablet | $text-small | $text-medium | $text-large] - Value that identifies one of the options and breakpoint.
-///
-/// @see      $object
-///
-/// @example
-///   <selector> {
-///     @include respond($text-mobile) { @content };
-///   }
-///   <selector> {
-///     @include respond($text-medium) { @content };
-///   }
-///
 $breakpointsMedia: (
 	extra-small     	: "(min-width: 320px)", 	/// extra-small
 	max-extra-small 	: "(max-width: 575px)",

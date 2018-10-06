@@ -14,6 +14,7 @@ gulp.task("build", function(callback) {
     'fonts',
     'spritePNG',
     'spriteSVG',
+    'copy',
     'vendorScript',
     'vendorStyle',
     'vendorFont',

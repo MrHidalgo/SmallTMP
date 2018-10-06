@@ -13,6 +13,7 @@ gulp.task('watch',
     'fonts:watch',
     'spritePNG:watch',
     'spriteSVG:watch',
+    'copy:watch',
     'vendorScript:watch',
     'vendorStyle:watch',
     'list-pages:watch'

@@ -2,9 +2,7 @@ const gulp        = require('gulp'),
   plumber         = require('gulp-plumber'),
   mainBowerFiles  = require('main-bower-files'),
   concat          = require('gulp-concat'),
-  order           = require("gulp-order"),
-  cssMinify       = require('gulp-cssmin'),
-  rename          = require('gulp-rename');
+  order           = require("gulp-order");
 
 
 /**
@@ -37,9 +35,6 @@ gulp.task('vendorStyle', function() {
           '*'
       ]))
       .pipe(concat('vendor.css'))
-      .pipe(gulp.dest(configPath.dest.css))
-      .pipe(cssMinify(configOption.cssMinOption))
-      .pipe(rename(configOption.renameOption))
       .pipe(gulp.dest(configPath.dest.css))
 });
 

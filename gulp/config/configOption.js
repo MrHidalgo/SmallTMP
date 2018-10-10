@@ -6,20 +6,10 @@ const configOption = {
     err: configPath.errorHandler
   },
 
-  pug: {
-    pretty: true
-  },
-
-  frontMatter: {
-    property: 'data'
-  },
-
   cssMinOption: {
-    showLog: true,
-    // compatibility: 'ie7',
-    // specialComments: 1,
+    specialComments: 1,
     format: 'beautify',
-    level: 2
+    level: 1
   },
 
   sassAPI: {
@@ -53,12 +43,6 @@ const configOption = {
     js2svg: {
       pretty: true
     }
-  },
-
-  tinyPngAPI: "w2hECd9nCvKWfBj49LZrOPa6Ws7ws8uE",
-
-  imageMin: {
-    interlaced: true
   },
 
   renameOption: {

@@ -2,8 +2,6 @@ const gulp        = require('gulp'),
   plumber         = require('gulp-plumber'),
   mainBowerFiles  = require('main-bower-files'),
   concat          = require('gulp-concat'),
-  uglify          = require('gulp-uglify'),
-  rename          = require('gulp-rename'),
   order           = require("gulp-order");
 
 
@@ -37,9 +35,6 @@ gulp.task('vendorScript', function() {
         '*'
       ]))
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest(configPath.dest.js))
-      .pipe(uglify())
-      .pipe(rename(configOption.renameOption))
       .pipe(gulp.dest(configPath.dest.js))
 });
 

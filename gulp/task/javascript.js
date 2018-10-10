@@ -1,7 +1,5 @@
 const gulp        = require('gulp'),
   plumber         = require('gulp-plumber'),
-  rename          = require('gulp-rename'),
-  uglify          = require('gulp-uglify'),
   concat          = require('gulp-concat'),
   order           = require("gulp-order"),
   babel           = require('gulp-babel'),
@@ -34,21 +32,16 @@ gulp.task('js', function() {
   return gulp
     .src(srcPath)
       .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(order(
-        [
-          "*",
-          "_lib/**",
-          "_window/**",
-          "_document/**",
-        ]
-      ))
+      .pipe(order([
+        "*",
+        "_lib/**",
+        "_window/**",
+        "_document/**",
+      ]))
       .pipe(concat('app.js'))
       .pipe(babel(configOption.es6))
       .pipe(changedInPlace(configOption.changed))
       .pipe(gulp.dest(configPath.dest.js))
-      .pipe(uglify())
-      .pipe(rename(configOption.renameOption))
-      .pipe(gulp.dest(configPath.dest.js));
 });
 
 

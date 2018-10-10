@@ -41,7 +41,7 @@ gulp.task("tinyImage", function() {
     .src(configPath.src.image + '/*.{jpg,jpeg,png}')
       .pipe(plumber(configOption.pipeBreaking.err))
       .pipe(changedInPlace(configOption.changed))
-      .pipe(tinyPng(configOption.tinyPngAPI))
+      .pipe(tinyPng("w2hECd9nCvKWfBj49LZrOPa6Ws7ws8uE"))
       .pipe(gulp.dest(configPath.dest.img));
 });
 

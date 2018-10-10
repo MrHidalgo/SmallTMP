@@ -8,7 +8,8 @@
 ## Tasks
 Task name | Description                                                      
 :---|:---
-`build` | build production-ready project
+`build` | build dev-ready project
+`production` | build prod-ready project
 `clean` | remove `./dest` folder
 `default` | will start all tasks required by project in dev mode
 `fonts` | copy fonts files `*.{ttf,eot,woff,woff2,svg}` to `./dest` path
@@ -26,11 +27,11 @@ Task name | Description
 * `npm run start` - run dev-server, same as `gulp`
 * `npm run build` - build project from sources, same as `gulp build`
 * `npm run clean` - run task for delete destination folder, same as `gulp clean`
-* `npm run deploy` - deploy files => `domainName.surge.sh`
+* `npm run deploy-dev` - deploy dev (!optimization) files => `domainName.surge.sh`
+* `npm run deploy-prod` - deploy prod (optimization) files => `domainName.surge.sh`
 
 ## Libraries & packages used by default:
 - Normalize-css;
-- css-hamburgers;
 - bower-webfontloader;
 - svg4everybody;
 

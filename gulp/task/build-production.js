@@ -24,7 +24,7 @@ const configPath  = require('../config/configPath'),
 
 
 /**
- * @description
+ * @description Gulp prodScript - build and concat source files to prod-ready mode.
  */
 gulp.task("prodScript", function() {
 	/**
@@ -71,7 +71,7 @@ gulp.task("prodScript", function() {
 
 
 /**
- * @description
+ * @description Gulp prodStyle - build and concat source files to prod-ready mode.
  */
 gulp.task("prodStyle", function() {
 	let filesStyle = mainBowerFiles('**/*.css');
@@ -101,7 +101,7 @@ gulp.task("prodStyle", function() {
 
 
 /**
- * @description
+ * @description Gulp production - build source files to full optimization.
  */
 gulp.task("production", function() {
 	runSequence(

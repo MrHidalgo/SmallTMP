@@ -13,6 +13,7 @@ Task name | Description
 `clean` | remove `./dest` folder
 `default` | will start all tasks required by project in dev mode
 `fonts` | copy fonts files `*.{ttf,eot,woff,woff2,svg}` to `./dest` path
+`icon-fonts` | Create `{svg/ttf/eot/woff/woff2}` fonts from several SVG icons
 `img:build` | optimize, compress, crete webp and clone images
 `js` | creating and combining logic files info one files => `app.js`
 `pug` | interpreted or compiled into `*.html`
@@ -55,6 +56,7 @@ Name | Install | Description
 [WebFontLoader](https://github.com/typekit/webfontloader) | `bower i --save bower-webfontloader` | Web Font Loader gives you added control when using linked fonts via @font-face. |
 [barba.js](http://barbajs.org/) | `bower i --save luruke/barba.js` | Create badass, fluid and smooth transition between your website's pages.
 [Bootstrap](http://getbootstrap.com/) | `bower i --save bootstrap` | Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
+[popper.js](https://popper.js.org/) | `bower install popper.js --save` | A kickass library used to manage poppers in web applications.
 [Swiper](http://idangero.us/swiper/) | `bower i --save swiper` | Most Modern Mobile Touch Slider.
 [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/) | `bower i --save magnific-popup` | Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.
 [svg4everybody](https://jonathantneal.github.io/svg4everybody/) | `bower i --save svg4everybody` | SVG for Everybody adds external spritemaps support to otherwise SVG-capable browsers.

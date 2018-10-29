@@ -2,6 +2,37 @@
 /// @group  Function
 ////
 
+
+///
+/// ### Photoshop unit letter-spacing convert to pixel.
+///
+/// @name letter-spacing-convert
+///
+/// @param {Number} $unit
+/// @param {Number} $fontSize
+///
+/// @return {Number}
+///
+/// @example
+///   FUNCTION => letter-spacing-convert():
+///     letter-spacing: letter-spacing-convert(22, 18);
+///   ====================================================
+///
+///
+///
+@function letter-spacing-convert($unit, $fontSize) {
+  @return (($unit * $fontSize) / 1000) * 1px;
+}
+
+
+///
+/// ###
+///
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+
 ///
 /// ### Function returns a Boolean value, depending on the point of variable objects. It uses an additional function :
 /// - **map-has-key()** - returns whether a map has a value associated with a given key;
@@ -85,14 +116,14 @@
 }
 
 
-$browser-context: 16;
+
 ///
 /// ### Function transform px to em. It uses an additional function :
 /// - **unitless()** - returns whether a number has units.
 ///
 /// @link http://sass-lang.com/documentation/Sass/Script/Functions.html#unitless-instance_method  unitless()
 ///
-/// @name     render-pixel
+/// @name     calculateEm
 ///
 /// @param    {Number} $pixels  [Streing | Number]  - Value
 /// @param    {Number} $context [$browser-context]  - Value
@@ -101,15 +132,15 @@ $browser-context: 16;
 /// @see      $object
 ///
 /// @example
-///   FUNCTION => render-pixel():
-///     width : render-pixel(16px | 16);  => width : 1em;
+///   FUNCTION => calculateEm():
+///     width : calculateEm(16px | 16);  => width : 1em;
 ///
 ///   ====================================================
 ///   FUNCTION => unitless():
 ///     unitless(100)   => true
 ///     unitless(100px) => false
 ///
-@function render-pixel($pixels, $context: $browser-context) {
+@function calculateEm($pixels, $context: 16px) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
@@ -119,6 +150,11 @@ $browser-context: 16;
   }
 
   @return $pixels / $context * 1em;
+}
+///
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
 }
 
 ///

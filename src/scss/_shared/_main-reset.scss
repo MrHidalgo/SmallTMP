@@ -30,6 +30,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 auto;
+
+    &--start {
+      justify-content: flex-start;
+    }
+  }
+}
+
 
 * {
   box-sizing: border-box;

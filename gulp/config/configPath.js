@@ -16,6 +16,7 @@ const configPath = {
     image         : srcPath + '/img',
     icon          : srcPath + '/icon',
     fonts         : srcPath + '/fonts',
+    iconFonts     : srcPath + '/iconFonts',
     media         : srcPath + '/media',
   },
 

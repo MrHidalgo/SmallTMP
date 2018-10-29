@@ -12,6 +12,7 @@
       +logotype('header', '', 'imgName', 'png')
       +logotypeSVG('header', '', 'svgIconName')
       +logotypeImgText('header', '', 'imgName', 'png', 'logoSomeText')
+      +logotypeText('header', '', 'logoSomeText')
 
 //- ========================
 mixin logotype(classMod, hrefVal, imgName, imgExt)
@@ -50,5 +51,13 @@ mixin logotypeImgText(classMod, hrefVal, imgName, imgExt, txtVal)
           srcset!= imgSrcSet
           alt="" title=""
         )
+      p.logo__text!= txtVal
+
+mixin logotypeText(classMod, hrefVal, txtVal)
+  .logo(class!= "logo--" + classMod)
+    a(
+      href!= (hrefVal) ? hrefVal : "/"
+      title="" class="logo__link"
+    )
       p.logo__text!= txtVal
 

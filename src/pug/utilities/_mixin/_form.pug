@@ -1,0 +1,30 @@
+//- FORM
+//- ========================
+
+    @param
+
+    @example
+      +formInput('', 'someId', 'Title', '', '', 'Type...', '')
+
+//- ========================
+mixin formInput(classMod, uniqName, labelVal, inputType, inputClassMod, placeholderVal, val)
+  -
+    var type = (inputType) ? inputType : "text";
+
+  .c-form__field.c-form__field--input(class!= classMod, input-js)
+
+    if(labelVal)
+      label.c-form__label(for=uniqName)!= labelVal
+    .c-form__input-wrapper
+      input.c-form__input(
+        type!= type
+        id!=uniqName name!=uniqName
+        placeholder!= placeholderVal value!= val
+        class!= inputClassMod
+      )
+    .c-form__notify
+
+//mixin formSelect()
+//mixin formTextarea()
+//mixin formRadio()
+//mixin formCheckbox()

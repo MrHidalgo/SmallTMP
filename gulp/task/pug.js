@@ -40,13 +40,13 @@ gulp.task('pug', function() {
           env : (argv.prod) ? 'production' : ""
         },
       }))
+		  .pipe(changedInPlace(configOption.changed))
       .pipe(gulpif(argv.prod, htmlmin({
         collapseBooleanAttributes: true,
         collapseWhitespace: true,
         removeEmptyAttributes: true,
         removeComments: true
       })))
-      .pipe(changedInPlace(configOption.changed))
       .pipe(gulp.dest(configPath.dest.html))
 });
 

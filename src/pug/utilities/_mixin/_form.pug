@@ -1,30 +1,130 @@
-//- FORM
+//- FORM LABEL
 //- ========================
 
-    @param
+  @param forValue {String}
+  @param labelVal {String} - label value, default is null
+
+  @example
+    +formLabel('', labelVal)
+    +formLabel(forValue, labelVal)
+
+//- ========================
+mixin formLabel(labelVal, forValue=null)
+  if(forValue != null)
+    label.c-form__label(
+      for!= forValue
+    )!= labelVal
+  else
+    label.c-form__label!= labelVal
+
+
+//- FORM NOTIFY
+//- ========================
+
+  @param arr {Array} - notify [error, info. warning or etc] message
+
+  @example
+    var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
+
+    +formNotify()
+    +formNotify(notifyArr)
+
+//- ========================
+mixin formNotify(arr)
+  .c-form__notify
+    if(arr != null)
+      ul
+        each val, idx in arr
+          li
+            span!= val
+
+
+//- FORM INPUT
+//- ========================
+
+    @param objValue {Object} - object value
+    @param notifyArr {Array} - notify [error, info. warning or etc] message, default is null
+
+    var objValue = {
+      classMod: ['is-error', 'is-warning', 'is-info'],
+      uniqName: "some_unique_name",
+      labelVal: "label_name",
+      inputType: ['text', 'tel', 'password' & etc :: default -> 'text'],
+      inputClassMod: "",
+      placeholderVal: "Type your placeholder_text",
+      val: ""
+    };
+    var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
 
     @example
-      +formInput('', 'someId', 'Title', '', '', 'Type...', '')
+      +formInput(objValue)
+      +formInput(objValue, notifyArr)
+      +formInput(dataFormObj.inputName)
+      +formInput(dataFormObj.inputName, dataFormObj.notifyInputMessage)
 
 //- ========================
-mixin formInput(classMod, uniqName, labelVal, inputType, inputClassMod, placeholderVal, val)
-  -
-    var type = (inputType) ? inputType : "text";
+mixin formInput(objValue, notifyArr=null)
+  .c-form__field.c-form__field--input(class!= objValue.classMod)
 
-  .c-form__field.c-form__field--input(class!= classMod, input-js)
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal, objValue.uniqName)
 
-    if(labelVal)
-      label.c-form__label(for=uniqName)!= labelVal
     .c-form__input-wrapper
       input.c-form__input(
-        type!= type
-        id!=uniqName name!=uniqName
-        placeholder!= placeholderVal value!= val
-        class!= inputClassMod
+        type!= (objValue.inputType) ? objValue.inputType: 'text'
+        id!= objValue.uniqName
+        name!= objValue.uniqName
+        placeholder!= objValue.placeholderVal
+        value!= objValue.val
+        class!= objValue.inputClassMod
+        input-js
       )
-    .c-form__notify
+
+    +formNotify(notifyArr)
+
+
+//- FORM TEXTAREA
+//- ========================
+
+    @param objValue {Object} - object value
+    @param notifyArr {Array} - notify [error, info. warning or etc] message, default is null
+
+    var objValue = {
+      classMod: ['is-error', 'is-warning', 'is-info'],
+      uniqName: "some_unique_name",
+      labelVal: "label_name",
+      textareaClassMod: "",
+      placeholderVal: "Type your placeholder_text",
+      val: ""
+    };
+    var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
+
+    @example
+      +formTextarea(objValue)
+      +formTextarea(objValue, notifyArr)
+      +formTextarea(dataFormObj.textareaName)
+      +formTextarea(dataFormObj.textareaName, dataFormObj.notifyTextareaMessage)
+
+//- ========================
+mixin formTextarea(objValue, notifyArr=null)
+  .c-form__field.c-form__field--textarea(class!= objValue.classMod)
+
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal, objValue.uniqName)
+
+    .c-form__textarea-wrapper
+      textarea.c-form__textarea(
+        id!= objValue.uniqName
+        name!= objValue.uniqName
+        placeholder!= objValue.placeholderVal
+        value!= objValue.val
+        class!= objValue.textareaClassMod
+        textarea-js
+      )
+
+    +formNotify(notifyArr)
 
 //- mixin formSelect()
-//- mixin formTextarea()
 //- mixin formRadio()
 //- mixin formCheckbox()
+//- mixin formSwap()

@@ -1,6 +1,51 @@
 // FORM :: START
 
+// ==================================================
+// ==================================================
+// ==================================================
+
+// group
+$form-field-group-two-margin: 15px;
+$form-field-group-three-margin: $form-field-group-two-margin + 5px;
+
+// field
+$form-field-margin: 20px;
+$form-field-input-height: 50px;
+$form-field-textarea-height: 150px;
+
+// label
+$form-label-height: auto;
+$form-label-margin-bottom: 10px;
+$form-label-font-size: 16px;
+
+// input
+$form-input-border-radius: 5px;
+$form-input-border-width: 1px;
+$form-input-border-color: gray;
+$form-input-box-shadow: none;
+$form-input-padding: 0 20px;
+$form-input-color: #000;
+$form-input-placeholder-color: #666;
+
+// textarea
+$form-textarea-border-radius: $form-input-border-radius;
+$form-textarea-border-width: $form-input-border-width;
+$form-textarea-border-color: $form-input-border-color;
+$form-textarea-box-shadow: $form-input-box-shadow;
+$form-textarea-padding: 20px;
+$form-textarea-color: $form-input-color;
+$form-textarea-placeholder-color: $form-input-placeholder-color;
+
+// notify
+$form-notify-font-size: 14px;
+$form-notify-font-weight: bold;
+
+// ==================================================
+// ==================================================
+// ==================================================
+
 .c-form {
+  padding: 15px;
   &.is-focus {}
 
   &__wrapper {}
@@ -8,11 +53,27 @@
   &__group {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+
+    &--two {
+      justify-content: space-between;
+
+      .c-form__group-col {
+        width: calc(50% - #{$form-field-group-two-margin});
+      }
+    }
+
+    &--three{
+      justify-content: space-between;
+
+      .c-form__group-col {
+        width: calc((100% / 3) - #{$form-field-group-three-margin});
+      }
+    }
 
     &-col {
       &-0 {}
       &-1 {}
+      &-2 {}
     }
   }
 
@@ -20,16 +81,89 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: $form-field-margin;
+
+    &.is-error,
+    &.is-warning,
+    &.is-info {
+      .c-form__notify {
+        display: block;
+      }
+    }
+
+    &.is-error {
+      .c-form__label {
+        color: $c-danger;
+      }
+      .c-form__input,
+      .c-form__textarea {
+        border-color: $c-danger;
+        color: $c-danger;
+        @include inputPlaceholder {
+          color: $c-danger;
+        }
+      }
+      .c-form__notify {
+        li {
+          color: $c-danger;
+        }
+      }
+    }
+    &.is-warning {
+      .c-form__label {
+        color: $c-warning;
+      }
+      .c-form__input,
+      .c-form__textarea {
+        border-color: $c-warning;
+        color: $c-warning;
+        @include inputPlaceholder {
+          color: $c-warning;
+        }
+      }
+      .c-form__notify {
+        li {
+          color: $c-warning;
+        }
+      }
+    }
+    &.is-info {
+      .c-form__label {
+        color: $c-info;
+      }
+      .c-form__input,
+      .c-form__textarea {
+        border-color: $c-info;
+        color: $c-info;
+        @include inputPlaceholder {
+          color: $c-info;
+        }
+      }
+      .c-form__notify {
+        li {
+          color: $c-info;
+        }
+      }
+    }
 
     &--input {}
+
     &--select {}
+
     &--textarea {}
+
     &--radio {}
+
     &--checkbox {}
   }
 
   &__label {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: $form-label-height;
+    margin-bottom: $form-label-margin-bottom;
+    font-size: $form-label-font-size;
   }
 
   &__input,
@@ -42,21 +176,41 @@
 
   &__input,
   &__textarea {
+    outline: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    color: $form-input-color;
+    @include inputPlaceholder {
+      color: $form-input-placeholder-color;
+    }
   }
 
   &__input {
-    &-wrapper {}
+    padding: $form-input-padding;
+    border: $form-input-border-width solid $form-input-border-color;
+    border-radius: $form-input-border-radius;
+    box-shadow: $form-input-box-shadow;
+
+    &-wrapper {
+      height: $form-field-input-height;
+    }
   }
 
   &__select {}
 
   &__textarea {
-    &-wrapper {}
+    resize: none;
+    padding: $form-textarea-padding;
+    border: $form-textarea-border-width solid $form-textarea-border-color;
+    border-radius: $form-textarea-border-radius;
+    box-shadow: $form-textarea-box-shadow;
+
+    &-wrapper {
+      height: $form-field-textarea-height;
+    }
   }
 
   &__radio {}
@@ -65,6 +219,18 @@
 
   &__notify {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: $form-field-margin;
+
+    ul {
+      li {
+        font-size: $form-notify-font-size;
+        font-weight: $form-notify-font-weight;
+      }
+    }
   }
 }
 

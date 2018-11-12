@@ -3,6 +3,7 @@
 /// ===============
 @import "_utilities/function";
 @import "_utilities/mixin";
+@import "_utilities/extend";
 @import "_utilities/variable";
 ///
 /// VENDOR
@@ -37,9 +38,9 @@
 //@import "_macros/title";
 //@import "_macros/btn";
 //@import "_macros/modal";
-//@import "_macros/form";
+@import "_macros/form";
 ///
 /// COMPONENTS
 /// ===============
-@import "_components/header";
-@import "_components/footer";
+//@import "_components/header";
+//@import "_components/footer";

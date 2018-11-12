@@ -33,6 +33,7 @@ Task name | Description
 
 ## Libraries & packages used by default:
 - Normalize-css;
+- Reset-css;
 - bower-webfontloader;
 - svg4everybody;
 
@@ -41,6 +42,7 @@ Task name | Description
 Name | Install | Description
 :---|:---|:---
 [Normalize-css](https://necolas.github.io/normalize.css/) | `bower i --save normalize-css` | A modern, HTML5-ready alternative to CSS resets.
+[Reset-css](https://meyerweb.com/eric/tools/css/reset/) | `bower i --save reset-css` | The goal of a reset stylesheet is to reduce browser inconsistencies in things like default line heights, margins and font sizes of headings, and so on.
 [Animate.css](https://daneden.github.io/animate.css/) | `bower i --save animate.css` | A cross-browser library of CSS animations.
 [Flexbox Grid](http://flexboxgrid.com/) | `bower i --save flexboxgrid` | A grid system based on the flex display property.
 [css-hamburgers](https://jonsuh.com/hamburgers/) | Uncomment the path to styles => `src/scss/app.scss` | Tasty CSS-animated hamburgers.

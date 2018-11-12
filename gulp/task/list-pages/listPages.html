@@ -53,7 +53,7 @@
     body {
       color: #333;
       margin: 0;
-      padding: 0 40px;
+      padding: 0 15px;
       font-size: 20px;
       line-height: 1.6;
       font-family: 'Politica', serif;
@@ -108,15 +108,17 @@
 
     .preview {
       position: fixed;
-      right: 42px;
+      right: 0;
+      left: 315px;
+      margin: 0 auto;
       top: 120px;
-      left: 355px;
       bottom: 40px;
-
+      padding: 0 15px;
     }
 
     iframe {
       opacity: 1;
+      display: block;
       margin: 0 auto;
       transform-origin: 0 0;
       box-shadow: 0 0 20px rgba(0, 0, 0, .6);
@@ -137,7 +139,7 @@
     .pagelist {
       list-style-type: none;
       padding-top: 100px;
-      width: 275px;
+      /*width: 275px;*/
     }
 
     .pagelist li {
@@ -246,6 +248,12 @@
       background: #00e676;
     }
 
+    .pagelist__filename {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
+
     header {
       overflow: hidden;
       line-height: 1;
@@ -255,65 +263,35 @@
       left: 0;
       right: 0;
       z-index: 200;
-      background: #fff;
-    }
-
-    header h1 {
-      background: #2196f3;
-      background: var(--main-color);
-      height: 91px;
-      position: relative;
-      width: 242px;
-      display: inline-block;
-      vertical-align: top;
-      color: #fff;
-    }
-
-    header h1:before {
-      width: 200px;
-      height: 200px;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      content: "";
-      background: #2196f3;
-      background: var(--main-color);
-      transform: rotate(38deg);
-      transform-origin: 100% 100%;
-    }
-
-    header h1 span {
-      display: block;
-      position: absolute;
-      z-index: 2;
-      left: 42px;
-      top: 22px;
-    }
-
-    header h1 .icon {
-      font-size: 47px;
+      background: #009688;
+      box-shadow: 0 1px 10px 1px rgba(0,0,0,0.15);
     }
 
     .header__updated {
       font-size: 24px;
       height: 90px;
       line-height: 90px;
-      color: #050a0f;
+      color: #fff;
       display: inline-block;
       vertical-align: top;
-      margin-left: 80px;
+      padding-left: 15px;
     }
 
     .header__updated em {
+      font-size: 30px;
+      font-style: normal;
       font-weight: normal;
       font-family: 'PoliticaBold', sans-serif;
-      font-style: normal;
+    }
+
+    .header__updated strong {
+      text-decoration: underline;
     }
 
     .types {
       position: absolute;
-      right: 40px;
-      top: 24px;
+      right: 15px;
+      top: 22px;
     }
 
     .types button, .types button:active {
@@ -330,6 +308,7 @@
       outline: none;
       cursor: pointer;
       transition: all .25s ease-in-out;
+      border-radius: 5px;
     }
 
     .types button:hover {
@@ -358,9 +337,9 @@
     }
 
     .types button.is-active {
-      border-color: #000;
+      border-color: #00bcd4;
       color: #fff;
-      background: #000;
+      background: #00bcd4;
     }
 
     .types button.is-active .icon {
@@ -402,21 +381,6 @@
         position: relative;
         height: auto;
         text-align: center;
-      }
-
-      header h1 {
-        display: block;
-        width: auto;
-        height: auto;
-        padding: 20px 0 30px;
-      }
-
-      header h1 span {
-        position: static;
-      }
-
-      header .icon {
-        font-size: 30px;
       }
 
       .header__updated {
@@ -491,9 +455,9 @@
 
 <!-- content -->
 <header class="header">
-  <h1>
-    <span><%= pages.ProjectTitle %></span>
-  </h1>
+  <!--<h1>-->
+    <!--<span><%= pages.ProjectTitle %></span>-->
+  <!--</h1>-->
   <%
   date = new Date(_.now());
   if(date.getMonth()+1<10){ month = '0' + (date.getMonth()+1);}
@@ -502,7 +466,11 @@
   if(date.getDate()<10){ day = '0' + (date.getDate());}
   else{ day = date.getDate(); }
   %>
-  <div class="header__updated"><em><%= pages.ProjectTitle %></em> updated <%= day %>.<%= month %>.<%= date.getFullYear() %>, <%= pages.PageList.length %> pages</div>
+  <div class="header__updated">
+    <em><%= pages.ProjectTitle %></em> -
+    updated <strong><%= day %>.<%= month %>.<%= date.getFullYear() %></strong>, <%= pages.PageList.length %> pages
+  </div>
+
   <nav class="types">
     <button data-mode="mobile" data-width="320">
       <svg class="icon icon-mobile">
@@ -563,6 +531,8 @@
         <use xlink:href="#icon-link"></use>
       </svg>
     </a>
+
+    <p class="pagelist__filename"><%= page.file %></p>
 
     <div class="pagelist__progress">
       <% if(!page.ready) page.ready = 0; %>

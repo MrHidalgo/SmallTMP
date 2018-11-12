@@ -17,6 +17,7 @@
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
+    "emitty": "^1.4.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",

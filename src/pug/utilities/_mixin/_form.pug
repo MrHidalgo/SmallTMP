@@ -47,7 +47,7 @@ mixin formNotify(arr)
 
     var objValue = {
       classMod: ['is-error', 'is-warning', 'is-info'],
-      uniqName: "some_unique_name",
+      uniqueName: "some_unique_name",
       labelVal: "label_name",
       inputType: ['text', 'tel', 'password' & etc :: default -> 'text'],
       inputClassMod: "",
@@ -67,13 +67,13 @@ mixin formInput(objValue, notifyArr=null)
   .c-form__field.c-form__field--input(class!= objValue.classMod)
 
     if(objValue.labelVal)
-      +formLabel(objValue.labelVal, objValue.uniqName)
+      +formLabel(objValue.labelVal, objValue.uniqueName)
 
     .c-form__input-wrapper
       input.c-form__input(
         type!= (objValue.inputType) ? objValue.inputType: 'text'
-        id!= objValue.uniqName
-        name!= objValue.uniqName
+        id!= objValue.uniqueName
+        name!= objValue.uniqueName
         placeholder!= objValue.placeholderVal
         value!= objValue.val
         class!= objValue.inputClassMod
@@ -91,7 +91,7 @@ mixin formInput(objValue, notifyArr=null)
 
     var objValue = {
       classMod: ['is-error', 'is-warning', 'is-info'],
-      uniqName: "some_unique_name",
+      uniqueName: "some_unique_name",
       labelVal: "label_name",
       textareaClassMod: "",
       placeholderVal: "Type your placeholder_text",
@@ -110,12 +110,12 @@ mixin formTextarea(objValue, notifyArr=null)
   .c-form__field.c-form__field--textarea(class!= objValue.classMod)
 
     if(objValue.labelVal)
-      +formLabel(objValue.labelVal, objValue.uniqName)
+      +formLabel(objValue.labelVal, objValue.uniqueName)
 
     .c-form__textarea-wrapper
       textarea.c-form__textarea(
-        id!= objValue.uniqName
-        name!= objValue.uniqName
+        id!= objValue.uniqueName
+        name!= objValue.uniqueName
         placeholder!= objValue.placeholderVal
         value!= objValue.val
         class!= objValue.textareaClassMod
@@ -124,7 +124,103 @@ mixin formTextarea(objValue, notifyArr=null)
 
     +formNotify(notifyArr)
 
-//- mixin formSelect()
-//- mixin formRadio()
+
+//- FORM SELECT
+//- ========================
+
+    @param objValue {Object} - object value
+    @param notifyArr {Array} - notify [error, info. warning or etc] message, default is null
+
+    @example
+      var selectFieldCustom: {
+        classMod: "",
+        uniqName: "login_select",
+        labelVal: "Select custom",
+        selectClassMod: "",
+        selectOption: [
+          'Some option 1',
+          'Some option 2',
+          'Some option 3'
+        ],
+        placeholderVal: "Choose your..."
+      }
+      var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
+
+      +formSelectCustom(dataFormObj.selectFieldCustom)
+      +formSelectCustom(dataFormObj.selectFieldCustom, notifySelectMessage)
+      +formSelectSelectric(dataFormObj.selectFieldSelectric)
+
+//- ========================
+mixin formSelectCustom(objValue, notifyArr=null)
+  .c-form__field.c-form__field--select(class!= objValue.classMod)
+
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal, objValue.uniqueName)
+
+    .c-form__select-wrapper
+      .c-form__select-value
+
+      select.c-form__select(
+        id!= objValue.uniqueName
+        name!= objValue.uniqueName
+        class!= objValue.selectClassMod
+        select-js
+      )
+        option(value="placeholder" disabled selected hidden)!= objValue.placeholderVal
+        each val, idx in objValue.selectOption
+          option(value!= val)!= val
+
+      .c-form__select-icon
+        i
+
+    +formNotify(notifyArr)
+
+mixin formSelectSelectric(objValue, notifyArr=null)
+  .c-form__field.c-form__field--select(class!= objValue.classMod)
+
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal, objValue.uniqueName)
+
+    .c-form__selectric-wrapper
+      select.c-form__selectric(
+        id!= objValue.uniqueName
+        name!= objValue.uniqueName
+        class!= objValue.selectClassMod
+        selectric-js
+      )
+        each val, idx in objValue.selectOption
+          option(value!= val)!= val
+
+    +formNotify(notifyArr)
+
+
+//- FORM RADIO BUTTON
+//- ========================
+
+
+
+//- ========================
+mixin formRadio(objValue, notifyArr=null)
+  .c-form__field.c-form__field--radio(class!= objValue.classMod)
+
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal)
+
+    .c-form__radio-wrapper
+      input.c-form__radio(type="radio"
+        id!= objValue.uniqueName
+        name!= objValue.radioGroupName
+        class!= objValue.radioClassMod
+        checked!= attributes.checked
+        radio-js
+      )
+
+      label.c-form__radio-content(for!= objValue.uniqueName)
+        .c-form__radio-icon
+          i
+        span.c-form__radio-text!= objValue.radioContent
+
+    +formNotify(notifyArr)
+
 //- mixin formCheckbox()
 //- mixin formSwap()

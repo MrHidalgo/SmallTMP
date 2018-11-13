@@ -11,33 +11,24 @@ block content
     form.c-form
       //.c-form__group.c-form__group--two
       //  .c-form__group-col.c-form__group-col-0
-      //    +formInput(dataFormObj.inputName)
+      //    +formRadio(dataFormObj.radioFieldCustom1)(checked="checked")
+      //    //+formRadio(dataFormObj.radioFieldCustom2)
       //  .c-form__group-col.c-form__group-col-1
       //    +formInput(dataFormObj.inputName)
       //
       //.c-form__group.c-form__group--three
       //  .c-form__group-col.c-form__group-col-0
-      //    +formInput(dataFormObj.inputName)
-      //  .c-form__group-col.c-form__group-col-1
-      //    +formInput(dataFormObj.inputName)
-      //  .c-form__group-col.c-form__group-col-2
-      //    +formInput(dataFormObj.inputName)
-      //
-      //.c-form__group.c-form__group--two
-      //  .c-form__group-col.c-form__group-col-0
-      //    +formInput(dataFormObj.inputName)
-      //  .c-form__group-col.c-form__group-col-1
       //    +formTextarea(dataFormObj.textareaField)
-      //
-      //.c-form__group.c-form__group--three
-      //  .c-form__group-col.c-form__group-col-0
-      //    +formInput(dataFormObj.inputName)
       //  .c-form__group-col.c-form__group-col-1
-      //    +formInput(dataFormObj.inputName)
+      //    +formSelectCustom(dataFormObj.selectFieldCustom)
       //  .c-form__group-col.c-form__group-col-2
-      //    +formTextarea(dataFormObj.textareaField)
+      //    +formRadio(dataFormObj.radioFieldCustom2)
 
       +formInput(dataFormObj.inputName)
-      //+formInput(dataFormObj.inputEmail)
-      //+formInput(dataFormObj.inputPassword)
-      +formTextarea(dataFormObj.textareaField, dataFormObj.notifyTextareaMessage)
+      +formTextarea(dataFormObj.textareaField)
+      +formSelectCustom(dataFormObj.selectFieldCustom, dataFormObj.notifySelectMessage)
+      .c-form__group.c-form__group--two
+        .c-form__group-col.c-form__group-col-0
+          +formRadio(dataFormObj.radioFieldCustom1)(checked="checked")
+        .c-form__group-col.c-form__group-col-1
+          +formRadio(dataFormObj.radioFieldCustom2)

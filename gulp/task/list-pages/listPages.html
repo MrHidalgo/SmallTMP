@@ -245,7 +245,7 @@
     .pagelist__progress i {
       height: 5px;
       display: block;
-      background: #00e676;
+      background: #9e9e9e;
     }
 
     .pagelist__filename {
@@ -263,7 +263,7 @@
       left: 0;
       right: 0;
       z-index: 200;
-      background: #009688;
+      background: #2196f3;
       box-shadow: 0 1px 10px 1px rgba(0,0,0,0.15);
     }
 
@@ -297,10 +297,10 @@
     .types button, .types button:active {
       height: 46px;
       width: 112px;
-      border: 1px solid #eee;
-      background: #fff;
+      border: 1px solid #fff;
+      background: transparent;
       font-size: 14px;
-      color: #000;
+      color: #fff;
       text-align: left;
       font-family: 'Politica', serif;
       padding-left: 38px;
@@ -311,8 +311,20 @@
       border-radius: 5px;
     }
 
+    .types button .icon {
+      color: #fff;
+      fill: #fff;
+      transition: all .25s ease-in-out;
+    }
+
     .types button:hover {
-      background: #eee;
+      background: #fff;
+      color: #000;
+    }
+
+    .types button:hover .icon {
+      color: #000;
+      fill: #000;
     }
 
     .types strong {
@@ -337,14 +349,14 @@
     }
 
     .types button.is-active {
-      border-color: #00bcd4;
-      color: #fff;
-      background: #00bcd4;
+      border-color: #fff;
+      color: #000;
+      background: #fff;
     }
 
     .types button.is-active .icon {
-      color: #fff;
-      fill: #fff;
+      color: #000;
+      fill: #000;
     }
 
     .types span {

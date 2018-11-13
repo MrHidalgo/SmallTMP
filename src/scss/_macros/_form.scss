@@ -11,6 +11,8 @@ $form-field-group-three-margin: $form-field-group-two-margin + 5px;
 // field
 $form-field-margin: 20px;
 $form-field-input-height: 50px;
+$form-field-radio-height: $form-field-input-height;
+$form-field-select-height: $form-field-input-height;
 $form-field-textarea-height: 150px;
 
 // label
@@ -25,7 +27,33 @@ $form-input-border-color: gray;
 $form-input-box-shadow: none;
 $form-input-padding: 0 20px;
 $form-input-color: #000;
+$form-input-font-size: 16px;
 $form-input-placeholder-color: #666;
+
+// radio
+$form-radio-icon-wrapper-width: 30px;
+$form-radio-icon-width: 20px;
+$form-radio-icon-height: $form-radio-icon-width;
+$form-radio-icon-border-radius: 100%;
+$form-radio-icon-border-width: 1px;
+$form-radio-icon-border-color-inactive: rgba(#000, 0.5);
+$form-radio-icon-border-color-active: rgba(#000, 1);
+$form-radio-font-size: 16px;
+$form-radio-icon-inner-width: $form-radio-icon-width / 2;
+$form-radio-icon-inner-height: $form-radio-icon-height / 2;
+$form-radio-icon-inner-border-radius: 100%;
+$form-radio-icon-inner-background-color: rgba(#000, 1);
+
+// select
+$form-select-border-radius: 5px;
+$form-select-border-width: 1px;
+$form-select-border-color: gray;
+$form-select-box-shadow: none;
+$form-select-icon-width: 50px;
+$form-select-value-padding-left: 20px;
+$form-select-value-color: #000;
+$form-select-value-font-size: $form-input-font-size;
+$form-select-placeholder-color: $form-input-placeholder-color;
 
 // textarea
 $form-textarea-border-radius: $form-input-border-radius;
@@ -34,6 +62,7 @@ $form-textarea-border-color: $form-input-border-color;
 $form-textarea-box-shadow: $form-input-box-shadow;
 $form-textarea-padding: 20px;
 $form-textarea-color: $form-input-color;
+$form-textarea-font-size: $form-input-font-size;
 $form-textarea-placeholder-color: $form-input-placeholder-color;
 
 // notify
@@ -46,6 +75,7 @@ $form-notify-font-weight: bold;
 
 .c-form {
   padding: 15px;
+
   &.is-focus {}
 
   &__wrapper {}
@@ -84,6 +114,7 @@ $form-notify-font-weight: bold;
     margin-bottom: $form-field-margin;
 
     &.is-error,
+    &.is-invalid,
     &.is-warning,
     &.is-info {
       .c-form__notify {
@@ -91,11 +122,15 @@ $form-notify-font-weight: bold;
       }
     }
 
+    &.is-invalid,
     &.is-error {
       .c-form__label {
         color: $c-danger;
       }
       .c-form__input,
+      .c-form__select-wrapper,
+      .c-form__select-wrapper .c-form__select-value,
+      .c-form__select-wrapper .c-form__select-icon i,
       .c-form__textarea {
         border-color: $c-danger;
         color: $c-danger;
@@ -114,6 +149,9 @@ $form-notify-font-weight: bold;
         color: $c-warning;
       }
       .c-form__input,
+      .c-form__select-wrapper,
+      .c-form__select-wrapper .c-form__select-value,
+      .c-form__select-wrapper .c-form__select-icon i,
       .c-form__textarea {
         border-color: $c-warning;
         color: $c-warning;
@@ -132,6 +170,9 @@ $form-notify-font-weight: bold;
         color: $c-info;
       }
       .c-form__input,
+      .c-form__select-wrapper,
+      .c-form__select-wrapper .c-form__select-value,
+      .c-form__select-wrapper .c-form__select-icon i,
       .c-form__textarea {
         border-color: $c-info;
         color: $c-info;
@@ -152,7 +193,11 @@ $form-notify-font-weight: bold;
 
     &--textarea {}
 
-    &--radio {}
+    &--radio {
+      .c-form__label {
+        cursor: default;
+      }
+    }
 
     &--checkbox {}
   }
@@ -167,6 +212,7 @@ $form-notify-font-weight: bold;
   }
 
   &__input,
+  &__select,
   &__textarea {
     &-wrapper {
       position: relative;
@@ -175,6 +221,7 @@ $form-notify-font-weight: bold;
   }
 
   &__input,
+  &__select,
   &__textarea {
     outline: none;
     position: absolute;
@@ -193,13 +240,80 @@ $form-notify-font-weight: bold;
     border: $form-input-border-width solid $form-input-border-color;
     border-radius: $form-input-border-radius;
     box-shadow: $form-input-box-shadow;
+    font-size: $form-input-font-size;
 
     &-wrapper {
       height: $form-field-input-height;
     }
   }
 
-  &__select {}
+  &__select {
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    box-shadow: none;
+
+    &-wrapper {
+      height: $form-field-select-height;
+      border-radius: $form-select-border-radius;
+      border: $form-select-border-width solid $form-select-border-color;
+      box-shadow: $form-select-box-shadow;
+    }
+
+    &-value {
+      z-index: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      line-height: $form-field-select-height;
+      width: calc(100% - #{$form-select-icon-width});
+      padding-left: $form-select-value-padding-left;
+      color: $form-select-placeholder-color;
+      font-size: $form-select-value-font-size;
+
+      .is-choose & {
+        color: $form-select-value-color;
+      }
+    }
+
+    &-icon {
+      z-index: 0;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      right: 0;
+      width: $form-select-icon-width;
+      height: 100%;
+
+      i {
+        padding: 3px;
+        border: solid #000;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        @include transition(transform);
+
+        .is-focus & {
+          transform: rotate(225deg);
+          @include transition(transform);
+        }
+      }
+    }
+  }
+
+  &__selectric {
+    opacity: 0;
+
+    &-wrapper {
+      position: relative;
+    }
+  }
 
   &__textarea {
     resize: none;
@@ -207,13 +321,83 @@ $form-notify-font-weight: bold;
     border: $form-textarea-border-width solid $form-textarea-border-color;
     border-radius: $form-textarea-border-radius;
     box-shadow: $form-textarea-box-shadow;
+    font-size: $form-textarea-font-size;
 
     &-wrapper {
       height: $form-field-textarea-height;
     }
   }
 
-  &__radio {}
+  &__radio {
+    display: none;
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+
+    &:checked {
+      &+label {
+        .c-form__radio-icon {
+          i {
+            border-color: $form-radio-icon-border-color-active;
+            @include transition(border-color);
+
+            &:before {
+              transform: translate(-50%, -50%) scale(1);
+              background-color: $form-radio-icon-inner-background-color;
+              @include transition(transform, background-color);
+            }
+          }
+        }
+      }
+    }
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      height: $form-field-radio-height;
+    }
+
+    &-content {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: $form-radio-icon-wrapper-width;
+
+      i {
+        position: relative;
+        display: flex;
+        width: $form-radio-icon-width;
+        height: $form-radio-icon-height;
+        border-radius: $form-radio-icon-border-radius;
+        border: $form-radio-icon-border-width solid $form-radio-icon-border-color-inactive;
+        @include transition(border-color);
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: $form-radio-icon-inner-width;
+          height: $form-radio-icon-inner-height;
+          border-radius: $form-radio-icon-inner-border-radius;
+          background-color: transparent;
+          @include transition(transform, background-color);
+        }
+      }
+    }
+
+    &-text {
+      max-width: calc(100% - #{$form-radio-icon-wrapper-width});
+      font-size: $form-radio-font-size;
+    }
+  }
 
   &__checkbox {}
 

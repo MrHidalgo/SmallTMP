@@ -1,27 +1,25 @@
-
-
 /**
  * @description Document DOM ready.
  */
-(function() {
-  /**
-   * =============================================
-   * CALLBACK
-   * =============================================
-   */
+(function () {
+	/**
+	 * =============================================
+	 * CALLBACK
+	 * =============================================
+	 */
 
 
-
-  /**
-   * @description Init all method
-   */
-  const initNative = () => {
-    // default
-    initWebFontLoader();
-    initPreventBehavior();
-    initSvg4everybody();
-    // lib
-    // callback
-  };
-  initNative();
+	/**
+	 * @description Init all method
+	 */
+	const initNative = () => {
+		// default
+		initWebFontLoader();
+		initPreventBehavior();
+		initSvg4everybody();
+		// lib
+		initCustomSelect();
+		// callback
+	};
+	initNative();
 })();

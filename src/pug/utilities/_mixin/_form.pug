@@ -197,7 +197,23 @@ mixin formSelectSelectric(objValue, notifyArr=null)
 //- FORM RADIO BUTTON
 //- ========================
 
+    @param objValue {Object} - object value
+    @param notifyArr {Array} - notify [error, info. warning or etc] message, default is null
 
+    @example
+      var radioField: {
+        classMod: "",
+        labelVal: "Radio label name",
+        uniqueName: "login_radio",
+        radioChecked: "checked",
+        radioGroupName: "login",
+        radioClassMod: "",
+        radioContent: "Some radio content"
+      };
+      var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
+
+      +formRadio(dataFormObj.selectFieldCustom)(checked="checked")
+      +formRadio(dataFormObj.selectFieldCustom, notifyRadioMessage)
 
 //- ========================
 mixin formRadio(objValue, notifyArr=null)
@@ -222,5 +238,46 @@ mixin formRadio(objValue, notifyArr=null)
 
     +formNotify(notifyArr)
 
-//- mixin formCheckbox()
-//- mixin formSwap()
+
+//- FORM RADIO BUTTON
+//- ========================
+
+    @param objValue {Object} - object value
+    @param notifyArr {Array} - notify [error, info. warning or etc] message, default is null
+
+    @example
+      var checkboxField: {
+        classMod: "",
+        labelVal: "Checkbox label name",
+        uniqueName: "login_checkbox",
+        checkboxChecked: "",
+        checkboxClassMod: "",
+        checkboxContent: "Some checkbox content"
+      };
+      var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
+
+      +formCheckbox(dataFormObj.checkboxField1)(checked="checked")
+      +formCheckbox(dataFormObj.checkboxField2)
+
+//- ========================
+mixin formCheckbox(objValue, notifyArr=null)
+  .c-form__field.c-form__field--checkbox(class!= objValue.classMod)
+
+    if(objValue.labelVal)
+      +formLabel(objValue.labelVal)
+
+    .c-form__checkbox-wrapper
+      input.c-form__checkbox(type="checkbox"
+        id!= objValue.uniqueName
+        name!= objValue.uniqueName
+        class!= objValue.checkboxClassMod
+        checked!= attributes.checked
+        checkbox-js
+      )
+
+      label.c-form__checkbox-content(for!= objValue.uniqueName)
+        .c-form__checkbox-icon
+          i
+        span.c-form__checkbox-text!= objValue.checkboxContent
+
+    +formNotify(notifyArr)

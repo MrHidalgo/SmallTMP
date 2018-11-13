@@ -1,5 +1,5 @@
 
-const customSelect = {
+const _customSelect = {
 	init() {
 		const _select = document.querySelectorAll('select');
 
@@ -43,20 +43,20 @@ const customSelect = {
 const initCustomSelect = () => {
 	const _select = document.querySelectorAll('select');
 
-	customSelect.init();
+	_customSelect.init();
 
 	for (let elem of _select) {
 		elem.addEventListener('change', () => {
-			customSelect.change(elem);
+			_customSelect.change(elem);
 		});
 		elem.addEventListener('focus', () => {
-			customSelect.focusElem(elem);
+			_customSelect.focusElem(elem);
 		});
 		elem.addEventListener('click', () => {
-			customSelect.focusElem(elem);
+			_customSelect.focusElem(elem);
 		});
 		elem.addEventListener('blur', () => {
-			customSelect.blurElem(elem);
+			_customSelect.blurElem(elem);
 		});
 	}
 };

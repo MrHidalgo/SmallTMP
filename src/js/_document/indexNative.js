@@ -18,7 +18,6 @@
 		initPreventBehavior();
 		initSvg4everybody();
 		// lib
-		initCustomSelect();
 		// callback
 	};
 	initNative();

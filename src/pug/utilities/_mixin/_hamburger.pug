@@ -5,6 +5,7 @@
 
     @example
       +hamburger()
+      +hamburgerCustom()
 
 //- ========================
 mixin hamburger(classMod)
@@ -15,3 +16,12 @@ mixin hamburger(classMod)
   )
     .hamburger-box
       .hamburger-inner
+
+mixin hamburgerCustom(classMod)
+  .c-hamburger(
+    class!= "c-hamburger--custom"
+    role="button"
+    hamburger-js
+  )
+    .c-hamburger__box
+      .c-hamburger__inner

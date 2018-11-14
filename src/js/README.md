@@ -26,6 +26,10 @@
 * `initHamburger()`;
 * `initHeaderFixed()`;
 * `initPreventBehavior()`;
+* `initInputFocus()`;
+* `initSelectric()`;
+* `initValidation()`;
+* `initCustomSelect()`;
 * `initObjectFitImages()` - add image tag some className `.object-fit with .object-fit--coverCenter .object-fit--containCenter`;
 
 * `initWebFontLoader()` - need to register the fonts that will be used:
@@ -45,3 +49,4 @@
 * `initSmoothScroll()` - accepts two parameters:
   - `btnName` - default `[anchor-js]`
   - `animateSpeed` - default `1000`
+  

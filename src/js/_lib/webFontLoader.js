@@ -2,11 +2,15 @@
 
 /**
  * @name initWebFontLoader
+ *
  * @description Loading fonts regardless of the source, then adds a standard set of events you may use to control the loading experience... for more details => https://github.com/typekit/fvd
  */
 const initWebFontLoader = () => {
 
-  WebFont.load({
+	/**
+   * @description
+	 */
+	WebFont.load({
     google: {
       families: [
         'Roboto:100,300,400,500,700,900'
@@ -14,6 +18,9 @@ const initWebFontLoader = () => {
     }
   });
 
+	/**
+   * @description
+	 */
   // const WebFontConfig = {
   //   custom: {
   //     families: [

@@ -2,9 +2,11 @@
 
 /**
  * @name initPreventBehavior
+ *
  * @description
  */
 const initPreventBehavior = () => {
+
   const link = document.querySelectorAll("a");
 
   link.forEach((val, idx) => {

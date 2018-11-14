@@ -2,6 +2,7 @@
 
 /**
  * @name initObjectFitImages
+ *
  * @description Polyfill object-fit/object-position on <img>
  */
 const initObjectFitImages = () => {

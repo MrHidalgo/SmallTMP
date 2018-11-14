@@ -2,6 +2,7 @@
 
 /**
  * @name initHamburger
+ *
  * @description Init hamburger logic with animated
  */
 const initHamburger = () => {
@@ -10,7 +11,10 @@ const initHamburger = () => {
     hideScrollContainer = document.querySelectorAll("html, body"),
     mobileContainer = document.querySelector("[mobile-block-js]");
 
-  btn.addEventListener("click", (ev) => {
+	/**
+   * @description
+	 */
+	btn.addEventListener("click", (ev) => {
     const elem = ev.currentTarget;
 
     elem.classList.toggle("is-active");

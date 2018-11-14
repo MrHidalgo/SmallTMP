@@ -1,6 +1,16 @@
 
+
+/**
+ * @name initValidation
+ *
+ * @description
+ */
 const initValidation = () => {
 
+	/**
+	 *
+	 * @param form
+	 */
 	const validationSubmitHandler = (form) => {
 		$.ajax({
 			type: "POST",
@@ -9,29 +19,46 @@ const initValidation = () => {
 			success: (response) => {
 				const data = $.parseJSON(response);
 
-				console.log('data.status: ', data.status);
-
 				if (data.status === 'success') {
 					// do something
-					console.log("success");
 				} else {
-					console.log("success");
-					$(form).find('[data-error]').html(data.message).show();
+					// do something
 				}
 			}
 		});
 	};
 
+	/**
+	 *
+	 * @param error
+	 * @param element
+	 */
+	const validationErrorPlacement = function(error, element) {
+		error.appendTo(element.closest('.c-form__field'));
+	};
+
+	/**
+	 *
+	 * @param element
+	 */
 	const validationHighlight = (element) => {
-		$(element).closest('.c-form__field').addClass("is-error");
+		$(element).closest('.c-form__field').addClass('is-error');
 	};
 
+	/**
+	 *
+	 * @param element
+	 */
 	const validationUnhighlight = (element) => {
-		$(element).closest('.c-form__field').removeClass("is-error");
+		$(element).closest('.c-form__field').removeClass('is-error');
 	};
 
+	/**
+	 * @description
+	 */
 	$("#formName").validate({
 		submitHandler: validationSubmitHandler,
+		errorPlacement: validationErrorPlacement,
 		highlight: validationHighlight,
 		unhighlight: validationUnhighlight,
 		rules: {

@@ -2,9 +2,11 @@
 
 /**
  * @name initSwiper
+ *
  * @description initialize Swiper
  */
 const initSwiper = () => {
+
   const mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     wrapperClass: "swiper-wrapper",

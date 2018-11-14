@@ -2,6 +2,7 @@
 
 /**
  * @name initBarbaJSTransition
+ *
  * @description Barba.js - pjax transition pages.
  */
 function initBarbaJSTransition() {

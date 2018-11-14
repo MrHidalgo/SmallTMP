@@ -1,7 +1,9 @@
 
 
 /**
+ * @name initPopups
  *
+ * @description
  */
 const initPopups = () => {
 

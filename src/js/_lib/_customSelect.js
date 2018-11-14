@@ -1,4 +1,10 @@
 
+
+/**
+ *
+ * @type {{init(): void, change(): void, chooseVal(*): void, focusElem(*): void, blurElem(*): void}}
+ * @private
+ */
 const _customSelect = {
 	init() {
 		const _select = document.querySelectorAll('select');

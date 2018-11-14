@@ -2,6 +2,7 @@
 
 /**
  * @name initHeaderFixed
+ *
  * @description Fixing the site header in the scrolling page.
  */
 const initHeaderFixed = () => {

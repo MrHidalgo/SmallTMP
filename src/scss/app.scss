@@ -19,8 +19,8 @@
 ///
 /// SHARED
 /// ===============
-//@import "_shared/fonts";
-@import "_shared/main-custom-reset";
+@import "_shared/fonts";
+@import "_shared/main-setting-reset";
 @import "_shared/grid";
 @import "_shared/common";
 //@import "_shared/viewPortChecker";
@@ -38,7 +38,7 @@
 //@import "_macros/title";
 //@import "_macros/btn";
 //@import "_macros/modal";
-//@import "_macros/form";
+@import "_macros/form";
 ///
 /// COMPONENTS
 /// ===============

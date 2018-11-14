@@ -2,94 +2,94 @@
 
 -
   var dataFormObj = {
-  inputName: {
-    classMod: "",
-    uniqueName: "login_name",
-    labelVal: "Name",
-    inputType: "",
-    inputClassMod: "",
-    placeholderVal: "Type your name",
-    val: ""
-  },
-  inputEmail: {
-    classMod: "",
-    uniqueName: "login_email",
-    labelVal: "Email",
-    inputType: "",
-    inputClassMod: "",
-    placeholderVal: "Type your email",
-    val: ""
-  },
-  inputPassword: {
-    classMod: "",
-    uniqueName: "login_password",
-    labelVal: "Password",
-    inputType: "password",
-    inputClassMod: "",
-    placeholderVal: "Type your password",
-    val: ""
-  },
+    inputName: {
+      classMod: "",
+      uniqueName: "name",
+      labelVal: "Name",
+      inputType: "",
+      inputClassMod: "",
+      placeholderVal: "Type your name",
+      val: ""
+    },
+    inputEmail: {
+      classMod: "",
+      uniqueName: "email",
+      labelVal: "Email",
+      inputType: "email",
+      inputClassMod: "",
+      placeholderVal: "Type your email",
+      val: ""
+    },
+    inputPassword: {
+      classMod: "",
+      uniqueName: "password",
+      labelVal: "Password",
+      inputType: "password",
+      inputClassMod: "",
+      placeholderVal: "Type your password",
+      val: ""
+    },
 
-  radioField: {
-    classMod: "",
-    labelVal: "Radio label name",
-    uniqueName: "login_radio-1",
-    radioChecked: "checked",
-    radioGroupName: "login",
-    radioClassMod: "",
-    radioContent: "Some radio content"
-  },
+    radioField: {
+      classMod: "",
+      labelVal: "Radio label name",
+      uniqueName: "radio",
+      radioGroupName: "radio",
+      radioValue: "radio",
+      radioClassMod: "",
+      radioContent: "Some radio content"
+    },
 
-  checkboxField: {
-    classMod: "",
-    labelVal: "Checkbox label name",
-    uniqueName: "login_checkbox1",
-    checkboxChecked: "",
-    checkboxClassMod: "",
-    checkboxContent: "Some checkbox content"
-  },
+    checkboxField: {
+      classMod: "",
+      labelVal: "Checkbox label name",
+      uniqueName: "checkbox",
+      checkboxValue: "checkbox",
+      checkboxClassMod: "",
+      checkboxContent: "Some checkbox content"
+    },
 
-  textareaField: {
-    classMod: "",
-    uniqueName: "login_message",
-    labelVal: "Message",
-    textareaClassMod: "",
-    placeholderVal: "Type your message",
-    val: ""
-  },
+    textareaField: {
+      classMod: "",
+      uniqueName: "message",
+      labelVal: "Message",
+      textareaClassMod: "",
+      placeholderVal: "Type your message",
+      val: ""
+    },
 
-  selectFieldCustom: {
-    classMod: "",
-    uniqueName: "login_select",
-    labelVal: "Select custom",
-    selectClassMod: "",
-    selectOption: [
-      'Some option 1',
-      'Some option 2',
-      'Some option 3'
-    ],
-    placeholderVal: "Choose your..."
-  },
-  selectFieldSelectric: {
-    classMod: "",
-    uniqueName: "login_selectric",
-    labelVal: "Select selectric",
-    selectClassMod: "",
-    selectOption: [
-      'Some option 1',
-      'Some option 2',
-      'Some option 3'
-    ],
-    placeholderVal: "Choose your..."
-  },
+    selectFieldCustom: {
+      classMod: "",
+      uniqueName: "select",
+      labelVal: "Select custom",
+      selectClassMod: "",
+      selectOption: [
+        'Some option 1',
+        'Some option 2',
+        'Some option 3'
+      ],
+      placeholderVal: "Choose your..."
+    },
+    selectFieldSelectric: {
+      classMod: "",
+      uniqueName: "login_selectric",
+      labelVal: "Select selectric",
+      selectClassMod: "",
+      selectOption: [
+        'Some option 1',
+        'Some option 2',
+        'Some option 3'
+      ],
+      placeholderVal: "Choose your..."
+    },
 
-  notifyNameMessage : [],
-  notifyEmailMessage : [],
-  notifyPasswordMessage : [],
-  notifyTextareaMessage : [],
-  notifySelectMessage : [],
-  notifyRadioMessage : [],
-  notifyCheckboxMessage : []
+    notifyNameMessage : ['This field is required.'],
+    notifyEmailMessage : ['Please enter a valid email address.'],
+    notifyPasswordMessage : ['Please enter no more than {8} characters.'],
+    notifyTextareaMessage : ['This field is required.'],
+    notifySelectMessage : ['This field is required.'],
+    notifyRadioMessage : ['This field is required.'],
+    notifyCheckboxMessage : ['This field is required.']
   };
 
 //- DATA FORM :: END

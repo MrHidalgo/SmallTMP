@@ -12,7 +12,7 @@
 mixin formLabel(labelVal, forValue=null)
   if(forValue != null)
     label.c-form__label(
-      for!= forValue
+    for!= forValue
     )!= labelVal
   else
     label.c-form__label!= labelVal
@@ -57,8 +57,6 @@ mixin formNotify(arr)
     var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
 
     @example
-      +formInput(objValue)
-      +formInput(objValue, notifyArr)
       +formInput(dataFormObj.inputName)
       +formInput(dataFormObj.inputName, dataFormObj.notifyInputMessage)
 
@@ -71,13 +69,13 @@ mixin formInput(objValue, notifyArr=null)
 
     .c-form__input-wrapper
       input.c-form__input(
-        type!= (objValue.inputType) ? objValue.inputType: 'text'
-        id!= objValue.uniqueName
-        name!= objValue.uniqueName
-        placeholder!= objValue.placeholderVal
-        value!= objValue.val
-        class!= objValue.inputClassMod
-        input-js
+      type!= (objValue.inputType) ? objValue.inputType : 'text'
+      id!= objValue.uniqueName
+      name!= objValue.uniqueName
+      placeholder!= objValue.placeholderVal
+      value!= objValue.val
+      class!= objValue.inputClassMod
+      input-js
       )
 
     +formNotify(notifyArr)
@@ -100,8 +98,6 @@ mixin formInput(objValue, notifyArr=null)
     var notifyArr = ['Some_error_name_1', 'Some_error_name_2', 'Some_error_name_3'];
 
     @example
-      +formTextarea(objValue)
-      +formTextarea(objValue, notifyArr)
       +formTextarea(dataFormObj.textareaName)
       +formTextarea(dataFormObj.textareaName, dataFormObj.notifyTextareaMessage)
 
@@ -114,12 +110,12 @@ mixin formTextarea(objValue, notifyArr=null)
 
     .c-form__textarea-wrapper
       textarea.c-form__textarea(
-        id!= objValue.uniqueName
-        name!= objValue.uniqueName
-        placeholder!= objValue.placeholderVal
-        value!= objValue.val
-        class!= objValue.textareaClassMod
-        textarea-js
+      id!= objValue.uniqueName
+      name!= objValue.uniqueName
+      placeholder!= objValue.placeholderVal
+      value!= objValue.val
+      class!= objValue.textareaClassMod
+      textarea-js
       )
 
     +formNotify(notifyArr)
@@ -161,12 +157,12 @@ mixin formSelectCustom(objValue, notifyArr=null)
       .c-form__select-value
 
       select.c-form__select(
-        id!= objValue.uniqueName
-        name!= objValue.uniqueName
-        class!= objValue.selectClassMod
-        select-js
+      id!= objValue.uniqueName
+      name!= objValue.uniqueName
+      class!= objValue.selectClassMod
+      select-js
       )
-        option(value="placeholder" disabled selected hidden)!= objValue.placeholderVal
+        option(value="" disabled selected hidden)!= objValue.placeholderVal
         each val, idx in objValue.selectOption
           option(value!= val)!= val
 
@@ -183,10 +179,10 @@ mixin formSelectSelectric(objValue, notifyArr=null)
 
     .c-form__selectric-wrapper
       select.c-form__selectric(
-        id!= objValue.uniqueName
-        name!= objValue.uniqueName
-        class!= objValue.selectClassMod
-        selectric-js
+      id!= objValue.uniqueName
+      name!= objValue.uniqueName
+      class!= objValue.selectClassMod
+      selectric-js
       )
         each val, idx in objValue.selectOption
           option(value!= val)!= val
@@ -205,8 +201,8 @@ mixin formSelectSelectric(objValue, notifyArr=null)
         classMod: "",
         labelVal: "Radio label name",
         uniqueName: "login_radio",
-        radioChecked: "checked",
         radioGroupName: "login",
+        radioValue: "",
         radioClassMod: "",
         radioContent: "Some radio content"
       };
@@ -224,11 +220,12 @@ mixin formRadio(objValue, notifyArr=null)
 
     .c-form__radio-wrapper
       input.c-form__radio(type="radio"
-        id!= objValue.uniqueName
-        name!= objValue.radioGroupName
-        class!= objValue.radioClassMod
-        checked!= attributes.checked
-        radio-js
+      id!= objValue.uniqueName
+      name!= objValue.radioGroupName
+      class!= objValue.radioClassMod
+      value!= objValue.radioValue
+      checked!= attributes.checked
+      radio-js
       )
 
       label.c-form__radio-content(for!= objValue.uniqueName)
@@ -239,7 +236,7 @@ mixin formRadio(objValue, notifyArr=null)
     +formNotify(notifyArr)
 
 
-//- FORM RADIO BUTTON
+//- FORM CHECKBOX BUTTON
 //- ========================
 
     @param objValue {Object} - object value
@@ -251,6 +248,7 @@ mixin formRadio(objValue, notifyArr=null)
         labelVal: "Checkbox label name",
         uniqueName: "login_checkbox",
         checkboxChecked: "",
+        checkboxValue: "",
         checkboxClassMod: "",
         checkboxContent: "Some checkbox content"
       };
@@ -267,12 +265,14 @@ mixin formCheckbox(objValue, notifyArr=null)
       +formLabel(objValue.labelVal)
 
     .c-form__checkbox-wrapper
-      input.c-form__checkbox(type="checkbox"
-        id!= objValue.uniqueName
-        name!= objValue.uniqueName
-        class!= objValue.checkboxClassMod
-        checked!= attributes.checked
-        checkbox-js
+      input.c-form__checkbox(
+      type="checkbox"
+      id!= objValue.uniqueName
+      name!= objValue.uniqueName
+      class!= objValue.checkboxClassMod
+      value!= objValue.checkboxValue
+      checked!= attributes.checked
+      checkbox-js
       )
 
       label.c-form__checkbox-content(for!= objValue.uniqueName)
@@ -281,3 +281,21 @@ mixin formCheckbox(objValue, notifyArr=null)
         span.c-form__checkbox-text!= objValue.checkboxContent
 
     +formNotify(notifyArr)
+
+//- FORM BUTTON
+//- ========================
+
+    @param classMod {String}
+    @param btnClassMod {String}
+    @param btnVal {String}
+
+    @example
+      +formBtn('', 'c-btn c-btn--bg', 'Submit')
+
+//- ========================
+mixin formBtn(classMod, btnClassMod, btnVal)
+  .c-form__field.c-form__field--btn(class!= classMod)
+    button.c-form__btn(
+    type="submit"
+    class!= btnClassMod
+    )!= btnVal

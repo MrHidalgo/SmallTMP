@@ -15,7 +15,7 @@ const _customSelect = {
 				_selectedValue = _selectedOption.value,
 				_selectedText = _selectedOption.text;
 
-			if(_selectedValue !== 'placeholder') {
+			if(_selectedValue !== '') {
 				this.chooseVal(elem);
 			}
 

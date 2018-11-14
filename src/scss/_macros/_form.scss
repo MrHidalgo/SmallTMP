@@ -9,7 +9,7 @@ $form-field-group-two-margin: 15px;
 $form-field-group-three-margin: $form-field-group-two-margin + 5px;
 
 // field
-$form-field-margin: 20px;
+$form-field-margin: 30px;
 $form-field-input-height: 50px;
 $form-field-radio-height: $form-field-input-height;
 $form-field-checkbox-height: $form-field-input-height;
@@ -81,7 +81,8 @@ $form-textarea-font-size: $form-input-font-size;
 $form-textarea-placeholder-color: $form-input-placeholder-color;
 
 // notify
-$form-notify-font-size: 14px;
+$form-notify-color: #000;
+$form-notify-font-size: 12px;
 $form-notify-font-weight: bold;
 
 // ==================================================
@@ -89,6 +90,11 @@ $form-notify-font-weight: bold;
 // ==================================================
 
 .c-form {
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
   &.is-focus {}
 
   &__wrapper {}
@@ -132,6 +138,23 @@ $form-notify-font-weight: bold;
     &.is-info {
       .c-form__notify {
         display: block;
+      }
+      .c-form__label {
+        @include transition(color);
+      }
+      .c-form__input,
+      .c-form__textarea {
+        @include transition(border-color, color);
+      }
+      .c-form__select-wrapper,
+      .c-form__select-wrapper .c-form__select-value,
+      .c-form__select-wrapper .c-form__select-icon i {
+        @include transition(border-color, color);
+      }
+      .c-form__notify {
+        li {
+          @include transition(color);
+        }
       }
     }
 
@@ -314,6 +337,7 @@ $form-notify-font-weight: bold;
     height: $form-label-height;
     margin-bottom: $form-label-margin-bottom;
     font-size: $form-label-font-size;
+    @include transition(color);
   }
 
   &__input,
@@ -346,6 +370,7 @@ $form-notify-font-weight: bold;
     border-radius: $form-input-border-radius;
     box-shadow: $form-input-box-shadow;
     font-size: $form-input-font-size;
+    @include transition(border-color, color);
 
     &-wrapper {
       height: $form-field-input-height;
@@ -364,6 +389,7 @@ $form-notify-font-weight: bold;
       border-radius: $form-select-border-radius;
       border: $form-select-border-width solid $form-select-border-color;
       box-shadow: $form-select-box-shadow;
+      @include transition(border-color);
     }
 
     &-value {
@@ -380,6 +406,7 @@ $form-notify-font-weight: bold;
       padding-left: $form-select-value-padding-left;
       color: $form-select-placeholder-color;
       font-size: $form-select-value-font-size;
+      @include transition(color);
 
       .is-choose & {
         color: $form-select-value-color;
@@ -402,7 +429,7 @@ $form-notify-font-weight: bold;
         border: solid #000;
         border-width: 0 2px 2px 0;
         transform: rotate(45deg);
-        @include transition(transform);
+        @include transition(transform, border-color);
 
         .is-focus & {
           transform: rotate(225deg);
@@ -427,6 +454,7 @@ $form-notify-font-weight: bold;
     border-radius: $form-textarea-border-radius;
     box-shadow: $form-textarea-box-shadow;
     font-size: $form-textarea-font-size;
+    @include transition(border-color, color);
 
     &-wrapper {
       height: $form-field-textarea-height;
@@ -435,13 +463,12 @@ $form-notify-font-weight: bold;
 
   &__radio,
   &__checkbox {
-    display: none;
-    position: absolute;
-    width: 0.1px;
-    height: 0.1px;
     opacity: 0;
+    position: absolute;
     top: 0;
     left: 0;
+    width: 0;
+    height: 0;
 
     &-wrapper {
       position: relative;
@@ -548,7 +575,7 @@ $form-notify-font-weight: bold;
           content: '';
           opacity: 0;
           position: relative;
-          top: -1px;
+          top: -2px;
           transform: rotate(45deg);
           width: $form-checkbox-icon-inner-width;
           height: $form-checkbox-icon-inner-height;
@@ -572,13 +599,34 @@ $form-notify-font-weight: bold;
     left: 0;
     width: 100%;
     height: $form-field-margin;
+    padding-top: 5px;
+    animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-name: c-fadeIn;
 
     ul {
       li {
+        color: $form-notify-color;
         font-size: $form-notify-font-size;
         font-weight: $form-notify-font-weight;
+        @include transition(color);
       }
     }
+  }
+
+  #radio-error,
+  #checkbox-error,
+  #select-error {
+    display: none !important;
+  }
+}
+
+@keyframes c-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

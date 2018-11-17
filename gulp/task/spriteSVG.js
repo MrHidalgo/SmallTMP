@@ -60,11 +60,6 @@ gulp.task('spriteSVG', function () {
             },
             example: true,
           }
-        },
-        shape: {
-          spacing: {
-            padding: 10
-          }
         }
       }))
       .pipe(gulp.dest(configPath.dest.img));

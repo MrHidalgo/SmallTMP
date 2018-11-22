@@ -45,6 +45,14 @@ $btn-color--border: rgba(#000, 1);
   &--bg {
     background-color: $bth-background-color;
   }
+
+  &__text {
+    &-wrap {}
+  }
+
+  &__icon {
+    &-wrap {}
+  }
 }
 
 // BUTTON :: END

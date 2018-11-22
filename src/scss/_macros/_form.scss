@@ -4,6 +4,9 @@
 // ==================================================
 // ==================================================
 
+// form
+$form-width: 600px;
+
 // group
 $form-field-group-two-margin: 15px;
 $form-field-group-three-margin: $form-field-group-two-margin + 5px;
@@ -91,7 +94,7 @@ $form-notify-font-weight: bold;
 
 .c-form {
   width: 100%;
-  max-width: 500px;
+  max-width: $form-width;
   margin-left: auto;
   margin-right: auto;
 
@@ -103,17 +106,18 @@ $form-notify-font-weight: bold;
     display: flex;
     align-items: flex-start;
 
-    &--two {
+    &--two,
+    &--three {
       justify-content: space-between;
+    }
 
+    &--two {
       .c-form__group-col {
         width: calc(50% - #{$form-field-group-two-margin});
       }
     }
 
-    &--three{
-      justify-content: space-between;
-
+    &--three {
       .c-form__group-col {
         width: calc((100% / 3) - #{$form-field-group-three-margin});
       }

@@ -37,8 +37,10 @@ const scrollAnimation = (elem, el) => {
  * - <div data-vp-scrollHorizontal="false"></div>                 > scrollHorizontal
  */
 const initViewPortChecker = (
-  className = "viewport-hide-js", classNameToAdd = "viewport-show-js animated",
-  offsetVal = 100, callbackFunctionName = scrollAnimation
+  className = "viewport-hide-js",
+  classNameToAdd = "viewport-show-js animated",
+  offsetVal = 100,
+  callbackFunctionName = scrollAnimation
 ) => {
 
   $("." + className).not(".full-visible").each(function(idx, el) {

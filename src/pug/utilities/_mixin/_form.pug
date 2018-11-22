@@ -1,3 +1,23 @@
+//- FORM
+//- ========================
+
+  @example
+
+    form.c-form(action='' method='' autocomplete='off')
+      .c-form__group.c-form__group--two
+        .c-form__group-col.c-form__group-col-0
+          +formInput(dataFormObj.inputName)
+        .c-form__group-col.c-form__group-col-1
+          +formInput(dataFormObj.inputName)
+        {...}
+
+      +formInput(dataFormObj.inputName)
+
+      {...}
+
+//- ========================
+
+
 //- FORM LABEL
 //- ========================
 

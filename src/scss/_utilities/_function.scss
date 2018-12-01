@@ -25,6 +25,30 @@
 }
 
 
+
+
+///
+/// ### Photoshop unit line-height convert to unit num.
+///
+/// @name line-height-convert
+///
+/// @param {Number} $unit
+/// @param {Number} $fontSize
+///
+/// @return {Number}
+///
+/// @example
+///   FUNCTION => line-height-convert():
+///     line-height: line-height-convert(22, 18);
+///   ====================================================
+///
+///
+///
+@function line-height-convert($unit, $fontSize) {
+  @return ($unit / $fontSize);
+}
+
+
 ///
 /// ###
 ///

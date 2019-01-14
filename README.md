@@ -52,7 +52,6 @@ Name | Install | Description
 :---|:---|:---
 [jQuery](https://jquery.com/) | `bower i --save jquery` | jQuery is a fast, small, and feature-rich JavaScript library.
 [jQuery-viewport-checker](https://github.com/dirkgroenen/jQuery-viewport-checker) | `bower i --save jQuery-viewport-checker` | Little script that detects if an element is in the viewport and adds a class to it.
-[jquery-selectric](http://selectric.js.org/) | `bower i --save jquery-selectric` | Fast, simple and light jQuery plugin to customize HTML selects.
 [jquery-validation](https://jqueryvalidation.org/) | `bower i --save jquery-validation` | This jQuery plugin makes simple clientside form validation easy, whilst still offering plenty of customization options.
 [Font-Awesome](https://fontawesome.com/) | `bower i --save Font-Awesome` | Get vector icons and social logos on your website with Font Awesome, the web’s most popular icon set and toolkit.
 [stellar](http://markdalgleish.com/projects/stellar.js/) | `bower i --save jquery.stellar` | Parallax has never been easier.
@@ -72,3 +71,4 @@ Name | Install | Description
 [object-fit-images](https://github.com/bfred-it/object-fit-images) | `uncomments` | Polyfill object-fit/object-position on <img>: IE9, IE10, IE11, Edge, Safari, ...
 [jQuery Migrate](https://github.com/jquery/jquery-migrate) | `uncomments` | APIs and features removed from jQuery core
 [GreenSock - TweenMax](https://greensock.com/docs/TweenMax) | `uncomments` | TweenMax extends TweenLite, adding many useful (but non-essential) features like repeat(), repeatDelay(), yoyo(), and more.
+[jquery-selectric](http://selectric.js.org/) | `uncomments` || `bower i --save jquery-selectric` | Fast, simple and light jQuery plugin to customize HTML selects.

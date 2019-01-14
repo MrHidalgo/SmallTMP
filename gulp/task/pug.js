@@ -3,7 +3,7 @@ const gulp        = require('gulp'),
 	pug             = require('gulp-pug'),
 	plumber         = require('gulp-plumber'),
 	frontMatter     = require('gulp-front-matter'),
-	changed 				= require('gulp-changed'),
+	changedInPlace  = require('gulp-changed-in-place'),
 	htmlmin         = require('gulp-htmlmin');
 
 
@@ -29,7 +29,7 @@ const renderPug = () => {
 	return gulp
 		.src(srcPath)
 		.pipe(plumber(configOption.pipeBreaking.err))
-		.pipe(changed(configPath.dest.html), { extension: '.html' })
+		.pipe(changedInPlace(configOption.changed))
 		.pipe(frontMatter({
 			property: 'data'
 		}))

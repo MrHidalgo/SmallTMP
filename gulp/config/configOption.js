@@ -20,17 +20,19 @@ const configOption = {
 
   autoPrefixOptions: {
     browsers: [
-      "last 5 versions",
-      // "> 1%",
-      // "explorer >= 8",
-      // "chrome >= 21",
-      // "firefox esr",
-      // "opera >= 15",
-      // "android >= 2.3",
-      // "safari >= 6.2.6",
-      // "explorermobile >= 10",
-      // "ios >= 6",
-      // "blackberry >= 10"
+      "last 10 versions",
+      ">= 1%",
+      "dead",
+      "unreleased versions",
+      "explorer >= 8",
+      "chrome >= 21",
+      "firefox esr",
+      "opera >= 15",
+      "android >= 2.3",
+      "safari >= 6.2.6",
+      "explorermobile >= 10",
+      "ios >= 6",
+      "blackberry >= 10"
     ],
     cascade: true
   },

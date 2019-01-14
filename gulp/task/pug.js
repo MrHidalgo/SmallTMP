@@ -3,7 +3,7 @@ const gulp        = require('gulp'),
 	pug             = require('gulp-pug'),
 	plumber         = require('gulp-plumber'),
 	frontMatter     = require('gulp-front-matter'),
-	emitty          = require('emitty').setup('src/pug', 'pug'),
+	changed 				= require('gulp-changed'),
 	htmlmin         = require('gulp-htmlmin');
 
 
@@ -29,8 +29,7 @@ const renderPug = () => {
 	return gulp
 		.src(srcPath)
 		.pipe(plumber(configOption.pipeBreaking.err))
-		.pipe(gulpif(global.isPugWatching, emitty.stream(global.emittyChangedPugFile)))
-		.pipe(emitty.stream(global.emittyChangedPugFile))
+		.pipe(changed(configPath.dest.html), { extension: '.html' })
 		.pipe(frontMatter({
 			property: 'data'
 		}))
@@ -58,9 +57,5 @@ gulp.task('pug', function() {
  * @description Gulp PUG/JADE watch - keeps track of changes in files.
  */
 gulp.task('pug:watch', function() {
-	global.isPugWatching = true;
-
-	gulp.watch(configPath.src.templates + '/**', ['pug']).on('all', (event, filepath) => {
-		global.emittyChangedPugFile = filepath;
-	});
+	gulp.watch(configPath.src.templates + '/**', ['pug']);
 });

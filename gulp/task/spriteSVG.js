@@ -38,9 +38,9 @@ gulp.task('spriteSVG', function () {
       .pipe(svgMinify(configOption.svgMin))
       .pipe(cheerio({
         run: function ($) {
-          $('[fill]').removeAttr('fill');
-          $('[stroke]').removeAttr('stroke');
-          $('[style]').removeAttr('style');
+          // $('[fill]').removeAttr('fill');
+          // $('[stroke]').removeAttr('stroke');
+          // $('[style]').removeAttr('style');
           $('[title]').removeAttr('title');
         },
         parserOptions: {
@@ -58,7 +58,7 @@ gulp.task('spriteSVG', function () {
                 template: srcPath["templateSCSS"]
               }
             },
-            example: true,
+            example: false,
           }
         }
       }))

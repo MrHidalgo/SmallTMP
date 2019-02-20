@@ -3,9 +3,10 @@ body {
   width: 100%;
   min-height: 100vh;
 
-
   &.is-hideScroll {
-    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    overflow: hidden !important;
   }
 }
 

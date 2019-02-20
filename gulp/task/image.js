@@ -66,7 +66,7 @@ gulp.task("img:build", function() {
   runSequence(
     'copyImage',
     ['tinyImage'],
-    'createWebpImage'
+    // 'createWebpImage'
   );
 });
 

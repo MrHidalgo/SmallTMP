@@ -140,6 +140,11 @@
       /*width: 275px;*/
     }
 
+    .pagelist li.is-notready .pagelist__progress,
+    .pagelist li.is-notready .pagelist__url {
+      display: none;
+    }
+
     .pagelist li {
       margin-bottom: 25px;
     }
@@ -238,16 +243,56 @@
 
     .pagelist__progress {
       overflow: hidden;
-      height: 5px;
-      background: #ececec;
+      display: flex;
+      align-items: center;
+      height: 15px;
       margin-top: 8px;
       border-radius: 5px;
     }
 
+    .pagelist__progress--empty {
+      display: none;
+    }
+
+    .pagelist__progress > div:nth-of-type(1) {
+      display: flex;
+      width: 30px;
+    }
+
+    .pagelist__progress > div:nth-of-type(2) {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: calc(100% - 30px);
+      height: 5px;
+      border-radius: 5px;
+    }
+
+    .pagelist__progress div:nth-of-type(2):before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ececec;
+    }
+
+    .pagelist__progress span {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
     .pagelist__progress i {
+      position: relative;
       height: 5px;
       display: block;
       background: #2196f3;
+    }
+
+    .pagelist__progress--finished i {
+      background: #41c300;
     }
 
     .pagelist__filename {
@@ -483,7 +528,7 @@
 <!-- content -->
 <header class="header">
   <!--<h1>-->
-    <!--<span><%= pages.ProjectTitle %></span>-->
+  <!--<span><%= pages.ProjectTitle %></span>-->
   <!--</h1>-->
   <%
   date = new Date(_.now());
@@ -495,7 +540,8 @@
   %>
   <div class="header__updated">
     <em><%= pages.ProjectTitle %></em> -
-    updated <strong><%= day %>.<%= month %>.<%= date.getFullYear() %></strong>, <%= pages.PageList.length %> pages
+    updated <strong><%= day %>.<%= month %>.<%= date.getFullYear() %></strong>
+    <!--, <%= pages.PageList.length %> pages-->
   </div>
 
   <nav class="types">
@@ -548,7 +594,7 @@
     <% i = 0;%>
     <% _.each(pages.PageList, function(page) { i++; %>
     <li
-      <% if(!page.ready) { %> class="is-notready" <% } %>
+    <% if(!page.ready) { %> class="is-notready" <% } %>
     >
 
     <a
@@ -556,7 +602,10 @@
       target="_blank"
       href="<%= page.file %>"
     >
-      <span><%= i %>.</span>
+      <!--<span><%= i %>.</span>-->
+      <% if(!page.ready) { i--; } %>
+      <% if(page.ready) { %> <span><%= i %>.</span> <% } %>
+
       <em><%= _.split(page.titleName, '.', 1) %></em>
     </a>
 
@@ -568,25 +617,30 @@
 
     <p class="pagelist__filename">
       <span class="pagelist__filename--progress">
-        <% if(page.ready == 01) { %> - IN PROGRESS <% } %>
+        <% if(page.ready < 95) { %> -= IN PROGRESS <% } %>
       </span>
       <span class="pagelist__filename--testing">
-        <% if(page.ready >= 75 && page.ready <= 95) { %> - AWAITING TESTING - review <% } %>
+        <% if(page.ready > 75 && page.ready < 95) { %> - AWAITING TESTING - review =- <% } %>
       </span>
       <span class="pagelist__filename--developing">
-        <% if(page.ready >= 1 && page.ready < 55) { %> - IN DEVELOPING - desktop view <% } %>
+        <% if(page.ready >= 1 && page.ready < 55) { %> - IN DEVELOPING - desktop view =- <% } %>
       </span>
       <span class="pagelist__filename--developing">
-        <% if(page.ready >= 55 && page.ready < 75) { %> - IN DEVELOPING - mobile view <% } %>
+        <% if(page.ready >= 55 && page.ready <= 75) { %> - IN DEVELOPING - mobile view =- <% } %>
       </span>
       <span class="pagelist__filename--finished">
-        <% if(page.ready > 95) { %> - FINISHED PAGES <% } %>
+        <% if(page.ready >= 95) { %> -= FINISHED PAGES =- <% } %>
       </span>
     </p>
 
-    <div class="pagelist__progress">
+    <div class="pagelist__progress <% if(page.ready >= 95){ %> pagelist__progress--finished <% } %>">
       <% if(!page.ready) page.ready = 0; %>
-      <i style="width:<%= page.ready %>%"></i>
+      <div>
+        <span><%= page.ready %>%</span>
+      </div>
+      <div>
+        <i style="width:<%= page.ready %>%"></i>
+      </div>
     </div>
 
     </li>

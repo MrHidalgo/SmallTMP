@@ -293,3 +293,8 @@ $breakpointsMedia: (
 		@content;
 	}
 }
+@mixin adaptive($val) {
+	@media screen and (max-width: #{$val}px) {
+		@content;
+	}
+}

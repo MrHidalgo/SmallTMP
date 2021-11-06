@@ -1,5 +1,13 @@
 # FOLDER
 # ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.vscode
+.github
+.env
 .idea/*
 .gulp/*
 .cache/*
@@ -8,16 +16,11 @@
 _tmp/*
 node_modules/*
 vendor/*
-dest/css/*
-dest/js/*
-dest/font/*
-dest/*.html
-dest/img/*
+bower/*
 
 # FILES
 # ==========
 package-lock.json
-
 
 # EXTENSIONS
 # ==========

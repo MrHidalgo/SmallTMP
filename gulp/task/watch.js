@@ -1,22 +1,21 @@
-const gulp = require('gulp');
+'use strict';
+
+const { task, parallel } = require('gulp');
 
 
-/**
- * @description Gulp main watch - keeps track of changes in files.
- */
-gulp.task('watch',
-  [
-    'scss:watch',
-    'pug:watch',
-    'js:watch',
-    'img:watch',
-    'fonts:watch',
-		'iconfont:watch',
-    'spritePNG:watch',
-    'spriteSVG:watch',
-    'copy:watch',
+const watchCB = (cb) => {
+  return parallel(
     'vendorScript:watch',
     'vendorStyle:watch',
+    'iconfont:watch',
+    'fonts:watch',
+    'spriteSVG:watch',
+    'scss:watch',
+    'js:watch',
+    'html:watch',
     'list-pages:watch'
-  ]
-);
+  )(cb);
+};
+
+
+task('watch', watchCB);

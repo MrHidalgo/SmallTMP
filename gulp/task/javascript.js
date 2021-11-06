@@ -1,56 +1,53 @@
-const gulp        = require('gulp'),
-  plumber         = require('gulp-plumber'),
-  concat          = require('gulp-concat'),
-  order           = require("gulp-order"),
-  babel           = require('gulp-babel'),
-  changedInPlace  = require('gulp-changed-in-place');
+'use strict';
 
-
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
+const { task, src, dest, watch, series } = require('gulp');
+const plumber = require('gulp-plumber'),
+  webpack = require('webpack-stream');
 const configPath  = require('../config/configPath'),
-  configOption    = require('../config/configOption');
+  configOption  = require('../config/configOption');
 
 
-/**
- *
- * @type {*[]}
- */
-const srcPath = [
+const _javascriptGulpTask = (_src, _entryAppPath, _entryAppFiles, _dest) => {
+  return src(_src)
+    .pipe(plumber(configOption.pipeBreaking.err))
+    .pipe(webpack({
+      mode: 'development',
+      devtool: 'source-map',
+      entry: _entryAppFiles,
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      },
+      output: {
+        filename: '[name].js'
+      }
+    }))
+    .pipe(plumber.stop())
+    .pipe(dest(_dest))
+};
+
+
+task('js', (cb) => _javascriptGulpTask(
   configPath.src.js + '/*.js',
-  configPath.src.js + '/**/*.js',
-  '!' + configPath.src.js + '/**/_**.js',
-];
+  './src/js',
+  {
+    app: './src/js/app.js',
+  },
+  configPath.dest.js)
+);
 
 
-/**
- * @description Gulp Javascript - converting files to current standards.
- */
-gulp.task('js', function() {
-  return gulp
-    .src(srcPath)
-      .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(order([
-        "*",
-        "_lib/**",
-        "_window/**",
-        "_document/**",
-      ]))
-      .pipe(concat('app.js'))
-      .pipe(babel(configOption.es6))
-      .pipe(changedInPlace(configOption.changed))
-      .pipe(gulp.dest(configPath.dest.js))
-});
+task('js:watch', (cb) => {
+  watch(configPath.src.js + '/**', series('js'));
 
-
-/**
- * @description Gulp Javascript watch - keeps track of changes in files.
- */
-gulp.task('js:watch', function() {
-  gulp.watch(
-    configPath.src.js + '/**',
-    ['js']
-  );
+  return cb();
 });

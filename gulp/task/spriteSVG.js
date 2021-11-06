@@ -1,77 +1,64 @@
-const gulp        = require('gulp'),
-  plumber         = require('gulp-plumber'),
-  svgSprite       = require('gulp-svg-sprite'),
-  svgMinify       = require('gulp-svgmin'),
-  cheerio         = require('gulp-cheerio'),
-  replace         = require('gulp-replace');
+'use strict';
 
-
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
+const { task, src, dest, watch, series } = require('gulp');
+const plumber = require('gulp-plumber'),
+  svgSprite = require('gulp-svg-sprite'),
+  svgMinify = require('gulp-svgmin'),
+  cheerio = require('gulp-cheerio'),
+  replace = require('gulp-replace');
 const configPath  = require('../config/configPath'),
   configOption    = require('../config/configOption');
 
 
-/**
- *
- * @type {{"0": *[], sprite: string, destSpriteSCSS: string, templateSCSS: string}}
- */
-const srcPath = {
-  0: [
-    configPath.src.icon + '/*.svg'
-  ],
-  "sprite" : "../sprite.svg",
-  "destSpriteSCSS" : "../../../src/scss/_generated/_spriteSVG.scss",
-  "templateSCSS" : "./src/scss/_generated/_spriteSVG_template.scss"
+const _spriteSVGTask = (_src, _dest, _pathDest, _pathTmpl) => {
+  return src(_src)
+    .pipe(plumber(configOption.pipeBreaking.err))
+    .pipe(svgMinify(configOption.svgMin))
+    .pipe(cheerio({
+      run: function ($) {
+        $('[title]').removeAttr('title');
+        $('[desc]').removeAttr('desc');
+      },
+      parserOptions: {
+        xmlMode: true
+      }
+    }))
+    .pipe(replace('&gt;', '>'))
+    .pipe(svgSprite({
+      mode: {
+        symbol: {
+          bust: false,
+          sprite: "../sprite.svg",
+          render: {
+            scss: {
+              dest: "../../../" + _pathDest + "/scss/_generated/_spriteSVG.scss",
+              template: "./" + _pathTmpl + "/scss/_generated/_spriteSVG_template.scss"
+            }
+          },
+          example: false,
+        }
+      },
+      shape: {
+        dimension: {
+          precision: 2,
+          attributes: false
+        },
+        spacing: {
+          padding: 10
+        },
+        transform: ['svgo']
+      }
+    }))
+    .pipe(plumber.stop())
+    .pipe(dest(_dest));
 };
 
 
-/**
- * @description Gulp sprite SVG - generated SVG sprite.
- */
-gulp.task('spriteSVG', function () {
-  return gulp
-    .src(srcPath[0])
-      .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(svgMinify(configOption.svgMin))
-      .pipe(cheerio({
-        run: function ($) {
-          // $('[fill]').removeAttr('fill');
-          // $('[stroke]').removeAttr('stroke');
-          // $('[style]').removeAttr('style');
-          $('[title]').removeAttr('title');
-        },
-        parserOptions: {
-          xmlMode: true
-        }
-      }))
-      .pipe(replace('&gt;', '>'))
-      .pipe(svgSprite({
-        mode: {
-          symbol: {
-            sprite: srcPath["sprite"],
-            render: {
-              scss: {
-                dest: srcPath["destSpriteSCSS"],
-                template: srcPath["templateSCSS"]
-              }
-            },
-            example: false,
-          }
-        }
-      }))
-      .pipe(gulp.dest(configPath.dest.img));
-});
+task('spriteSVG',  (cb) => _spriteSVGTask(configPath.src.icon + '/**.svg', configPath.dest.img, 'src', 'src'));
 
 
-/**
- * @description Gulp sprite SVG watch - keeps track of changes in files.
- */
-gulp.task('spriteSVG:watch', function() {
-  gulp.watch(
-    srcPath[0],
-    ['spriteSVG']
-  );
+task('spriteSVG:watch', (cb) => {
+  watch(configPath.src.icon + '/**.svg', series('spriteSVG'));
+
+  return cb();
 });

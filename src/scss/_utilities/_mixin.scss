@@ -257,37 +257,63 @@
 
 
 ///
-/// Mixin media queries.
-///
-$breakpointsMedia: (
-	extra-small     	: "(min-width: 320px)", 	/// extra-small
-	max-extra-small 	: "(max-width: 575px)",
-	small         		: "(min-width: 576px)", 	/// small
-	max-small     		: "(max-width: 767px)",
-	medium         		: "(min-width: 768px)", 	/// medium
-	max-medium     		: "(max-width: 991px)",
-	large         		: "(min-width: 992px)", 	/// large
-	max-large					: "(max-width: 1199px)",
-	extra-large     	: "(min-width: 1200px)",	/// extra-large
-	max-extra-large 	: "(max-width: 1365px)",
-	wide-small      	: "(min-width: 1366px)",	/// wide-small
-	max-wide-small 		: "(max-width: 1439px)",
-	wide-medium     	: "(min-width: 1440px)",	/// wide-medium
-	max-wide-medium 	: "(max-width: 1599px)",
-	wide-large      	: "(min-width: 1600px)",	/// wide-large
-	max-wide-large    : "(max-width: 1919px)",
-	hd        				: "(min-width: 1920px)"		/// hd
-) !default;
+/// Mixin generate @font-face
+/// ===============
+@mixin mixinFontFace($fontName, $fontNameExt, $fontPath, $fontWeight, $fontExtension: eot woff2 woff ttf svg) {
+	$src: null;
+	$srcEot: null;
 
-@mixin respond($name) {
-	@if map-has-key($breakpointsMedia, $name) {
-		@media screen and #{inspect(map-get($breakpointsMedia, $name))} {
-			@content;
+	$extensionModObj: (
+			eot: "?iefix",
+			svg: "#" + $fontName
+	);
+
+	$formats: (
+			eot: "embedded-opentype",
+			otf: "opentype",
+			ttf: "truetype"
+	);
+
+	@each $ext in $fontExtension {
+
+
+		$extensionModsValue:
+				if(map-has-key($extensionModObj, $ext), $ext + map-get($extensionModObj, $ext), $ext);
+
+		$format:
+				if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+
+
+		@if($ext == "eot") {
+			$srcEot:
+					append($srcEot, url(quote($fontPath + $fontName + $fontNameExt + "." + $ext)));
+			$src:
+					append($src,
+							url(quote($fontPath + $fontName + $fontNameExt + "." + $extensionModsValue)) format(quote($format)), comma
+					);
+		} @else {
+			$src:
+					append($src,
+							url(quote($fontPath + $fontName + $fontNameExt + "." + $extensionModsValue)) format(quote($format)), comma
+					);
 		}
-	} @else {
-		@warn "Unfortunately, no value could be retrieved from `#{$breakpointsMedia}`. Please make sure it is defined in `$breakpointsMedia` map.";
+	}
+
+	@font-face {
+		font-family: quote($fontName);
+
+		src: $srcEot;
+		src: $src;
+
+		font-style: normal;
+		font-weight: $fontWeight;
 	}
 }
+
+
+///
+/// Mixin media queries.
+///
 @mixin respondCustom($val) {
 	@media screen and #{$val} {
 		@content;

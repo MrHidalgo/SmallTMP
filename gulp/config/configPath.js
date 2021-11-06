@@ -8,7 +8,6 @@ const configPath = {
   src: {
     root          : srcPath + '',
     templates     : srcPath + '/pug',
-    templatesData : srcPath + '/pug/data',
     scss          : srcPath + '/scss',
     vendorStyle   : srcPath + '/vendorStyle',
     js            : srcPath + '/js',
@@ -18,6 +17,7 @@ const configPath = {
     fonts         : srcPath + '/fonts',
     iconFonts     : srcPath + '/iconFonts',
     media         : srcPath + '/media',
+    html          : srcPath + '/template',
   },
 
   // DEST

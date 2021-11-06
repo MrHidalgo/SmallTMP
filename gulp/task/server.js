@@ -1,22 +1,16 @@
-const gulp        = require('gulp'),
-  server          = require('browser-sync').create();
+'use strict';
+
+const { task } = require('gulp');
+const server = require('browser-sync').create();
 
 
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
-const configPath  = require('../config/configPath');
-
-
-/**
- * @description Gulp server - create and init Browser-sync.
- */
-gulp.task('server', function() {
+task('server', (cb) => {
   server.init({
     server: {
-      baseDir: configPath.dest.root,
-      directory: false,
+      baseDir: [
+        'dest'
+      ],
+      directory: true,
       serveStaticOptions: {
         extensions: [
           'html'
@@ -24,13 +18,10 @@ gulp.task('server', function() {
       }
     },
     files: [
-      configPath.dest.html + '/*.html',
-      configPath.dest.css + '/*.css',
-      configPath.dest.js + '/*.js',
-      configPath.dest.icon + '/**',
-      configPath.dest.img + '/**'
+      'dest/**'
     ],
-		startPath: "/listPages.html",
+    https: true,
+		startPath: "/listPages",
     port: 3000,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
@@ -41,4 +32,6 @@ gulp.task('server', function() {
     online: true,
     tunnel: false
   });
+
+  return cb();
 });

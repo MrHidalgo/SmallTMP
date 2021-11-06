@@ -1,60 +1,36 @@
-const gulp      = require('gulp'),
-	iconfont      = require('gulp-iconfont'),
-	iconfontCss   = require('gulp-iconfont-css'),
-	runTimestamp  = Math.round(Date.now()/1000);
+'use strict';
 
-
-/**
- *
- * @type {string}
- */
-const fontName = 'iconFont';
-
-
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
+const { task, src, dest, watch, series } = require('gulp');
+const iconfont = require('gulp-iconfont'),
+	iconfontCss = require('gulp-iconfont-css');
 const configPath  = require('../config/configPath');
 
 
-/**
- *
- * @type {*[]}
- */
-const srcPath = [
-	configPath.src.iconFonts + '/*.svg'
-];
+const iconFontGulpTask = (_src, _dest, _path) => {
+  return src(_src)
+    .pipe(iconfontCss({
+      fontName: 'iconFont',
+      path: _path + '/scss/_generated/_iconFont_template.scss',
+      targetPath: '../scss/_generated/_spriteFont.scss',
+      fontPath: '../fonts/'
+    }))
+    .pipe(iconfont({
+      fontName: 'iconFont',
+      formats: ['ttf', 'woff', 'woff2', 'svg'],
+      prependUnicode: true,
+      normalize: true,
+      fontHeight: 1000,
+      timestamp: Math.round(Date.now() / 1000)
+    }))
+    .pipe(dest(_dest));
+};
 
 
-/**
- * @description Gulp iconfont - Create fonts from several SVG icons.
- */
-gulp.task('iconfont', function(){
-	return gulp.src(srcPath)
-		.pipe(iconfontCss({
-			fontName: fontName,
-			path: 'src/scss/_generated/_iconFont_template.scss',
-			targetPath: '../scss/_generated/_spriteFont.scss',
-			fontPath: '../fonts/'
-		}))
-		.pipe(iconfont({
-			fontName: fontName,
-			formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'],
-			normalize: true,
-			fontHeight: 1000,
-			timestamp: runTimestamp
-		}))
-		.pipe(gulp.dest(configPath.src.fonts));
-});
+task('iconfont', (cb) => iconFontGulpTask(configPath.src.iconFonts + '/**.svg', configPath.src.fonts, 'src'));
 
 
-/**
- * @description Gulp iconfont watch - keeps track of changes in files.
- */
-gulp.task('iconfont:watch', function() {
-	gulp.watch(
-		configPath.src.iconFonts + '/**',
-		['iconfont']
-	);
+task('iconfont:watch', (cb) => {
+  watch(configPath.src.iconFonts + '/**.svg', series('iconfont'));
+
+  return cb();
 });

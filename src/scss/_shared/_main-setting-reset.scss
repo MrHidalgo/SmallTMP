@@ -4,7 +4,6 @@ body {
   min-height: 100vh;
 
   &.is-hideScroll {
-    position: fixed;
     width: 100%;
     overflow: hidden !important;
   }
@@ -20,6 +19,10 @@ html {
 body {
   overflow-x: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: $c-white;
@@ -29,12 +32,6 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 
   > .body {
     display: flex;
@@ -110,7 +107,6 @@ ul {
   margin: 0;
   padding: 0;
 
-
   li {
     list-style: none;
   }
@@ -120,7 +116,6 @@ ul {
 a {
   outline: none;
   text-decoration: none;
-
 
   &:hover,
   &:focus {

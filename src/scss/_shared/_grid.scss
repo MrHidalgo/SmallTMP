@@ -1,20 +1,9 @@
-///
 /// ADDITIONALLY
 /// ===============
 $maxWidth: null;
 $paddingLeft: 15px;
 $paddingRight: $paddingLeft;
 
-%grid {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $paddingRight;
-  padding-left: $paddingLeft;
-}
-
-
-///
 /// MAIN
 /// ===============
 .c-grid {
@@ -22,30 +11,14 @@ $paddingRight: $paddingLeft;
   @if($maxWidth) {
     max-width: $maxWidth;
   }
-
+  padding-right: $paddingRight;
+  padding-left: $paddingLeft;
 
   &-fluid {
     @extend %grid;
     max-width: 100%;
+    padding-right: $paddingRight;
+    padding-left: $paddingLeft;
   }
 }
 
-
-// for develop - pls del for production
-.c-grid {
-  @include respond(small) {
-    max-width: $maxWidth;
-  }
-  @include respond(large) {
-    max-width: $maxWidth;
-  }
-  @include respond(extra-large) {
-    max-width: $maxWidth;
-  }
-  @include respond(medium) {
-    max-width: $maxWidth;
-  }
-  @include respond(wide-small) {
-    max-width: $maxWidth;
-  }
-}

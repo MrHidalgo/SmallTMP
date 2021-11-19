@@ -6,7 +6,8 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "deploy": "gulp build && surge --project ./dest --domain http://projectName-dev.surge.sh"
   },
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",

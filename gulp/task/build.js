@@ -13,7 +13,7 @@ const buildCB = (cb) => {
     'spriteSVG',
     'scss',
     'js',
-    'html',
+    'pug',
     'list-pages',
   )(cb);
 };

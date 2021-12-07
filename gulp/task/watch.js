@@ -12,7 +12,7 @@ const watchCB = (cb) => {
     'spriteSVG:watch',
     'scss:watch',
     'js:watch',
-    'html:watch',
+    'pug:watch',
     'list-pages:watch'
   )(cb);
 };

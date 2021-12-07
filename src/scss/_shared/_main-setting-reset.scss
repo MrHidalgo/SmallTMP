@@ -4,17 +4,15 @@ body {
   min-height: 100vh;
 
   &.is-hideScroll {
-    width: 100%;
     overflow: hidden !important;
+    width: 100%;
   }
 }
-
 
 html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 
 body {
   overflow-x: hidden;
@@ -25,7 +23,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: $c-white;
+  background-color: #fff;
   line-height: 1.42857143;
   font-size: 14px;
   font-weight: normal;
@@ -45,7 +43,6 @@ body {
   }
 }
 
-
 * {
   box-sizing: border-box;
 
@@ -54,7 +51,6 @@ body {
     box-sizing: border-box;
   }
 }
-
 
 button,
 input,
@@ -65,35 +61,29 @@ textarea {
   margin: 0;
 }
 
-
 button,
 input {
   overflow: visible;
 }
-
 
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-
 
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-
 textarea {
   overflow: auto;
 }
-
 
 p,
 h1, h2, h3, h4, h5, h6,
@@ -101,7 +91,6 @@ hr {
   margin: 0;
   padding: 0;
 }
-
 
 ul {
   margin: 0;
@@ -112,7 +101,6 @@ ul {
   }
 }
 
-
 a {
   outline: none;
   text-decoration: none;
@@ -122,7 +110,6 @@ a {
     text-decoration: none;
   }
 }
-
 
 input[type="text"] {
   appearance: none;

@@ -1,7 +1,9 @@
 'use strict';
 
 const { task } = require('gulp');
+
 const del = require('del');
+
 const configPath  = require('../config/configPath');
 
 

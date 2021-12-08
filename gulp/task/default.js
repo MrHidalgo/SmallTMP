@@ -4,11 +4,7 @@ const { task, series } = require('gulp');
 
 
 const defaultCB = (cb) => {
-  return series(
-    'build',
-    'watch',
-    'server'
-  )(cb);
+  return series('build', 'watch', 'server')(cb);
 };
 
 

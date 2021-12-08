@@ -1,16 +1,18 @@
 'use strict';
 
 const { task, src, dest, watch, series } = require('gulp');
+
 const iconfont = require('gulp-iconfont'),
 	iconfontCss = require('gulp-iconfont-css');
+
 const configPath  = require('../config/configPath');
 
 
-const iconFontGulpTask = (_src, _dest, _path) => {
-  return src(_src)
+const iconFontCB = (_src, _dest, _path) => {
+  return src(configPath.src.iconFonts + '/**.svg')
     .pipe(iconfontCss({
       fontName: 'iconFont',
-      path: _path + '/scss/_generated/_iconFont_template.scss',
+      path: 'src/scss/_generated/_iconFont_template.scss',
       targetPath: '../scss/_generated/_spriteFont.scss',
       fontPath: '../fonts/'
     }))
@@ -22,15 +24,12 @@ const iconFontGulpTask = (_src, _dest, _path) => {
       fontHeight: 1000,
       timestamp: Math.round(Date.now() / 1000)
     }))
-    .pipe(dest(_dest));
+    .pipe(dest(configPath.src.fonts));
 };
 
 
-task('iconfont', (cb) => iconFontGulpTask(configPath.src.iconFonts + '/**.svg', configPath.src.fonts, 'src'));
-
-
-task('iconfont:watch', (cb) => {
-  watch(configPath.src.iconFonts + '/**.svg', series('iconfont'));
-
-  return cb();
+task('iconfont', (cb) => {
+  iconFontCB();
+  cb();
 });
+task('iconfont:watch', (cb) => watch(configPath.src.iconFonts + '/**.svg', iconFontCB));

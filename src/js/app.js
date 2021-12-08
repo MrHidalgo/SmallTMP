@@ -1,8 +1,10 @@
 import Common from "./common/common";
 
+
 // EVENT LISTENER - LOAD
 // ========================================
 window.addEventListener('load', (ev) => {
+  
   // COMMON
   Common.initLoad();
   

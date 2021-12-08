@@ -1,28 +1,22 @@
 'use strict';
 
 const { task } = require('gulp');
-const server = require('browser-sync').create();
 
+const server = require('browser-sync').create();
 
 task('server', (cb) => {
   server.init({
     server: {
-      baseDir: [
-        'dest'
-      ],
+      baseDir: ['dest'],
       directory: true,
       serveStaticOptions: {
-        extensions: [
-          'html'
-        ]
+        extensions: ['html']
       }
     },
-    files: [
-      'dest/**'
-    ],
+    files: ['dest/**'],
     https: true,
-		startPath: "/listPages",
-    port: 3000,
+		startPath: "/index.html",
+    port: 3333,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
     logFileChanges: true,

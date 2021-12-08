@@ -1,36 +1,30 @@
 'use strict';
 
 const { task, src, dest, watch, series } = require('gulp');
+
 const plumber = require('gulp-plumber'),
+  changed = require('gulp-changed'),
   fileInclude = require('gulp-file-include');
+
 const configPath = require('../config/configPath'),
   configOption = require('../config/configOption');
 
 
-const _templateGulpTask = (_src, _dest) => {
-  return src(_src)
+const templateCB = () => {
+  return src(configPath.src.html + '/*.html')
+    .pipe(changed(configPath.src.html + '/*.html'))
     .pipe(plumber(configOption.pipeBreaking.err))
     .pipe(fileInclude({
       prefix: '@@',
       basepath: '@file'
     }))
     .pipe(plumber.stop())
-    .pipe(dest(_dest));
+    .pipe(dest(configPath.dest.html));
 };
 
 
-task('html', (cb) => _templateGulpTask(configPath.src.html + '/*.html', configPath.dest.html));
-
-
-task('html:watch', (cb) => {
-  watch(
-    [
-      configPath.src.html + '/**',
-      configPath.src.html + '/**/**',
-      configPath.src.html + '/**/**/**',
-    ],
-    series('html')
-  );
-
-  return cb();
+task('html', (cb) => {
+  templateCB();
+  cb();
 });
+task('html:watch', (cb) => watch([configPath.src.html + '/**', configPath.src.html + '/**/**', configPath.src.html + '/**/**/**',], templateCB));

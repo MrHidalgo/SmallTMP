@@ -1,30 +1,49 @@
 'use strict';
 
 const { task, src, dest, watch, series } = require('gulp');
+
 const plumber = require('gulp-plumber'),
-  prefixer = require('gulp-autoprefixer'),
-  scss = require('gulp-sass'),
-  sassGlob = require('gulp-sass-glob');
-const configPath = require('../config/configPath'),
-  configOption = require('../config/configOption');
+  autoprefixer = require('gulp-autoprefixer'),
+  scss = require('gulp-sass')(require('sass')),
+  sassGlob = require('gulp-sass-glob'),
+  changed = require('gulp-changed'),
+  rename = require('gulp-rename'),
+  cssnano = require('gulp-cssnano');
+
+const configPath = require('../config/configPath')
 
 
-const _scssGulpTask = (_src, _dest) => {
-  return src(_src)
-    .pipe(plumber(configOption.pipeBreaking.err))
+const scssCB = () => {
+  return src(configPath.src.scss + '/*.scss')
+    .pipe(changed(configPath.src.scss + '/*.scss'))
+    .pipe(plumber(configPath.errorHandler))
     .pipe(sassGlob())
-    .pipe(scss(configOption.sassAPI).on('error', scss.logError))
-    .pipe(prefixer(configOption.autoPrefixOptions))
+    .pipe(scss({
+      errLogToConsole: true,
+      outputStyle: 'expanded',
+      sourceComments: true
+    }).on('error', scss.logError))
+    .pipe(autoprefixer({
+      browsers: [
+        "last 3 versions",
+        "> 1%",
+        "ie 10-11"
+      ],
+      cascade: true
+    }))
+    .pipe(dest(configPath.dest.css))
+    .pipe(rename({
+      extname: '.min.css'
+    }))
+    .pipe(cssnano())
     .pipe(plumber.stop())
-    .pipe(dest(_dest))
+    .pipe(dest(configPath.dest.css));
 };
 
 
-task('scss', (cb) => _scssGulpTask(configPath.src.scss + '/*.scss', configPath.dest.css));
-
-
-task('scss:watch', (cb) => {
-  watch(configPath.src.scss + '/**', series('scss'));
-
-  return cb();
+task('scss', (cb) => {
+  scssCB();
+  cb();
 });
+task('scss:watch', (cb) => watch(configPath.src.scss + '/**', scssCB));
+

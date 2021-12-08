@@ -1,53 +1,51 @@
 'use strict';
 
 const { task, src, dest, watch, series } = require('gulp');
+
 const plumber = require('gulp-plumber'),
+  changed = require('gulp-changed'),
+  uglify = require('gulp-uglify-es').default,
+  rename = require('gulp-rename'),
   webpack = require('webpack-stream');
-const configPath  = require('../config/configPath'),
-  configOption  = require('../config/configOption');
+
+const configPath  = require('../config/configPath');
 
 
-const _javascriptGulpTask = (_src, _entryAppPath, _entryAppFiles, _dest) => {
-  return src(_src)
-    .pipe(plumber(configOption.pipeBreaking.err))
+const jsCB = (_entryAppFiles) => {
+  return src(configPath.src.js + '/*.js')
+    .pipe(changed(configPath.src.js + '/*.js'))
+    .pipe(plumber(configPath.errorHandler))
     .pipe(webpack({
       mode: 'development',
-      devtool: 'source-map',
-      entry: _entryAppFiles,
+      // devtool: 'source-map',
+      entry: './src/js/app.js',
       module: {
-        rules: [
-          {
-            test: /\.js$/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: ['@babel/preset-env']
-              }
+        rules: [{
+          test: /\.js$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
             }
           }
-        ]
+        }]
       },
       output: {
-        filename: '[name].js'
+        filename: 'app.js'
       }
     }))
+    .pipe(dest(configPath.dest.js))
+    .pipe(rename({
+      extname: '.min.js'
+    }))
+    .pipe(uglify())
     .pipe(plumber.stop())
-    .pipe(dest(_dest))
+    .pipe(dest(configPath.dest.js))
 };
 
 
-task('js', (cb) => _javascriptGulpTask(
-  configPath.src.js + '/*.js',
-  './src/js',
-  {
-    app: './src/js/app.js',
-  },
-  configPath.dest.js)
-);
-
-
-task('js:watch', (cb) => {
-  watch(configPath.src.js + '/**', series('js'));
-
-  return cb();
+task('js', (cb) => {
+  jsCB();
+  cb();
 });
+task('js:watch', (cb) => watch(configPath.src.js + '/**', jsCB));

@@ -1,4 +1,5 @@
 const Common = (function() {
+  
   const pressESC = () => {
     document.addEventListener('keyup', (ev) => {
       if (ev.keyCode === 27) {
@@ -9,7 +10,7 @@ const Common = (function() {
 
   const clickBody = () => {
     document.body.addEventListener('click', (ev) => {
-      const className = ``;
+      const className = `body`;
 
       if (!ev.target.closest(className).length) {
       

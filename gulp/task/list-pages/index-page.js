@@ -9,21 +9,20 @@ const consolidate = require('gulp-consolidate'),
 
 const configPath  = require('../../config/configPath');
 
-
-task('list-pages', (cb) => {
-	delete require.cache[require.resolve('../../../src/index.yaml')];
-
-  let pages = require('../../../src/index.yaml');
-
+const listPageCB = () => {
+  // delete require.cache[require.resolve('../../../src/index.yaml')];
+  
   return src(__dirname + '/listPages.html')
     .pipe(consolidate('lodash', {
-      pages: pages
+      pages: '../../../src/index.yaml'
     }))
     .pipe(dest(configPath.dest.root));
+};
+
+
+task('list-pages', (cb) => {
+  listPageCB();
+  cb();
 });
 
-task('list-pages:watch', (cb) => {
-  watch('src/index.yaml', series('list-pages'));
-
-  return cb();
-});
+task('list-pages:watch', (cb) => watch('src/index.yaml', listPageCB));

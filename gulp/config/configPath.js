@@ -7,7 +7,7 @@ const configPath = {
   // SRC
   src: {
     root          : srcPath + '',
-    templates     : srcPath + '/pug',
+    pug           : srcPath + '/pug',
     scss          : srcPath + '/scss',
     vendorStyle   : srcPath + '/vendorStyle',
     js            : srcPath + '/js',

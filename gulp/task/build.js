@@ -1,6 +1,6 @@
 'use strict';
 
-const { task, parallel } = require('gulp');
+const { task, series, parallel } = require('gulp');
 
 
 const buildCB = (cb) => {
@@ -10,11 +10,12 @@ const buildCB = (cb) => {
     'vendorStyle',
     'iconfont',
     'fonts',
-    'spriteSVG',
+    // 'spriteSVG',
+    'scss',
     'scss',
     'js',
     'pug',
-    'list-pages',
+    // 'list-pages'
   )(cb);
 };
 

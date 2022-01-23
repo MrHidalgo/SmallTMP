@@ -23,14 +23,7 @@ const scssCB = () => {
       outputStyle: 'expanded',
       sourceComments: true
     }).on('error', scss.logError))
-    .pipe(autoprefixer({
-      browsers: [
-        "last 3 versions",
-        "> 1%",
-        "ie 10-11"
-      ],
-      cascade: true
-    }))
+    .pipe(autoprefixer())
     .pipe(dest(configPath.dest.css))
     .pipe(rename({
       extname: '.min.css'

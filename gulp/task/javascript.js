@@ -17,11 +17,12 @@ const jsCB = (_entryAppFiles) => {
     .pipe(plumber(configPath.errorHandler))
     .pipe(webpack({
       mode: 'development',
-      // devtool: 'source-map',
+      devtool: false,
       entry: './src/js/app.js',
       module: {
         rules: [{
           test: /\.js$/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {

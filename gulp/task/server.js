@@ -14,9 +14,9 @@ task('server', (cb) => {
       }
     },
     files: ['dest/**'],
-    https: true,
-		startPath: "/index.html",
-    port: 3333,
+    https: false,
+		startPath: "/listPages.html",
+    port: 5555,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
     logFileChanges: true,

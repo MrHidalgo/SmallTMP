@@ -2,6 +2,7 @@
 /// @group  Extend
 ////
 
+
 // GRID
 %grid {
   width: 100%;
@@ -10,14 +11,8 @@
 }
 // GRID :: end
 
+
 // IMAGE
-%imageResMaxWidth {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
 %imageResCoverAbs {
   position: absolute;
   top: 0;

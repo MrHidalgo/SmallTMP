@@ -1,7 +1,7 @@
 # [ProjectName](http://ProjectName-dev.surge.sh/)
 
 ## How to start
-* `yarn && bower i && gulp` - install npm dependencies, bower packages and run dev-server
+* `yarn && gulp` - install npm dependencies, bower packages and run dev-server
 
 ## NPM script
 * `npm run start` - run dev-server, same as `gulp`
